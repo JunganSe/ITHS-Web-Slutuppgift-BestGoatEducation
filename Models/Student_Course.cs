@@ -7,8 +7,8 @@ public class Student_Course
     public Course? Course { get; set; }
     public int CourseId { get; set; }
     
-    public DateTime EnrollmentDate { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public bool IsCompleted { get; set; }
+    public DateTime? EnrollmentDate { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
+    public bool IsCompleted { get; set; } = false;
 }
