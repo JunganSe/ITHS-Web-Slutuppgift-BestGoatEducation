@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels.Country;
 
 namespace WestcoastEducationApi.Repositories;
 
@@ -16,19 +15,19 @@ public class CountryRepository : ICountryRepository
 
 
 
-    public Task<List<Country>> GetAllCountriesAsync()
+    public async Task<List<Country>> GetAllCountriesAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Countries.ToListAsync();
     }
     
-    public Task<Country?> GetCountryAsync(int id)
+    public async Task<Country?> GetCountryAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Countries.FindAsync(id);
     }
     
-    public Task CreateCountryAsync(PostCountryViewModel model)
+    public async Task CreateCountryAsync(Country country)
     {
-        throw new NotImplementedException();
+        await _context.Countries.AddAsync(country);
     }
 
 

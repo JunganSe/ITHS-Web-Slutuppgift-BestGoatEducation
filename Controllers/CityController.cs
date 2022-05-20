@@ -37,8 +37,8 @@ public class CityController : ControllerBase
         var model = _mapper.Map<CityViewModel>(city);
 
         return (model != null)
-                ? Ok(model) // 200
-                : NotFound($"Fail: Find city with id {id}"); // 404
+            ? Ok(model) // 200
+            : NotFound($"Fail: Find city with id {id}"); // 404
     }
 
 
@@ -50,7 +50,7 @@ public class CityController : ControllerBase
         await _repo.CreateCityAsync(city);
 
         return (await _repo.SaveAllAsync())
-                ? StatusCode(201) // Created
-                : StatusCode(500, "Fail: Create city."); // Internal server error
+            ? StatusCode(201) // Created
+            : StatusCode(500, "Fail: Create city."); // Internal server error
     }
 }
