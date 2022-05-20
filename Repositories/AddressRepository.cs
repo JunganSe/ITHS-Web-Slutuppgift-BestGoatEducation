@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels;
 
 namespace WestcoastEducationApi.Repositories;
 
@@ -26,10 +25,9 @@ public class AddressRepository : IAddressRepository
         return await _context.Addresses.FindAsync(id);
     }
     
-    public Task CreateAddressAsync(PostAddressViewModel model)
+    public async Task CreateAddressAsync(Address address)
     {
-        // TODO: Create address
-        throw new NotImplementedException();
+        await _context.Addresses.AddAsync(address);
     }
     
     
