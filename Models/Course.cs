@@ -15,6 +15,10 @@ public class Course
     public string? Summary { get; set; }
     
     public string? Description { get; set; }
+    
+    public int? Days { get; set; }
+    
+    public TimeSpan? Duration { get; set; }
 
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
