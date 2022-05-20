@@ -9,5 +9,8 @@ public class AutoMapperProfiles : AutoMapper.Profile
     {
         CreateMap<Address, AddressViewModel>();
         CreateMap<PostAddressViewModel, Address>();
+        
+        CreateMap<Category, CategoryViewModel>();
+        CreateMap<PostCategoryViewModel, Category>();
     }
 }
