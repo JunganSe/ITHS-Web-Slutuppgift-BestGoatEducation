@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
+using WestcoastEducationApi.Helpers;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Repositories;
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IStreetRepository, StreetRepository>();
 builder.Services.AddScoped<IPostalCodeRepository, PostalCodeRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
