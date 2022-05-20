@@ -1,5 +1,5 @@
 /bin
 /obj
 .vs
-*.db-shm
-*.db-wal
+*.sqlite-shm
+*.sqlite-wal
