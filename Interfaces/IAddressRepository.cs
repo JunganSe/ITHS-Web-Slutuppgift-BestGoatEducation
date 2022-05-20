@@ -1,5 +1,5 @@
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels.Address;
+using WestcoastEducationApi.ViewModels;
 
 namespace WestcoastEducationApi.Interfaces;
 

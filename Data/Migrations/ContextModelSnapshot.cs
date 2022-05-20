@@ -151,31 +151,27 @@ namespace WestcoastEducationApi.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("PostalCodeId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("StreetId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("StreetNumber")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("PostalCodeId");
-
-                    b.HasIndex("StreetId");
 
                     b.ToTable("Addresses");
                 });
@@ -273,21 +269,6 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("WestcoastEducationApi.Models.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cities");
-                });
-
             modelBuilder.Entity("WestcoastEducationApi.Models.Competence", b =>
                 {
                     b.Property<int>("Id")
@@ -301,21 +282,6 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Competences");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("WestcoastEducationApi.Models.Course", b =>
@@ -351,36 +317,6 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.PostalCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PostalCodes");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.Street", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Streets");
                 });
 
             modelBuilder.Entity("WestcoastEducationApi.Models.Student_Course", b =>
@@ -434,7 +370,7 @@ namespace WestcoastEducationApi.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Teacher_Course");
+                    b.ToTable("Teacher_Courses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -486,41 +422,6 @@ namespace WestcoastEducationApi.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.Address", b =>
-                {
-                    b.HasOne("WestcoastEducationApi.Models.City", "City")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WestcoastEducationApi.Models.Country", "Country")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WestcoastEducationApi.Models.PostalCode", "PostalCode")
-                        .WithMany("Addresses")
-                        .HasForeignKey("PostalCodeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WestcoastEducationApi.Models.Street", "Street")
-                        .WithMany("Addresses")
-                        .HasForeignKey("StreetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("City");
-
-                    b.Navigation("Country");
-
-                    b.Navigation("PostalCode");
-
-                    b.Navigation("Street");
                 });
 
             modelBuilder.Entity("WestcoastEducationApi.Models.AppUser", b =>
@@ -621,19 +522,9 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.Navigation("Courses");
                 });
 
-            modelBuilder.Entity("WestcoastEducationApi.Models.City", b =>
-                {
-                    b.Navigation("Addresses");
-                });
-
             modelBuilder.Entity("WestcoastEducationApi.Models.Competence", b =>
                 {
                     b.Navigation("Teacher_Competences");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.Country", b =>
-                {
-                    b.Navigation("Addresses");
                 });
 
             modelBuilder.Entity("WestcoastEducationApi.Models.Course", b =>
@@ -641,16 +532,6 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.Navigation("Student_Courses");
 
                     b.Navigation("Teacher_Courses");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.PostalCode", b =>
-                {
-                    b.Navigation("Addresses");
-                });
-
-            modelBuilder.Entity("WestcoastEducationApi.Models.Street", b =>
-                {
-                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

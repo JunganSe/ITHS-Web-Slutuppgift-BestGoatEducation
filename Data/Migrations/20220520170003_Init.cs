@@ -10,6 +10,23 @@ namespace WestcoastEducationApi.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Street = table.Column<string>(type: "TEXT", nullable: false),
+                    StreetNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    PostalCode = table.Column<string>(type: "TEXT", nullable: false),
+                    City = table.Column<string>(type: "TEXT", nullable: false),
+                    Country = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -37,19 +54,6 @@ namespace WestcoastEducationApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cities", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Competences",
                 columns: table => new
                 {
@@ -63,42 +67,37 @@ namespace WestcoastEducationApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Countries",
+                name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Countries", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PostalCodes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Code = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PostalCodes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Streets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Streets", x => x.Id);
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Addresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,81 +142,6 @@ namespace WestcoastEducationApi.Data.Migrations
                         name: "FK_Courses_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    StreetId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StreetNumber = table.Column<string>(type: "TEXT", nullable: false),
-                    PostalCodeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CityId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Cities_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Countries_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Countries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Addresses_PostalCodes_PostalCodeId",
-                        column: x => x.PostalCodeId,
-                        principalTable: "PostalCodes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Addresses_Streets_StreetId",
-                        column: x => x.StreetId,
-                        principalTable: "Streets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: false),
-                    AddressId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -308,6 +232,30 @@ namespace WestcoastEducationApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Teacher_Competences",
+                columns: table => new
+                {
+                    TeacherId = table.Column<string>(type: "TEXT", nullable: false),
+                    CompetenceId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teacher_Competences", x => new { x.TeacherId, x.CompetenceId });
+                    table.ForeignKey(
+                        name: "FK_Teacher_Competences_AspNetUsers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Teacher_Competences_Competences_CompetenceId",
+                        column: x => x.CompetenceId,
+                        principalTable: "Competences",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Student_Courses",
                 columns: table => new
                 {
@@ -335,31 +283,7 @@ namespace WestcoastEducationApi.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher_Competences",
-                columns: table => new
-                {
-                    TeacherId = table.Column<string>(type: "TEXT", nullable: false),
-                    CompetenceId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Teacher_Competences", x => new { x.TeacherId, x.CompetenceId });
-                    table.ForeignKey(
-                        name: "FK_Teacher_Competences_AspNetUsers_TeacherId",
-                        column: x => x.TeacherId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Teacher_Competences_Competences_CompetenceId",
-                        column: x => x.CompetenceId,
-                        principalTable: "Competences",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Teacher_Course",
+                name: "Teacher_Courses",
                 columns: table => new
                 {
                     TeacherId = table.Column<string>(type: "TEXT", nullable: false),
@@ -367,40 +291,20 @@ namespace WestcoastEducationApi.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teacher_Course", x => new { x.TeacherId, x.CourseId });
+                    table.PrimaryKey("PK_Teacher_Courses", x => new { x.TeacherId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_Teacher_Course_AspNetUsers_TeacherId",
+                        name: "FK_Teacher_Courses_AspNetUsers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Teacher_Course_Courses_CourseId",
+                        name: "FK_Teacher_Courses_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_CityId",
-                table: "Addresses",
-                column: "CityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_CountryId",
-                table: "Addresses",
-                column: "CountryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_PostalCodeId",
-                table: "Addresses",
-                column: "PostalCodeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_StreetId",
-                table: "Addresses",
-                column: "StreetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -460,8 +364,8 @@ namespace WestcoastEducationApi.Data.Migrations
                 column: "CompetenceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teacher_Course_CourseId",
-                table: "Teacher_Course",
+                name: "IX_Teacher_Courses_CourseId",
+                table: "Teacher_Courses",
                 column: "CourseId");
         }
 
@@ -489,7 +393,7 @@ namespace WestcoastEducationApi.Data.Migrations
                 name: "Teacher_Competences");
 
             migrationBuilder.DropTable(
-                name: "Teacher_Course");
+                name: "Teacher_Courses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -508,18 +412,6 @@ namespace WestcoastEducationApi.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Countries");
-
-            migrationBuilder.DropTable(
-                name: "PostalCodes");
-
-            migrationBuilder.DropTable(
-                name: "Streets");
         }
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WestcoastEducationApi.Interfaces;
-using WestcoastEducationApi.ViewModels.Address;
+using WestcoastEducationApi.ViewModels;
 
 namespace WestcoastEducationApi.Controllers;
 

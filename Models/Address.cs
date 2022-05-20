@@ -6,20 +6,20 @@ public class Address
 {
     public int Id { get; set; }
     
-    public Street? Street { get; set; }
-    public int StreetId { get; set; }
+    [Required]
+    public string? Street { get; set; }
 
     [Required]
     public string? StreetNumber { get; set; }
-    
-    public PostalCode? PostalCode { get; set; }
-    public int PostalCodeId { get; set; }
-    
-    public City? City { get; set; }
-    public int CityId { get; set; }
-    
-    public Country? Country { get; set; }
-    public int CountryId { get; set; }
+
+    [Required]
+    public string? PostalCode { get; set; }
+
+    [Required]
+    public string? City { get; set; }
+
+    [Required]
+    public string? Country { get; set; }
     
     
     

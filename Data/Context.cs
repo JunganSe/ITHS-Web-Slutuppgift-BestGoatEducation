@@ -8,14 +8,11 @@ public class Context : IdentityDbContext<AppUser>
 {
     public DbSet<Address> Addresses => Set<Address>();
     public DbSet<Category> Categories => Set<Category>();
-    public DbSet<City> Cities => Set<City>();
     public DbSet<Competence> Competences => Set<Competence>();
-    public DbSet<Country> Countries => Set<Country>();
     public DbSet<Course> Courses => Set<Course>();
-    public DbSet<PostalCode> PostalCodes => Set<PostalCode>();
-    public DbSet<Street> Streets => Set<Street>();
     public DbSet<AppUser> AppUsers => Set<AppUser>();
     public DbSet<Student_Course> Student_Courses => Set<Student_Course>();
+    public DbSet<Teacher_Course> Teacher_Courses => Set<Teacher_Course>();
     public DbSet<Teacher_Competence> Teacher_Competences => Set<Teacher_Competence>();
     
     public Context(DbContextOptions options)
