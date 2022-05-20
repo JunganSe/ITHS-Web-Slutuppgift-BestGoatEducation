@@ -15,6 +15,9 @@ builder.Services.AddDbContext<Context>(options =>
 
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IStreetRepository, StreetRepository>();
+builder.Services.AddScoped<IPostalCodeRepository, PostalCodeRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
