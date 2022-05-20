@@ -19,19 +19,23 @@ public class AddressController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<AddressViewModel>>> GetAllAddressesAsync()
     {
+        var adresses = await _repo.GetAllAddressesAsync();
+        
         throw new NotImplementedException();
     }
     
     [HttpGet("{id}")]
     public async Task<ActionResult<AddressViewModel>> GetAddressAsync(int id)
     {
+        var address = await _repo.GetAddressAsync(id);
+        
         throw new NotImplementedException();
     }
     
     
     
     [HttpPost]
-    public async Task<ActionResult> CreateAddressAsync()
+    public Task<ActionResult> CreateAddressAsync(PostAddressViewModel model)
     {
         throw new NotImplementedException();
     }
