@@ -31,7 +31,7 @@ public class Context : IdentityDbContext<AppUser>
             .HasKey(sc => new { sc.StudentId, sc.CourseId });
         
         modelBuilder.Entity<Teacher_Course>()
-            .HasKey(sc => new { sc.TeacherId, sc.CourseId });
+            .HasKey(tc => new { tc.TeacherId, tc.CourseId });
         
         modelBuilder.Entity<Teacher_Competence>()
             .HasKey(tc => new { tc.TeacherId, tc.CompetenceId });
