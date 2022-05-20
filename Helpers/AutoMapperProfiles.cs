@@ -7,6 +7,7 @@ public class AutoMapperProfiles : AutoMapper.Profile
 {
     public AutoMapperProfiles()
     {
+        CreateMap<City, CityViewModel>();
         CreateMap<PostCityViewModel, City>();
     }
 }

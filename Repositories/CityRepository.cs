@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels.City;
 
 namespace WestcoastEducationApi.Repositories;
 
@@ -16,18 +15,23 @@ public class CityRepository : ICityRepository
 
 
 
-    public Task<List<City>> GetAllCitiesAsync()
+    public async Task<List<City>> GetAllCitiesAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Cities.ToListAsync();
     }
     
-    public Task<City?> GetCityAsync(int id)
+    public async Task<City?> GetCityAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Cities.FindAsync(id);
     }
     
-    public Task CreateCityAsync(PostCityViewModel model)
+    public async Task CreateCityAsync(City city)
     {
-        throw new NotImplementedException();
+        await _context.Cities.AddAsync(city);
+    }
+
+    public async Task<bool> SaveAllAsync()
+    {
+        return (await _context.SaveChangesAsync() > 0);
     }
 }

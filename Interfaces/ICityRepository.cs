@@ -7,5 +7,6 @@ public interface ICityRepository
 {
     public Task<List<City>> GetAllCitiesAsync();
     public Task<City?> GetCityAsync(int id);
-    public Task CreateCityAsync(PostCityViewModel model);
+    public Task CreateCityAsync(City city);
+    public Task<bool> SaveAllAsync();
 }
