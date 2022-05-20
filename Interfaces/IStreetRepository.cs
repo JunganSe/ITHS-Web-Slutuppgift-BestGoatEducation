@@ -8,4 +8,5 @@ public interface IStreetRepository
     public Task<List<Street>> GetAllStreetsAsync();
     public Task<Street?> GetStreetAsync(int id);
     public Task CreateStreetAsync(PostStreetViewModel model);
+    public Task<bool> SaveAllAsync();
 }

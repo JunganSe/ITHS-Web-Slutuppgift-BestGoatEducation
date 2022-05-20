@@ -41,4 +41,11 @@ public class AddressRepository : IAddressRepository
         // TODO: Create address
         throw new NotImplementedException();
     }
+    
+    
+    
+    public async Task<bool> SaveAllAsync()
+    {
+        return (await _context.SaveChangesAsync() > 0);
+    }
 }

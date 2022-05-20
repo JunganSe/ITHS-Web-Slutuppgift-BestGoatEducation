@@ -30,4 +30,11 @@ public class CountryRepository : ICountryRepository
     {
         throw new NotImplementedException();
     }
+
+
+
+    public async Task<bool> SaveAllAsync()
+    {
+        return (await _context.SaveChangesAsync() > 0);
+    }
 }
