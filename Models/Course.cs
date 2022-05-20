@@ -26,4 +26,6 @@ public class Course
     
     
     public ICollection<Student_Course> Student_Courses { get; set; } = new List<Student_Course>();
+    
+    public ICollection<Teacher_Course> Teacher_Courses { get; set; } = new List<Teacher_Course>();
 }
