@@ -33,4 +33,19 @@ public class Seed
     {
         throw new NotImplementedException();
     }
+    
+    private static Task SeedStudentCoursesAsync()
+    {
+        throw new NotImplementedException();
+    }
+    
+    private static Task SeedTeacherCoursesAsync()
+    {
+        throw new NotImplementedException();
+    }
+    
+    private static Task SeedTeacherCompetencesAsync()
+    {
+        throw new NotImplementedException();
+    }
 }
