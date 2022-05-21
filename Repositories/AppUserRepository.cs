@@ -20,7 +20,7 @@ public class AppUserRepository : IAppUserRepository
         return await _context.AppUsers.ToListAsync();
     }
 
-    public async Task<AppUser?> GetAppUserAsync(int id)
+    public async Task<AppUser?> GetAppUserAsync(string id)
     {
         return await _context.AppUsers.FindAsync(id);
     }

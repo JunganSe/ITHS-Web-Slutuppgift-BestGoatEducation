@@ -31,7 +31,7 @@ public class AppUserController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<AppUserViewModel>> GetAppUserAsync(int id)
+    public async Task<ActionResult<AppUserViewModel>> GetAppUserAsync(string id)
     {
         var appUser = await _repo.GetAppUserAsync(id);
         var model = _mapper.Map<AppUserViewModel>(appUser);
