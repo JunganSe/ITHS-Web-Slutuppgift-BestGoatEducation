@@ -132,7 +132,7 @@ namespace WestcoastEducationApi.Data.Migrations
                     Summary = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Days = table.Column<int>(type: "INTEGER", nullable: true),
-                    Duration = table.Column<TimeSpan>(type: "TEXT", nullable: true),
+                    Hours = table.Column<double>(type: "REAL", nullable: true),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

@@ -11,7 +11,7 @@ using WestcoastEducationApi.Data;
 namespace WestcoastEducationApi.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220520170003_Init")]
+    [Migration("20220521070321_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -304,8 +304,8 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan?>("Duration")
-                        .HasColumnType("TEXT");
+                    b.Property<double?>("Hours")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Name")
                         .IsRequired()

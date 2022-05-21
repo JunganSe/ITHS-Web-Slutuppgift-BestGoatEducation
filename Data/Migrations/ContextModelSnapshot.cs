@@ -302,8 +302,8 @@ namespace WestcoastEducationApi.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan?>("Duration")
-                        .HasColumnType("TEXT");
+                    b.Property<double?>("Hours")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Name")
                         .IsRequired()

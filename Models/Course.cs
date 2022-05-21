@@ -18,7 +18,7 @@ public class Course
     
     public int? Days { get; set; }
     
-    public TimeSpan? Duration { get; set; }
+    public double? Hours { get; set; }
 
     public Category? Category { get; set; }
     public int CategoryId { get; set; }
