@@ -24,8 +24,8 @@ public class CompetenceController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<CompetenceViewModel>>> GetAllCompetencesAsync()
     {
-        var categories = await _repo.GetAllCompetencesAsync();
-        var models = _mapper.Map<List<CompetenceViewModel>>(categories);
+        var competences = await _repo.GetAllCompetencesAsync();
+        var models = _mapper.Map<List<CompetenceViewModel>>(competences);
 
         return Ok(models); // 200
     }
