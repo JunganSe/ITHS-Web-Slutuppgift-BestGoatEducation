@@ -7,7 +7,7 @@ public class Course
     public int Id { get; set; }
     
     [Required]
-    public int Code { get; set; }
+    public string? Code { get; set; }
 
     [Required]
     public string? Name { get; set; }
