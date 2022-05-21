@@ -18,5 +18,8 @@ public class AutoMapperProfiles : AutoMapper.Profile
         
         CreateMap<AppUser, AppUserViewModel>();
         CreateMap<PostAppUserViewModel, AppUser>();
+        
+        CreateMap<Course, CourseViewModel>();
+        CreateMap<PostCourseViewModel, Course>();
     }
 }
