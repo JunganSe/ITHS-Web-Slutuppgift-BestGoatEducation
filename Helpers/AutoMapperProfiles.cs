@@ -12,5 +12,8 @@ public class AutoMapperProfiles : AutoMapper.Profile
         
         CreateMap<Category, CategoryViewModel>();
         CreateMap<PostCategoryViewModel, Category>();
+        
+        CreateMap<Competence, CompetenceViewModel>();
+        CreateMap<PostCompetenceViewModel, Competence>();
     }
 }
