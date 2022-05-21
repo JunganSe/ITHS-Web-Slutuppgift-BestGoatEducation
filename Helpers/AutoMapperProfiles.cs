@@ -15,5 +15,8 @@ public class AutoMapperProfiles : AutoMapper.Profile
         
         CreateMap<Competence, CompetenceViewModel>();
         CreateMap<PostCompetenceViewModel, Competence>();
+        
+        CreateMap<AppUser, AppUserViewModel>();
+        CreateMap<PostAppUserViewModel, AppUser>();
     }
 }
