@@ -21,6 +21,7 @@ public class CategoryController : ControllerBase
 
 
 
+    // GET: api/Category
     [HttpGet]
     public async Task<ActionResult<List<CategoryViewModel>>> GetAllCategoriesAsync()
     {
@@ -30,6 +31,7 @@ public class CategoryController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/Category/<id>
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryViewModel>> GetCategoryAsync(int id)
     {
@@ -43,6 +45,7 @@ public class CategoryController : ControllerBase
 
 
 
+    // GET: api/Category
     [HttpPost]
     public async Task<ActionResult> CreateCategoryAsync(PostCategoryViewModel model)
     {

@@ -21,6 +21,7 @@ public class AppUserController : ControllerBase
 
 
 
+    // GET: api/AppUser
     [HttpGet]
     public async Task<ActionResult<List<AppUserViewModel>>> GetAllAppUsersAsync()
     {
@@ -30,6 +31,7 @@ public class AppUserController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/AppUser/<id>
     [HttpGet("{id}")]
     public async Task<ActionResult<AppUserViewModel>> GetAppUserAsync(string id)
     {
@@ -43,6 +45,7 @@ public class AppUserController : ControllerBase
 
 
 
+    // GET: api/AppUser
     [HttpPost]
     public async Task<ActionResult> CreateAppUserAsync(PostAppUserViewModel model)
     {

@@ -21,6 +21,7 @@ public class CompetenceController : ControllerBase
 
 
 
+    // GET: api/Competence
     [HttpGet]
     public async Task<ActionResult<List<CompetenceViewModel>>> GetAllCompetencesAsync()
     {
@@ -30,6 +31,7 @@ public class CompetenceController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/Competence/<id>
     [HttpGet("{id}")]
     public async Task<ActionResult<CompetenceViewModel>> GetCompetenceAsync(int id)
     {
@@ -43,6 +45,7 @@ public class CompetenceController : ControllerBase
 
 
 
+    // GET: api/Competence
     [HttpPost]
     public async Task<ActionResult> CreateCompetenceAsync(PostCompetenceViewModel model)
     {

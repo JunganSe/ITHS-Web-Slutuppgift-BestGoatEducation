@@ -21,6 +21,7 @@ public class AddressController : ControllerBase
 
 
 
+    // GET: api/Address
     [HttpGet]
     public async Task<ActionResult<List<AddressViewModel>>> GetAllAddressesAsync()
     {
@@ -30,6 +31,7 @@ public class AddressController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/Address/<id>
     [HttpGet("{id}")]
     public async Task<ActionResult<AddressViewModel>> GetAddressAsync(int id)
     {
@@ -43,6 +45,7 @@ public class AddressController : ControllerBase
 
 
 
+    // GET: api/Address
     [HttpPost]
     public async Task<ActionResult> CreateAddressAsync(PostAddressViewModel model)
     {
