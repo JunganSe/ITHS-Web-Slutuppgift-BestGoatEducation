@@ -47,6 +47,16 @@ public class CourseRepository : ICourseRepository
             .ToListAsync();
     }
 
+    public async Task<List<Course>> GetCoursesByTeacherAsync(string teacherId)
+    {
+        return await _context.Teacher_Courses
+            .Include(sc => sc.Course)
+                .ThenInclude(c => c!.Category)
+            .Where(cs => cs.TeacherId == teacherId)
+            .Select(cs => cs.Course!)
+            .ToListAsync();
+    }
+
     public async Task CreateCourseAsync(Course course)
     {
         await _context.Courses.AddAsync(course);

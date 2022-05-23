@@ -63,6 +63,16 @@ public class CourseController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/Course/ByTeacher/<id>
+    [HttpGet("ByTeacher/{teacherId}")]
+    public async Task<ActionResult<List<Course>>> GetCoursesByTeacherAsync(string teacherId)
+    {
+        var courses = await _repo.GetCoursesByTeacherAsync(teacherId);
+        var models = _mapper.Map<List<CourseViewModel>>(courses);
+
+        return Ok(models); // 200
+    }
+
 
 
     // GET: api/Course
