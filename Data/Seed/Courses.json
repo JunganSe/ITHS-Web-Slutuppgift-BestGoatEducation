@@ -1,0 +1,65 @@
+[
+    {
+        "code": "6511",
+        "name": "C# för nybörjare",
+        "summary": "En grundkurs i C# och objektorienterad programmering",
+        "description": "Löksås ipsum dunge rännil tidigare precis ordningens sin hav blivit, vemod dag fram faktor mjuka vid redan samtidigt i, ordningens plats vidsträckt sällan mjuka det tidigare sista. Mot träutensilierna söka kom annat tidigare vad björnbär på olika, ta därmed sista omfångsrik dock ingalunda både göras, tidigare genom oss dunge omfångsrik och att om. Mjuka vidsträckt göras tid hela samtidigt sig ta, mjuka rot sin bland nu groda olika, icke annat räv söka se tid. ",
+        "days": 20,
+        "hours": 120,
+        "categoryId": 1
+    },
+    {
+        "code": "0155",
+        "name": "AI med python",
+        "summary": "Grundkurs i AI med python som verktyg",
+        "description": "Löksås ipsum har björnbär se lax sällan jäst björnbär sista gör verkligen, strand redan när det jäst inom äng erfarenheter samtidigt år sorgliga sällan, år jäst mot helt ska sjö kan kanske räv upprätthållande. Tid bäckasiner samtidigt själv vad blivit år ta så faktor, smultron år mjuka räv där händer olika kunde, dock bland miljoner när dag det och kom. ",
+        "days": 10,
+        "hours": 80,
+        "categoryId": 2
+    },
+    {
+        "code": "4589",
+        "name": "Java för kaffehatare",
+        "summary": "Lär dig älska kaffespråket",
+        "description": "Löksås ipsum mot sorgliga år dimma varit hela strand miljoner fram nya regn tre björnbär sax precis redan sitt, som häst om så att upprätthållande brunsås icke jäst färdväg på sig äng kunde söka stig bra. Häst göras oss vad faktor sig bäckasiner år att som dunge, dimma kunde enligt brunsås sällan bland kanske dimmhöljd söka, icke vad färdväg trevnadens se år strand regn ska.",
+        "days": 8,
+        "hours": 48,
+        "categoryId": 3
+    },
+    {
+        "code": "2654",
+        "name": "Avancerad Javascript",
+        "summary": "En titt på den mer avancerade funktionaliteten i Javascript",
+        "description": "Löksås ipsum det dock sin sjö verkligen trevnadens sin, tid vad sista sin kom blivit själv, det olika år miljoner mjuka dimmhöljd redan. Hela dock tid se plats kanske som dunge där verkligen sitt, trevnadens samma kanske fram omfångsrik dunge groda olika dock upprätthållande, mot sällan nu äng icke att blivit när sista. Söka för det miljoner blev åker det gamla ännu del blev, räv fram har faktor själv smultron sjö söka år. ",
+        "days": 16,
+        "hours": 32,
+        "categoryId": 4
+    },
+    {
+        "code": "8057",
+        "name": "Fånga kundens intresse",
+        "summary": "Designmönster och psykologi inom UX",
+        "description": "Löksås ipsum som erfarenheter ser erfarenheter ta så regn att, tidigare groda rännil dimmhöljd hav har helt vi från tidigare, ska stig dimmhöljd tiden åker flera upprätthållande erfarenheter. Träutensilierna annan bra flera tidigare vi är om vidsträckt kanske dag, plats samma miljoner tid i annat dunge strand smultron varit, äng groda sällan ännu icke bäckasiner händer nya smultron.",
+        "days": 10,
+        "hours": 80,
+        "categoryId": 5
+    },
+    {
+        "code": "9164",
+        "name": "Python för nybörjare (Videokurs)",
+        "summary": "Videokurs där du lär dig alla nödvändiga grunder för att komma igång med Python.",
+        "description": "Löksås ipsum precis dimmhöljd har bra ta har, strand ordningens dimmhöljd mjuka groda hav, ser smultron annat nya träutensilierna redan. Jäst tidigare flera ordningens plats både se ser, annan blev miljoner söka annat rännil som, gamla kunde hav rot inom år, dag plats miljoner varit icke upprätthållande. Omfångsrik sista vad ska smultron erfarenheter ordningens upprätthållande lax göras, genom dimmhöljd äng lax ta år bland omfångsrik groda, är varit hwila år brunsås björnbär och smultron, vi att vi dunge är själv kan år.",
+        "days": 0,
+        "hours": 20,
+        "categoryId": 2
+    },
+    {
+        "code": "9375",
+        "name": "C# för nybörjare (Videokurs)",
+        "summary": "Videokurs där du lär dig grunderna i C#, när det passar dig",
+        "description": "Löksås ipsum sig nu rot stora hela att äng vad, oss varit björnbär blev mjuka sorgliga redan miljoner där, dunge bland del nya själv del tiden och. Vi helt erfarenheter nya dag vidsträckt mot, stora rännil omfångsrik söka ser trevnadens hela, genom regn björnbär vad om. Erfarenheter samma oss stig för sax smultron ta gör upprätthållande miljoner, sax om icke och blev nu vemod från.",
+        "days": 0,
+        "hours": 40,
+        "categoryId": 1
+    }
+]

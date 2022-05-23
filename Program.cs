@@ -46,7 +46,7 @@ app.MapControllers();
 
 
 
-await Seed.SeedDataAsync(app);
+await Seed.SeedDataAsync(app, false);
 
 
 

@@ -1,0 +1,23 @@
+[
+    {
+        "street": "Testvägen",
+        "streetNumber": "1",
+        "postalCode": "12345",
+        "city": "Testköping",
+        "country": "Testland"
+    },
+    {
+        "street": "Getallén",
+        "streetNumber": "42",
+        "postalCode": "90001",
+        "city": "Getlunda",
+        "country": "Goatland"
+    },
+    {
+        "street": "Plebgränd",
+        "streetNumber": "13",
+        "postalCode": "32123",
+        "city": "Slumköping",
+        "country": "No man's land"
+    }
+]
