@@ -21,6 +21,7 @@ public class CourseController : ControllerBase
 
 
 
+    // GET: api/Course
     [HttpGet]
     public async Task<ActionResult<List<CourseViewModel>>> GetAllCoursesAsync()
     {
@@ -30,6 +31,7 @@ public class CourseController : ControllerBase
         return Ok(models); // 200
     }
 
+    // GET: api/Course/<id>
     [HttpGet("{id}")]
     public async Task<ActionResult<CourseViewModel>> GetCourseAsync(int id)
     {
@@ -41,8 +43,29 @@ public class CourseController : ControllerBase
             : NotFound($"Fail: Find course with id {id}"); // 404
     }
 
+    // GET: api/Course/ByCategory/<id>
+    [HttpGet("ByCategory/{categoryId}")]
+    public async Task<ActionResult<List<Course>>> GetCoursesByCategoryAsync(int categoryId)
+    {
+        var courses = await _repo.GetCoursesByCategoryAsync(categoryId);
+        var models = _mapper.Map<List<CourseViewModel>>(courses);
+
+        return Ok(models); // 200
+    }
+
+    // GET: api/Course/ByStudent/<id>
+    [HttpGet("ByStudent/{studentId}")]
+    public async Task<ActionResult<List<Course>>> GetCoursesByStudentAsync(string studentId)
+    {
+        var courses = await _repo.GetCoursesByStudentAsync(studentId);
+        var models = _mapper.Map<List<CourseViewModel>>(courses);
+
+        return Ok(models); // 200
+    }
 
 
+
+    // GET: api/Course
     [HttpPost]
     public async Task<ActionResult> CreateCourseAsync(PostCourseViewModel model)
     {

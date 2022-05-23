@@ -29,6 +29,24 @@ public class CourseRepository : ICourseRepository
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 
+    public async Task<List<Course>> GetCoursesByCategoryAsync(int categoryId)
+    {
+        return await _context.Courses
+            .Include(c => c.Category)
+            .Where(c => c.CategoryId == categoryId)
+            .ToListAsync();
+    }
+
+    public async Task<List<Course>> GetCoursesByStudentAsync(string studentId)
+    {
+        return await _context.Student_Courses
+            .Include(sc => sc.Course)
+                .ThenInclude(c => c!.Category)
+            .Where(cs => cs.StudentId == studentId)
+            .Select(cs => cs.Course!)
+            .ToListAsync();
+    }
+
     public async Task CreateCourseAsync(Course course)
     {
         await _context.Courses.AddAsync(course);
