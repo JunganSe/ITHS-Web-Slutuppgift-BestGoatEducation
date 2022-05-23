@@ -7,19 +7,30 @@ public class AutoMapperProfiles : AutoMapper.Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<Address, AddressViewModel>();
         CreateMap<PostAddressViewModel, Address>();
+        CreateMap<Address, AddressViewModel>();
         
-        CreateMap<Category, CategoryViewModel>();
         CreateMap<PostCategoryViewModel, Category>();
+        CreateMap<Category, CategoryViewModel>();
         
-        CreateMap<Competence, CompetenceViewModel>();
         CreateMap<PostCompetenceViewModel, Competence>();
+        CreateMap<Competence, CompetenceViewModel>();
         
-        CreateMap<AppUser, AppUserViewModel>();
         CreateMap<PostAppUserViewModel, AppUser>();
+        CreateMap<AppUser, AppUserViewModel>()
+            .ForMember(
+                dest => dest.Address,
+                options => options.MapFrom(src => string.Concat(
+                    src.Address!.Street, " ",
+                    src.Address.StreetNumber, ", ",
+                    src.Address.PostalCode, " ",
+                    src.Address.City, ", ",
+                    src.Address.Country)));
         
-        CreateMap<Course, CourseViewModel>();
         CreateMap<PostCourseViewModel, Course>();
+        CreateMap<Course, CourseViewModel>()
+            .ForMember(
+                dest => dest.CategoryName,
+                options => options.MapFrom(src => src.Category!.Name));
     }
 }

@@ -17,12 +17,16 @@ public class AppUserRepository : IAppUserRepository
 
     public async Task<List<AppUser>> GetAllAppUsersAsync()
     {
-        return await _context.AppUsers.ToListAsync();
+        return await _context.AppUsers
+            .Include(a => a.Address)
+            .ToListAsync();
     }
 
     public async Task<AppUser?> GetAppUserAsync(string id)
     {
-        return await _context.AppUsers.FindAsync(id);
+        return await _context.AppUsers
+            .Include(a => a.Address)
+            .FirstOrDefaultAsync(a => a.Id == id);
     }
 
     public async Task CreateAppUserAsync(AppUser appUser)

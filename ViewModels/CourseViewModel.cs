@@ -9,5 +9,6 @@ public class CourseViewModel
     public string? Description { get; set; }
     public int? Days { get; set; }
     public double? Hours { get; set; }
+    public string? CategoryName { get; set; }
     public int CategoryId { get; set; }
 }
