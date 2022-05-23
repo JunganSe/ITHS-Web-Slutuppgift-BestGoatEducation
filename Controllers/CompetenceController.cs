@@ -45,7 +45,7 @@ public class CompetenceController : ControllerBase
 
 
 
-    // GET: api/Competence
+    // POST: api/Competence
     [HttpPost]
     public async Task<ActionResult> CreateCompetenceAsync(PostCompetenceViewModel model)
     {

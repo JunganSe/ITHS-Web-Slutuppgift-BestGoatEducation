@@ -45,7 +45,7 @@ public class AddressController : ControllerBase
 
 
 
-    // GET: api/Address
+    // POST: api/Address
     [HttpPost]
     public async Task<ActionResult> CreateAddressAsync(PostAddressViewModel model)
     {

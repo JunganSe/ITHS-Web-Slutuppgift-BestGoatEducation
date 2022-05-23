@@ -45,7 +45,7 @@ public class CategoryController : ControllerBase
 
 
 
-    // GET: api/Category
+    // POST: api/Category
     [HttpPost]
     public async Task<ActionResult> CreateCategoryAsync(PostCategoryViewModel model)
     {

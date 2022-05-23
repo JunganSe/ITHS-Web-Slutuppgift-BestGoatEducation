@@ -75,7 +75,7 @@ public class CourseController : ControllerBase
 
 
 
-    // GET: api/Course
+    // POST: api/Course
     [HttpPost]
     public async Task<ActionResult> CreateCourseAsync(PostCourseViewModel model)
     {
