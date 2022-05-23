@@ -43,6 +43,16 @@ public class AppUserController : ControllerBase
             : NotFound($"Fail: Find appUser with id {id}"); // 404
     }
 
+    // GET: api/AppUser/StudentsByCourse/<id>
+    [HttpGet("StudentsByCourse/{courseId}")]
+    public async Task<ActionResult<List<AppUser>>> GetStudentsByCourseAsync(int courseId)
+    {
+        var appUsers = await _repo.GetStudentsByCourseAsync(courseId);
+        var models = _mapper.Map<List<AppUserViewModel>>(appUsers);
+
+        return Ok(models); // 200
+    }
+
 
 
     // GET: api/AppUser
