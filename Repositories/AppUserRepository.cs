@@ -39,6 +39,15 @@ public class AppUserRepository : IAppUserRepository
             .ToListAsync();
     }
 
+    public async Task<List<AppUser>> GetTeachersByCourseAsync(int courseId)
+    {
+        return await _context.Teacher_Courses
+            // .Include(sc => sc.Teacher)
+            .Where(sc => sc.CourseId == courseId)
+            .Select(sc => sc.Teacher!)
+            .ToListAsync();
+    }
+
     public async Task CreateAppUserAsync(AppUser appUser)
     {
         await _context.AppUsers.AddAsync(appUser);

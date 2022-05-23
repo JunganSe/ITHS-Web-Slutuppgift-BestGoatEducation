@@ -52,10 +52,20 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
+    
+    // GET: api/AppUser/TeachersByCourse/<id>
+    [HttpGet("TeachersByCourse/{courseId}")]
+    public async Task<ActionResult<List<AppUser>>> GetTeachersByCourseAsync(int courseId)
+    {
+        var appUsers = await _repo.GetTeachersByCourseAsync(courseId);
+        var models = _mapper.Map<List<AppUserViewModel>>(appUsers);
+
+        return Ok(models); // 200
+    }
 
 
 
-    // GET: api/AppUser
+    // POST: api/AppUser
     [HttpPost]
     public async Task<ActionResult> CreateAppUserAsync(PostAppUserViewModel model)
     {
