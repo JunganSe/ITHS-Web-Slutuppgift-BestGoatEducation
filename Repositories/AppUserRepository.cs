@@ -33,6 +33,7 @@ public class AppUserRepository : IAppUserRepository
     {
         return await _context.Student_Courses
             .Include(sc => sc.Student)
+                .ThenInclude(s => s!.Address)
             .Where(sc => sc.CourseId == courseId)
             .Select(sc => sc.Student!)
             .ToListAsync();
