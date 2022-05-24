@@ -30,6 +30,14 @@ public class CompetenceRepository : ICompetenceRepository
         await _context.Competences.AddAsync(competence);
     }
 
+    public async Task<List<Competence>> GetCompetencesByTeacherAsync(string teacherId)
+    {
+        return await _context.Teacher_Competences
+            .Where(tc => tc.TeacherId == teacherId)
+            .Select(tc => tc.Competence!)
+            .ToListAsync();
+    }
+
 
 
     public async Task<bool> SaveAllAsync()

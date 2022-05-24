@@ -43,6 +43,16 @@ public class CompetenceController : ControllerBase
             : NotFound($"Fail: Find competence with id {id}"); // 404
     }
 
+    // GET: api/Competence/ByTeacher/<id>
+    [HttpGet("ByTeacher/{teacherId}")]
+    public async Task<ActionResult<List<CompetenceViewModel>>> GetCompetencesByTeacherAsync(string teacherId)
+    {
+        var competences = await _repo.GetCompetencesByTeacherAsync(teacherId);
+        var models = _mapper.Map<List<CompetenceViewModel>>(competences);
+
+        return Ok(models); // 200
+    }
+
 
 
     // POST: api/Competence
