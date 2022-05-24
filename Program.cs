@@ -21,6 +21,7 @@ builder.Services.AddScoped<ICompetenceRepository, CompetenceRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IStudentCourseRepository, StudentCourseRepository>();
 builder.Services.AddScoped<ITeacherCourseRepository, TeacherCourseRepository>();
+builder.Services.AddScoped<ITeacherCompetenceRepository, TeacherCompetenceRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 

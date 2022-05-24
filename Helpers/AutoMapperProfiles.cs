@@ -37,5 +37,7 @@ public class AutoMapperProfiles : AutoMapper.Profile
         CreateMap<Student_Course, StudentCourseViewModel>();
 
         CreateMap<PostTeacherCourseViewModel, Teacher_Course>();
+
+        CreateMap<PostTeacherCompetenceViewModel, Teacher_Competence>();
     }
 }
