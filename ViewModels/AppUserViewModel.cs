@@ -7,6 +7,6 @@ public class AppUserViewModel
     public string? PhoneNumber { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public string? Address { get; set; }
+    public string? AddressName { get; set; }
     public int AddressId { get; set; }
 }

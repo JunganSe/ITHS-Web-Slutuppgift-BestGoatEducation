@@ -19,7 +19,7 @@ public class AutoMapperProfiles : AutoMapper.Profile
         CreateMap<PostAppUserViewModel, AppUser>();
         CreateMap<AppUser, AppUserViewModel>()
             .ForMember(
-                dest => dest.Address,
+                dest => dest.AddressName,
                 options => options.MapFrom(src => string.Concat(
                     src.Address!.Street, " ",
                     src.Address.StreetNumber, ", ",
