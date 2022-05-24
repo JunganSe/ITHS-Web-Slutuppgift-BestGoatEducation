@@ -56,8 +56,9 @@ namespace WestcoastEducationApi.Controllers
             var studentCourse = await _repo.GetStudentCourseAsync(model.StudentId!, model.CourseId);
             if (studentCourse == null)
                 return NotFound("Fail: Find studentCourse to update"); // 404
+            // TODO: Testa om man kan skapa ett nytt objekt med rätt data istället för att hämta från databasen.
 
-            // TODO: Automappa dessa.
+            // TODO: Automappa dessa utan att StudentId och CourseId följer med.
             studentCourse.IsStarted = model.IsStarted;
             studentCourse.IsCompleted = model.IsCompeleted;
             studentCourse.Grade = model.Grade;
