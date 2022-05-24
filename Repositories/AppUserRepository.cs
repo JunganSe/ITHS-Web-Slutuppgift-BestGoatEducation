@@ -8,6 +8,7 @@ namespace WestcoastEducationApi.Repositories;
 public class AppUserRepository : IAppUserRepository
 {
     private readonly Context _context;
+    
     public AppUserRepository(Context context)
     {
         _context = context;

@@ -8,6 +8,7 @@ namespace WestcoastEducationApi.Repositories;
 public class AddressRepository : IAddressRepository
 {
     private readonly Context _context;
+    
     public AddressRepository(Context context)
     {
         _context = context;

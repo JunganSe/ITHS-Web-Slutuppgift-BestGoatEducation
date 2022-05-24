@@ -8,6 +8,7 @@ namespace WestcoastEducationApi.Repositories;
 public class CompetenceRepository : ICompetenceRepository
 {
     private readonly Context _context;
+    
     public CompetenceRepository(Context context)
     {
         _context = context;
