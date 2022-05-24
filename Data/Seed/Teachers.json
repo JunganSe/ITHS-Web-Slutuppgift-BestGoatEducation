@@ -1,0 +1,23 @@
+[
+    {
+        "email": "ankan@mail.se",
+        "phoneNumber": "1234567890",
+        "firstName": "Ankan",
+        "lastName": "Ankberg",
+        "addressId": 3
+    },
+    {
+        "email": "baevern@mail.se",
+        "phoneNumber": "2345678901",
+        "firstName": "Bävern",
+        "lastName": "Bäverlund",
+        "addressId": 3
+    },
+    {
+        "email": "capybaran@mail.se",
+        "phoneNumber": "3456789012",
+        "firstName": "Cappy",
+        "lastName": "Chaplin",
+        "addressId": 2
+    }
+]

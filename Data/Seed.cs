@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Models;
 
@@ -8,6 +9,8 @@ public static class Seed
 {
     private static Context? _context;
     private static readonly JsonSerializerOptions _jsonOptions;
+    private static List<AppUser>? _students;
+    private static List<AppUser>? _teachers;
 
     static Seed()
     {
@@ -34,16 +37,20 @@ public static class Seed
         await SeedAddressesAsync();
         await SeedCategoriesAsync();
         await SeedCompetencesAsync();
+        await SeedRolesAsync();
         await _context.SaveChangesAsync();
 
         await SeedCoursesAsync();
-        await SeedAppUsersAsync();
+        await SeedStudentsAsync();
+        await SeedTeachersAsync();
         await _context.SaveChangesAsync();
 
-        var appUsers = await _context.AppUsers.ToListAsync();
-        await SeedStudentCoursesAsync(appUsers);
-        await SeedTeacherCoursesAsync(appUsers);
-        await SeedTeacherCompetencesAsync(appUsers);
+        await SeedAssignRolesAsync();
+        var courses = await _context.Courses.ToListAsync();
+        var competences = await _context.Competences.ToListAsync();
+        await SeedStudentCoursesAsync(courses);
+        await SeedTeacherCoursesAsync(courses);
+        await SeedTeacherCompetencesAsync(competences);
         await _context.SaveChangesAsync();
     }
 
@@ -81,6 +88,17 @@ public static class Seed
 
         await _context.Competences.AddRangeAsync(competences!);
     }
+    
+    private static async Task SeedRolesAsync()
+    {
+        var roles = new List<IdentityRole>()
+        {
+            new IdentityRole() {Name = "Student"},
+            new IdentityRole() {Name = "Teacher"}
+        };
+        
+        await _context!.Roles.AddRangeAsync(roles);
+    }
 
     private static async Task SeedCoursesAsync()
     {
@@ -93,224 +111,132 @@ public static class Seed
         await _context.Courses.AddRangeAsync(courses!);
     }
 
-    private static async Task SeedAppUsersAsync()
+    private static async Task SeedStudentsAsync()
     {
         if (await _context!.AppUsers.AnyAsync())
             return;
 
-        string data = await File.ReadAllTextAsync("Data/Seed/AppUsers.json");
-        var appUsers = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
+        string data = await File.ReadAllTextAsync("Data/Seed/Students.json");
+        _students = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
 
-        await _context.AppUsers.AddRangeAsync(appUsers!);
+        await _context.AppUsers.AddRangeAsync(_students!);
     }
 
-    private static async Task SeedStudentCoursesAsync(List<AppUser> students)
+    private static async Task SeedTeachersAsync()
+    {
+        if (await _context!.AppUsers.AnyAsync())
+            return;
+
+        string data = await File.ReadAllTextAsync("Data/Seed/Teachers.json");
+        _teachers = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
+
+        await _context.AppUsers.AddRangeAsync(_teachers!);
+    }
+    
+    private static async Task SeedAssignRolesAsync()
+    {
+        var userRoles =  new List<IdentityUserRole<string>>();
+        
+        var studentRole = await _context!.Roles.FirstAsync(r => r.Name == "Student");
+        foreach (var student in _students!)
+        {
+            userRoles.Add(new IdentityUserRole<string>() { UserId = student.Id, RoleId = studentRole.Id });
+        }
+        
+        var teacherRole = await _context!.Roles.FirstAsync(r => r.Name == "Teacher");
+        foreach (var teacher in _teachers!)
+        {
+            userRoles.Add(new IdentityUserRole<string>() { UserId = teacher.Id, RoleId = teacherRole.Id });
+        }
+        
+        await _context!.UserRoles.AddRangeAsync(userRoles);
+    }
+
+    private static async Task SeedStudentCoursesAsync(List<Course> courses)
     {
         if (await _context!.Student_Courses.AnyAsync())
             return;
 
-        var studentCourses = new List<Student_Course>()
+        var studentCourses = new List<Student_Course>();
+        var grades = new List<string>() { "IG", "G", "VG" };
+        var random = new Random();
+
+        for (int i = 0; i < _students!.Count * 3; i++)
         {
-            new Student_Course()
+            int studentIndex = random.Next(0, _students.Count);
+            string studentId = _students[studentIndex].Id;
+            int courseId = random.Next(0, courses.Count) + 1;
+            if (studentCourses.Exists(sc => sc.StudentId == studentId && sc.CourseId == courseId))
             {
-                StudentId = students[0].Id,
-                CourseId = 1,
-                IsStarted = true,
-                IsCompleted = false,
-                Grade = null
-            },
-            new Student_Course()
-            {
-                StudentId = students[1].Id,
-                CourseId = 2,
-                IsStarted = true,
-                IsCompleted = false,
-                Grade = null
-            },
-            new Student_Course()
-            {
-                StudentId = students[1].Id,
-                CourseId = 5,
-                IsStarted = true,
-                IsCompleted = true,
-                Grade = "G"
-            },
-            new Student_Course()
-            {
-                StudentId = students[2].Id,
-                CourseId = 6,
-                IsStarted = true,
-                IsCompleted = false,
-                Grade = null
-            },
-            new Student_Course()
-            {
-                StudentId = students[3].Id,
-                CourseId = 1,
-                IsStarted = true,
-                IsCompleted = true,
-                Grade = "VG"
-            },
-            new Student_Course()
-            {
-                StudentId = students[3].Id,
-                CourseId = 3,
-                IsStarted = true,
-                IsCompleted = true,
-                Grade = "VG"
-            },
-            new Student_Course()
-            {
-                StudentId = students[4].Id,
-                CourseId = 4,
-                IsStarted = false,
-                IsCompleted = false,
-                Grade = null
-            },
-            new Student_Course()
-            {
-                StudentId = students[5].Id,
-                CourseId = 1,
-                IsStarted = true,
-                IsCompleted = true,
-                Grade = "G"
+                i--;
+                continue;
             }
-        };
+
+            var sc = new Student_Course() { StudentId = studentId, CourseId = courseId };
+            sc.IsStarted = RandomBool();
+            sc.IsCompleted = sc.IsStarted && RandomBool();
+            sc.Grade = sc.IsCompleted ? grades[random.Next(0, 3)] : null;
+            studentCourses.Add(sc);
+        }
 
         await _context.Student_Courses.AddRangeAsync(studentCourses);
     }
 
-    private static async Task SeedTeacherCoursesAsync(List<AppUser> teachers)
+    private static async Task SeedTeacherCoursesAsync(List<Course> courses)
     {
         if (await _context!.Teacher_Courses.AnyAsync())
             return;
 
-        var teacherCourses = new List<Teacher_Course>()
+        var teacherCourses = new List<Teacher_Course>();
+        var random = new Random();
+
+        for (int i = 0; i < _teachers!.Count * 3; i++)
         {
-            new Teacher_Course()
+            int teacherIndex = random.Next(0, _teachers.Count);
+            string teacherId = _teachers[teacherIndex].Id;
+            int courseId = random.Next(0, courses.Count) + 1;
+            if (teacherCourses.Exists(tc => tc.TeacherId == teacherId && tc.CourseId == courseId))
             {
-                TeacherId = teachers[7].Id,
-                CourseId = 1
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[7].Id,
-                CourseId = 2
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[7].Id,
-                CourseId = 3
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[7].Id,
-                CourseId = 4
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[6].Id,
-                CourseId = 2
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[6].Id,
-                CourseId = 5
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[6].Id,
-                CourseId = 6
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[5].Id,
-                CourseId = 1
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[5].Id,
-                CourseId = 3
-            },
-            new Teacher_Course()
-            {
-                TeacherId = teachers[5].Id,
-                CourseId = 7
-            },
-        };
+                i--;
+                continue;
+            }
+
+            teacherCourses.Add(new Teacher_Course() { TeacherId = teacherId, CourseId = courseId });
+        }
 
         await _context.Teacher_Courses.AddRangeAsync(teacherCourses);
     }
 
-    private static async Task SeedTeacherCompetencesAsync(List<AppUser> teachers)
+    private static async Task SeedTeacherCompetencesAsync(List<Competence> competences)
     {
         if (await _context!.Teacher_Competences.AnyAsync())
             return;
-            
-        var teacherCompetences = new List<Teacher_Competence>()
+
+        var teacherCompetences = new List<Teacher_Competence>();
+        var random = new Random();
+
+        for (int i = 0; i < _teachers!.Count * 3; i++)
         {
-            new Teacher_Competence()
+            int teacherIndex = random.Next(0, _teachers.Count);
+            string teacherId = _teachers[teacherIndex].Id;
+            int competenceId = random.Next(0, competences.Count) + 1;
+            if (teacherCompetences.Exists(tc => tc.TeacherId == teacherId && tc.CompetenceId == competenceId))
             {
-                TeacherId = teachers[7].Id,
-                CompetenceId = 1
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[7].Id,
-                CompetenceId = 2
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[7].Id,
-                CompetenceId = 3
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[7].Id,
-                CompetenceId = 4
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[7].Id,
-                CompetenceId = 5
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[6].Id,
-                CompetenceId = 2
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[6].Id,
-                CompetenceId = 4
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[6].Id,
-                CompetenceId = 5
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[6].Id,
-                CompetenceId = 6
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[5].Id,
-                CompetenceId = 1
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[5].Id,
-                CompetenceId = 3
-            },
-            new Teacher_Competence()
-            {
-                TeacherId = teachers[5].Id,
-                CompetenceId = 6
+                i--;
+                continue;
             }
-        };
+
+            teacherCompetences.Add(new Teacher_Competence() { TeacherId = teacherId, CompetenceId = competenceId });
+        }
 
         await _context.Teacher_Competences.AddRangeAsync(teacherCompetences);
+    }
+
+
+
+    private static bool RandomBool()
+    {
+        var rand = new Random();
+        return rand.Next(0, 2) == 0;
     }
 }

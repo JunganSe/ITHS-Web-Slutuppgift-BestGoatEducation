@@ -1,12 +1,5 @@
 [
     {
-        "email": "testarn@mail.se",
-        "phoneNumber": "0123456789",
-        "firstName": "Testarn",
-        "lastName": "Testarnsson",
-        "addressId": 1
-    },
-    {
         "email": "anders@mail.se",
         "phoneNumber": "1234567890",
         "firstName": "Anders",
@@ -49,10 +42,10 @@
         "addressId": 1
     },
     {
-        "email": "goat@mail.se",
-        "phoneNumber": "9876543210",
-        "firstName": "Goatman",
-        "lastName": "Goatkingsson",
-        "addressId": 2
+        "email": "gurra@mail.se",
+        "phoneNumber": "7890123456",
+        "firstName": "Gustav",
+        "lastName": "Gustavsson",
+        "addressId": 1
     }
 ]
