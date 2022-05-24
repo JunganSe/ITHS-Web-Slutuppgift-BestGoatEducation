@@ -62,6 +62,16 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
+    
+    // GET: api/AppUser/TeachersByCompetence/<id>
+    [HttpGet("TeachersByCompetence/{competenceId}")]
+    public async Task<ActionResult<List<AppUser>>> GetTeachersByCompetenceAsync(int competenceId)
+    {
+        var appUsers = await _repo.GetTeachersByCompetenceAsync(competenceId);
+        var models = _mapper.Map<List<AppUserViewModel>>(appUsers);
+
+        return Ok(models); // 200
+    }
 
 
 

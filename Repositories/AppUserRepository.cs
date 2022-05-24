@@ -49,6 +49,16 @@ public class AppUserRepository : IAppUserRepository
             .ToListAsync();
     }
 
+    public async Task<List<AppUser>> GetTeachersByCompetenceAsync(int competenceId)
+    {
+        return await _context.Teacher_Competences
+            .Include(sc => sc.Teacher)
+                .ThenInclude(a => a!.Address)
+            .Where(sc => sc.CompetenceId == competenceId)
+            .Select(sc => sc.Teacher!)
+            .ToListAsync();
+    }
+
     public async Task CreateAppUserAsync(AppUser appUser)
     {
         await _context.AppUsers.AddAsync(appUser);
