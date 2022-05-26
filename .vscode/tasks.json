@@ -14,14 +14,13 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "run",
             "command": "dotnet",
             "type": "process",
             "args": [
-                "publish",
-                "${workspaceFolder}/WestcoastEducationStudentApp.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "run",
+                "--project",
+                "${workspaceFolder}/WestcoastEducationStudentApp.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
