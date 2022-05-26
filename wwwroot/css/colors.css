@@ -1,0 +1,9 @@
+:root {
+    --navbar-background-color: #222;
+    --navbar-text-color-h1-a: rgb(161, 6, 154);
+    --navbar-text-color-h1-b: rgb(38, 172, 38);
+    --navbar-text-color: #2b2;
+    
+    --primary-background-color: #444;
+    --primary-text-color: #ddd;
+}
