@@ -14,10 +14,10 @@
         "addressId": 3
     },
     {
-        "email": "capybaran@mail.se",
+        "email": "haesten@mail.se",
         "phoneNumber": "3456789012",
-        "firstName": "Cappy",
-        "lastName": "Chaplin",
+        "firstName": "Hästen",
+        "lastName": "Hästwinge",
         "addressId": 2
     }
 ]
