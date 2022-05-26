@@ -29,8 +29,6 @@ public class Seed
 
     public async Task SeedDataAsync(bool recreateDatabase)
     {
-
-
         if (recreateDatabase)
         {
             await _context.Database.EnsureDeletedAsync();
