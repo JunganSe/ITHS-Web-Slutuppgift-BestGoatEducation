@@ -5,15 +5,20 @@ using WestcoastEducationApi.Models;
 
 namespace WestcoastEducationApi.Data;
 
-public static class Seed
+public class Seed
 {
-    private static Context? _context;
-    private static readonly JsonSerializerOptions _jsonOptions;
-    private static List<AppUser>? _students;
-    private static List<AppUser>? _teachers;
+    private readonly Context _context;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly JsonSerializerOptions _jsonOptions;
 
-    static Seed()
+    public Seed(WebApplication app)
     {
+        var services = app.Services.CreateScope().ServiceProvider;
+        _context = services.GetRequiredService<Context>();
+        _userManager = services.GetRequiredService<UserManager<AppUser>>();
+        _roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
         _jsonOptions = new JsonSerializerOptions()
         {
             PropertyNameCaseInsensitive = true
@@ -22,22 +27,19 @@ public static class Seed
 
 
 
-    public static async Task SeedDataAsync(WebApplication app, bool deleteExistingDb)
+    public async Task SeedDataAsync(bool recreateDatabase)
     {
-        var scope = app.Services.CreateScope();
-        var services = scope.ServiceProvider;
-        _context = services.GetRequiredService<Context>();
 
-        if (deleteExistingDb)
+
+        if (recreateDatabase)
         {
             await _context.Database.EnsureDeletedAsync();
+            await _context.Database.MigrateAsync();
         }
-        await _context.Database.MigrateAsync();
 
         await SeedAddressesAsync();
         await SeedCategoriesAsync();
         await SeedCompetencesAsync();
-        await SeedRolesAsync();
         await _context.SaveChangesAsync();
 
         await SeedCoursesAsync();
@@ -45,7 +47,6 @@ public static class Seed
         await SeedTeachersAsync();
         await _context.SaveChangesAsync();
 
-        await SeedAssignRolesAsync();
         var courses = await _context.Courses.ToListAsync();
         var competences = await _context.Competences.ToListAsync();
         await SeedStudentCoursesAsync(courses);
@@ -56,9 +57,9 @@ public static class Seed
 
 
 
-    private static async Task SeedAddressesAsync()
+    private async Task SeedAddressesAsync()
     {
-        if (await _context!.Addresses.AnyAsync())
+        if (await _context.Addresses.AnyAsync())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Addresses.json");
@@ -67,9 +68,9 @@ public static class Seed
         await _context.Addresses.AddRangeAsync(addresses!);
     }
 
-    private static async Task SeedCategoriesAsync()
+    private async Task SeedCategoriesAsync()
     {
-        if (await _context!.Categories.AnyAsync())
+        if (await _context.Categories.AnyAsync())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Categories.json");
@@ -78,9 +79,9 @@ public static class Seed
         await _context.Categories.AddRangeAsync(categories!);
     }
 
-    private static async Task SeedCompetencesAsync()
+    private async Task SeedCompetencesAsync()
     {
-        if (await _context!.Competences.AnyAsync())
+        if (await _context.Competences.AnyAsync())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Competences.json");
@@ -88,21 +89,10 @@ public static class Seed
 
         await _context.Competences.AddRangeAsync(competences!);
     }
-    
-    private static async Task SeedRolesAsync()
-    {
-        var roles = new List<IdentityRole>()
-        {
-            new IdentityRole() {Name = "Student"},
-            new IdentityRole() {Name = "Teacher"}
-        };
-        
-        await _context!.Roles.AddRangeAsync(roles);
-    }
 
-    private static async Task SeedCoursesAsync()
+    private async Task SeedCoursesAsync()
     {
-        if (await _context!.Courses.AnyAsync())
+        if (await _context.Courses.AnyAsync())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Courses.json");
@@ -111,60 +101,56 @@ public static class Seed
         await _context.Courses.AddRangeAsync(courses!);
     }
 
-    private static async Task SeedStudentsAsync()
+    private async Task SeedStudentsAsync()
     {
-        if (await _context!.AppUsers.AnyAsync())
+        if ((await _userManager.GetUsersInRoleAsync("Student")).Any())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Students.json");
-        _students = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
+        var students = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
 
-        await _context.AppUsers.AddRangeAsync(_students!);
+        var role = new IdentityRole { Name = "Student" };
+        await _roleManager.CreateAsync(role);
+        foreach (var student in students!)
+        {
+            student.UserName = student.Email;
+            await _userManager.CreateAsync(student);
+            await _userManager.AddToRoleAsync(student, role.Name);
+        }
     }
 
-    private static async Task SeedTeachersAsync()
+    private async Task SeedTeachersAsync()
     {
-        if (await _context!.AppUsers.AnyAsync())
+        if ((await _userManager.GetUsersInRoleAsync("Teacher")).Any())
             return;
 
         string data = await File.ReadAllTextAsync("Data/Seed/Teachers.json");
-        _teachers = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
+        var teachers = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
 
-        await _context.AppUsers.AddRangeAsync(_teachers!);
-    }
-    
-    private static async Task SeedAssignRolesAsync()
-    {
-        var userRoles =  new List<IdentityUserRole<string>>();
-        
-        var studentRole = await _context!.Roles.FirstAsync(r => r.Name == "Student");
-        foreach (var student in _students!)
+        var role = new IdentityRole { Name = "Teacher" };
+        await _roleManager.CreateAsync(role);
+        foreach (var teacher in teachers!)
         {
-            userRoles.Add(new IdentityUserRole<string>() { UserId = student.Id, RoleId = studentRole.Id });
+            teacher.UserName = teacher.Email;
+            await _userManager.CreateAsync(teacher);
+            await _userManager.AddToRoleAsync(teacher, role.Name);
         }
-        
-        var teacherRole = await _context!.Roles.FirstAsync(r => r.Name == "Teacher");
-        foreach (var teacher in _teachers!)
-        {
-            userRoles.Add(new IdentityUserRole<string>() { UserId = teacher.Id, RoleId = teacherRole.Id });
-        }
-        
-        await _context!.UserRoles.AddRangeAsync(userRoles);
     }
 
-    private static async Task SeedStudentCoursesAsync(List<Course> courses)
+    private async Task SeedStudentCoursesAsync(List<Course> courses)
     {
-        if (await _context!.Student_Courses.AnyAsync())
+        if (await _context.Student_Courses.AnyAsync())
             return;
 
+        var students = await _userManager.GetUsersInRoleAsync("Student");
         var studentCourses = new List<Student_Course>();
         var grades = new List<string>() { "IG", "G", "VG" };
         var random = new Random();
 
-        for (int i = 0; i < _students!.Count * 3; i++)
+        for (int i = 0; i < students.Count * 3; i++)
         {
-            int studentIndex = random.Next(0, _students.Count);
-            string studentId = _students[studentIndex].Id;
+            int studentIndex = random.Next(0, students.Count);
+            string studentId = students[studentIndex].Id;
             int courseId = random.Next(0, courses.Count) + 1;
             if (studentCourses.Exists(sc => sc.StudentId == studentId && sc.CourseId == courseId))
             {
@@ -182,18 +168,19 @@ public static class Seed
         await _context.Student_Courses.AddRangeAsync(studentCourses);
     }
 
-    private static async Task SeedTeacherCoursesAsync(List<Course> courses)
+    private async Task SeedTeacherCoursesAsync(List<Course> courses)
     {
-        if (await _context!.Teacher_Courses.AnyAsync())
+        if (await _context.Teacher_Courses.AnyAsync())
             return;
 
+        var teachers = await _userManager.GetUsersInRoleAsync("Teacher");
         var teacherCourses = new List<Teacher_Course>();
         var random = new Random();
 
-        for (int i = 0; i < _teachers!.Count * 3; i++)
+        for (int i = 0; i < teachers.Count * 3; i++)
         {
-            int teacherIndex = random.Next(0, _teachers.Count);
-            string teacherId = _teachers[teacherIndex].Id;
+            int teacherIndex = random.Next(0, teachers.Count);
+            string teacherId = teachers[teacherIndex].Id;
             int courseId = random.Next(0, courses.Count) + 1;
             if (teacherCourses.Exists(tc => tc.TeacherId == teacherId && tc.CourseId == courseId))
             {
@@ -207,18 +194,19 @@ public static class Seed
         await _context.Teacher_Courses.AddRangeAsync(teacherCourses);
     }
 
-    private static async Task SeedTeacherCompetencesAsync(List<Competence> competences)
+    private async Task SeedTeacherCompetencesAsync(List<Competence> competences)
     {
-        if (await _context!.Teacher_Competences.AnyAsync())
+        if (await _context.Teacher_Competences.AnyAsync())
             return;
 
+        var teachers = await _userManager.GetUsersInRoleAsync("Teacher");
         var teacherCompetences = new List<Teacher_Competence>();
         var random = new Random();
 
-        for (int i = 0; i < _teachers!.Count * 3; i++)
+        for (int i = 0; i < teachers.Count * 3; i++)
         {
-            int teacherIndex = random.Next(0, _teachers.Count);
-            string teacherId = _teachers[teacherIndex].Id;
+            int teacherIndex = random.Next(0, teachers.Count);
+            string teacherId = teachers[teacherIndex].Id;
             int competenceId = random.Next(0, competences.Count) + 1;
             if (teacherCompetences.Exists(tc => tc.TeacherId == teacherId && tc.CompetenceId == competenceId))
             {
@@ -234,7 +222,7 @@ public static class Seed
 
 
 
-    private static bool RandomBool()
+    private bool RandomBool()
     {
         var rand = new Random();
         return rand.Next(0, 2) == 0;

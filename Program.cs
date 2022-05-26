@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Helpers;
 using WestcoastEducationApi.Interfaces;
+using WestcoastEducationApi.Models;
 using WestcoastEducationApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"))
 );
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<Context>();
 
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
@@ -49,7 +52,7 @@ app.MapControllers();
 
 
 
-await Seed.SeedDataAsync(app, false);
+await new Seed(app).SeedDataAsync(false);
 
 
 
