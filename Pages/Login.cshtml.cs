@@ -10,14 +10,15 @@ namespace WestcoastEducationStudentApp.Pages
 {
     public class Login : PageModel
     {
-        private readonly ILogger<Login> _logger;
-
-        public Login(ILogger<Login> logger)
+        public Login()
         {
-            _logger = logger;
         }
 
         public void OnGet()
+        {
+        }
+
+        public void OnPost()
         {
         }
     }
