@@ -4,9 +4,33 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>@ViewData["Title"]</h1>
-
+<h2>Login</h2>
 <div>
-    <h2>Who are you?</h2>
-    <p>(List of users goes here)</p>
+    <form method="post">
+        <label for="users">Who are you?</label><br>
+        <select id="users" name="userId">
+            @foreach (var user in Model.AppUsers!)
+            {
+                <option value="@user.Id">@user.FirstName @user.LastName</option>
+            }
+        </select>
+        <button type="submit">Yup that's me!</button>
+    </form>
+</div>
+
+<br><hr><br>
+
+<h2>Register</h2>
+<div>
+    <form method="post">
+        <label for="fname">First name</label>
+        <input type="text" name="firstName" id="fname"><br>
+        <label for="lname">Last name</label>
+        <input type="text" name="lastName" id="lname"><br>
+        <label for="email">Email</label>
+        <input type="email" name="emailAddress" id="email"><br>
+        <label for="phone">Phone number</label>
+        <input type="text" name="phoneNumber" id="phone"><br>
+        <button type="submit">Yup that's me!</button>
+    </form>
 </div>
