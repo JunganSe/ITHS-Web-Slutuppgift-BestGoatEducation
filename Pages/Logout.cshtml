@@ -1,0 +1,24 @@
+@page
+@model WestcoastEducationStudentApp.Pages.Logout
+@{
+    ViewData["Title"] = "Logout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
+    }
+    else
+    {
+        <p>Not signed in!</p>
+    }
+</div>
+
+<div>
+    <form method="post">
+	<button type="submit">Logout</button>
+</form>
+</div>
