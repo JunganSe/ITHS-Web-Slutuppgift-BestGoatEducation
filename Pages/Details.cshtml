@@ -1,0 +1,28 @@
+@page
+@model WestcoastEducationStudentApp.Pages.Details
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
+    }
+    else
+    {
+        <p>Random stranger is not signed in!</p>
+    }
+</div>
+
+@Model.CourseModel!.Name
+
+<form method="post">
+    <input type="hidden" name="courseId" value="@Model.CourseModel.Id">
+    <button type="submit">Sign up</button>
+</form>
+
+<br>
+@Model.Message
