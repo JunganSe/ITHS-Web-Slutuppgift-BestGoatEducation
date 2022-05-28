@@ -1,0 +1,39 @@
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.gallery-container a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+.gallery-card {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: var(--gallery-card-background-color);
+}
+.gallery-card:hover {
+    background-color: #222;
+}
+
+.gallery-card h3 {
+    /* border: 1px solid yellow; */
+    text-align: center;
+}
+
+.gallery-card table {
+    /* border: 1px solid blue; */
+}
+
+.gallery-card th {
+    text-align: end;
+}
+
+.gallery-card td {
+    
+}

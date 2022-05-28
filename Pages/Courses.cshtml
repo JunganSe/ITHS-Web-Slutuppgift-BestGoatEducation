@@ -2,17 +2,45 @@
 @model WestcoastEducationStudentApp.Pages.Courses
 @{
     ViewData["Title"] = "Courses";
+    string? userId = HttpContext.Session.GetString("UserId");
+}
+@section styles
+{
+<link rel="stylesheet" href="./css/courses.css">
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    @if (HttpContext.Session.GetString("UserId") != null)
+    @if (userId != null)
     {
         <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
     }
     else
     {
         <p>Random stranger is not signed in!</p>
+    }
+</div>
+
+<div class="gallery-container">
+    @foreach (var course in Model.CourseModels)
+    {
+        <a class="gallery-card" asp-page="/Details" asp-route-userId="@userId">
+            <h3>@course.Name</h3>
+            <table>
+                <tr>
+                    <th>Category:</th>
+                    <td>@course.CategoryName</td>
+                </tr>
+                <tr>
+                    <th>Summary:</th>
+                    <td>@course.Summary</td>
+                </tr>
+                <tr>
+                    <th>Duration:</th>
+                    <td>@course.Hours hours, @course.Days days</td>
+                </tr>
+            </table>
+        </a>
     }
 </div>
