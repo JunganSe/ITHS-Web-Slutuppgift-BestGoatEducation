@@ -11,6 +11,14 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Already signed in with id: @HttpContext.Session.GetString("UserId")</p>
+        <br>
+    }
+</div>
+
+<div>
     <form method="post">
         <label for="users">Who's that goat?</label><br>
         <select id="users" name="userId">
