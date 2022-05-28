@@ -34,7 +34,7 @@ namespace WestcoastEducationStudentApp.Pages
 
             if (!response.IsSuccessStatusCode)
             {
-                Message = await response.Content.ReadAsStringAsync();
+                Message = "Failed to create address";
                 return;
             }
 
@@ -43,13 +43,12 @@ namespace WestcoastEducationStudentApp.Pages
             response = await httpClient.PostAsJsonAsync(url, UserModel);
             if (!response.IsSuccessStatusCode)
             {
-                Message = await response.Content.ReadAsStringAsync();
+                Message = "Failed to create user";
                 return;
             }
 
-            string userId = await response.Content.ReadAsStringAsync();
+            Response.Redirect("/Login");
 
-            Message = $"Address id:\n {UserModel.AddressId}, AppUser id: {userId}";
         }
     }
 }
