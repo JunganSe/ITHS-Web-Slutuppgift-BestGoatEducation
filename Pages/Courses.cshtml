@@ -2,7 +2,6 @@
 @model WestcoastEducationStudentApp.Pages.Courses
 @{
     ViewData["Title"] = "Courses";
-    string? userId = HttpContext.Session.GetString("UserId");
 }
 @section styles
 {
@@ -12,7 +11,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    @if (userId != null)
+    @if (HttpContext.Session.GetString("UserId") != null)
     {
         <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
     }
@@ -25,7 +24,7 @@
 <div class="gallery-container">
     @foreach (var course in Model.CourseModels)
     {
-        <a class="gallery-card" asp-page="/Details" asp-route-userId="@userId">
+        <a class="gallery-card" asp-page="/Details" asp-route-courseId="@course.Id">
             <h3>@course.Name</h3>
             <table>
                 <tr>

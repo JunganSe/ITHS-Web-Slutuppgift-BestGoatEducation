@@ -24,9 +24,5 @@ namespace WestcoastEducationStudentApp.Pages
             string url = $"{_apiUrl}/Course";
             CourseModels = await httpClient.GetFromJsonAsync<List<CourseViewModel>>(url) ?? new List<CourseViewModel>();
         }
-
-        public void OnPost()
-        {
-        }
     }
 }
