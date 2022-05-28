@@ -27,7 +27,8 @@ namespace WestcoastEducationStudentApp.Pages
 
         public void OnPost(string userId, List<AppUserViewModel> appUsers)
         {
-            // HttpContext.Session.SetString("UserId", userId);
+            HttpContext.Session.SetString("UserId", userId);
+            Response.Redirect("./Index");
         }
     }
 }

@@ -3,34 +3,31 @@
 @{
     ViewData["Title"] = "Login";
 }
+@section styles
+{
+    <link rel="stylesheet" href="/css/index.css">
+}
 
-<h2>Login</h2>
+<h1>@ViewData["Title"]</h1>
+
 <div>
     <form method="post">
-        <label for="users">Who are you?</label><br>
+        <label for="users">Who's that goat?</label><br>
         <select id="users" name="userId">
             @foreach (var user in Model.AppUsers!)
             {
                 <option value="@user.Id">@user.FirstName @user.LastName</option>
             }
-        </select>
-        <button type="submit">Yup that's me!</button>
+        </select><br>
+        
+        <button type="submit">Yup that's right!</button>
     </form>
 </div>
 
 <br><hr><br>
 
-<h2>Register</h2>
-<div>
-    <form method="post">
-        <label for="fname">First name</label>
-        <input type="text" name="firstName" id="fname"><br>
-        <label for="lname">Last name</label>
-        <input type="text" name="lastName" id="lname"><br>
-        <label for="email">Email</label>
-        <input type="email" name="emailAddress" id="email"><br>
-        <label for="phone">Phone number</label>
-        <input type="text" name="phoneNumber" id="phone"><br>
-        <button type="submit">Yup that's me!</button>
-    </form>
-</div>
+<p>
+    New Goat? <a asp-page="/Register">Register here</a>
+</p>
+
+<img src="/images/goats.jpg" alt="Image of a goat">
