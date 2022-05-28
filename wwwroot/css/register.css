@@ -1,0 +1,35 @@
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    border: var(--primary-text-color) solid 1px;
+    border-radius: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.form-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 300px;
+}
+
+button {
+    padding: 0.2rem 1rem;
+    margin: auto;
+    border-radius: 1rem;
+}
+button:hover {
+    background-color: green;
+}
+button:active {
+    background-color: yellow;
+}
