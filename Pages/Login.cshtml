@@ -13,7 +13,7 @@
 <div>
     @if (HttpContext.Session.GetString("UserId") != null)
     {
-        <p>Already signed in with id: @HttpContext.Session.GetString("UserId")</p>
+        <p>Already signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
         <br>
     }
 </div>

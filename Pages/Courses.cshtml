@@ -7,5 +7,12 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    User id: @HttpContext.Session.GetString("UserId")
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
+    }
+    else
+    {
+        <p>Random stranger is not signed in!</p>
+    }
 </div>
