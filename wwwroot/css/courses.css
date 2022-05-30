@@ -11,23 +11,20 @@
 }
 
 .gallery-card {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     align-content: center;
-    background-color: var(--gallery-card-background-color);
+    background-color: var(--courses-gallery-card-background-color);
 }
 .gallery-card:hover {
     background-color: #222;
 }
 
 .gallery-card h3 {
-    /* border: 1px solid yellow; */
     text-align: center;
 }
 
 .gallery-card table {
-    /* border: 1px solid blue; */
 }
 
 .gallery-card th {
@@ -35,5 +32,4 @@
 }
 
 .gallery-card td {
-    
 }
