@@ -29,8 +29,8 @@ namespace WestcoastEducationStudentApp.Pages
         public async Task OnPostAsync()
         {
             var httpClient = new HttpClient();
-            string url = $"{_apiUrl}/Address";
-            var response = await httpClient.PostAsJsonAsync(url, AddressModel);
+            string addressUrl = $"{_apiUrl}/Address";
+            var response = await httpClient.PostAsJsonAsync(addressUrl, AddressModel);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -39,8 +39,8 @@ namespace WestcoastEducationStudentApp.Pages
             }
 
             UserModel.AddressId = int.Parse(await response.Content.ReadAsStringAsync());
-            url = $"{_apiUrl}/AppUser";
-            response = await httpClient.PostAsJsonAsync(url, UserModel);
+            string userUrl = $"{_apiUrl}/AppUser";
+            response = await httpClient.PostAsJsonAsync(userUrl, UserModel);
             if (!response.IsSuccessStatusCode)
             {
                 Message = "Failed to create user";
