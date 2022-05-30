@@ -1,65 +1,146 @@
 [
     {
-        "code": "6511",
-        "name": "C# för nybörjare",
-        "summary": "En grundkurs i C# och objektorienterad programmering",
+        "code": "6840",
+        "name": "VB for the short-haired",
+        "summary": "Basics of Visual Basic and pretty cool stuff too!",
         "description": "Löksås ipsum dunge rännil tidigare precis ordningens sin hav blivit, vemod dag fram faktor mjuka vid redan samtidigt i, ordningens plats vidsträckt sällan mjuka det tidigare sista. Mot träutensilierna söka kom annat tidigare vad björnbär på olika, ta därmed sista omfångsrik dock ingalunda både göras, tidigare genom oss dunge omfångsrik och att om. Mjuka vidsträckt göras tid hela samtidigt sig ta, mjuka rot sin bland nu groda olika, icke annat räv söka se tid. ",
         "days": 20,
         "hours": 120,
         "categoryId": 1
     },
     {
-        "code": "0155",
-        "name": "AI med python",
-        "summary": "Grundkurs i AI med python som verktyg",
-        "description": "Löksås ipsum har björnbär se lax sällan jäst björnbär sista gör verkligen, strand redan när det jäst inom äng erfarenheter samtidigt år sorgliga sällan, år jäst mot helt ska sjö kan kanske räv upprätthållande. Tid bäckasiner samtidigt själv vad blivit år ta så faktor, smultron år mjuka räv där händer olika kunde, dock bland miljoner när dag det och kom. ",
-        "days": 10,
-        "hours": 80,
+        "code": "6841",
+        "name": "VB for the long-haired",
+        "summary": "Basics of Visual Basic and pretty cool stuff too! (Also includes complementary shears)",
+        "description": "Löksås ipsum blev i om så precis därmed färdväg, kan söka nya björnbär om ta se inom häst, ska miljoner stora annan kom äng bäckasiner. Icke på sjö sällan sax denna dock, sorgliga annat erfarenheter söka tid, björnbär genom annan inom strand. Är dag göras fram inom faktor sig genom tidigare lax, rot hela har ingalunda kan redan det groda så kunde, brunsås fram björnbär färdväg sax ordningens enligt som.",
+        "days": 20,
+        "hours": 120,
+        "categoryId": 1
+    },
+    {
+        "code": "6842",
+        "name": "VB for the well groomed",
+        "summary": "Basics of Visual Basic and pretty cool stuff too! Specific tutoring for goats with self-respect.",
+        "description": "Löksås ipsum blev i om så precis därmed färdväg, kan söka nya björnbär om ta se inom häst, ska miljoner stora annan kom äng bäckasiner. Icke på sjö sällan sax denna dock, sorgliga annat erfarenheter söka tid, björnbär genom annan inom strand. Är dag göras fram inom faktor sig genom tidigare lax, rot hela har ingalunda kan redan det groda så kunde, brunsås fram björnbär färdväg sax ordningens enligt som.",
+        "days": 20,
+        "hours": 120,
+        "categoryId": 1
+    },
+    {
+        "code": "4515",
+        "name": "Python for younglings",
+        "summary": "Learn to spot and avoid pythons from far",
+        "description": "Löksås ipsum äng trevnadens av träutensilierna hwila därmed för rännil och gamla denna, dag söka rot det tre sista hela dimma i bland. Groda del nya där blev själv mjuka tidigare rännil annat, vidsträckt dunge faktor ingalunda om bland därmed tidigare, dock ser rot sorgliga göras helt som groda. Upprätthållande ska kan miljoner år miljoner redan dag, och verkligen precis erfarenheter sjö göras, se tre helt hela vemod denna.",
+        "days": 2,
+        "hours": 16,
         "categoryId": 2
     },
     {
-        "code": "4589",
-        "name": "Java för kaffehatare",
-        "summary": "Lär dig älska kaffespråket",
-        "description": "Löksås ipsum mot sorgliga år dimma varit hela strand miljoner fram nya regn tre björnbär sax precis redan sitt, som häst om så att upprätthållande brunsås icke jäst färdväg på sig äng kunde söka stig bra. Häst göras oss vad faktor sig bäckasiner år att som dunge, dimma kunde enligt brunsås sällan bland kanske dimmhöljd söka, icke vad färdväg trevnadens se år strand regn ska.",
-        "days": 8,
-        "hours": 48,
-        "categoryId": 3
-    },
-    {
-        "code": "2654",
-        "name": "Avancerad Javascript",
-        "summary": "En titt på den mer avancerade funktionaliteten i Javascript",
-        "description": "Löksås ipsum det dock sin sjö verkligen trevnadens sin, tid vad sista sin kom blivit själv, det olika år miljoner mjuka dimmhöljd redan. Hela dock tid se plats kanske som dunge där verkligen sitt, trevnadens samma kanske fram omfångsrik dunge groda olika dock upprätthållande, mot sällan nu äng icke att blivit när sista. Söka för det miljoner blev åker det gamla ännu del blev, räv fram har faktor själv smultron sjö söka år. ",
-        "days": 16,
-        "hours": 32,
-        "categoryId": 4
-    },
-    {
-        "code": "8057",
-        "name": "Fånga kundens intresse",
-        "summary": "Designmönster och psykologi inom UX",
-        "description": "Löksås ipsum som erfarenheter ser erfarenheter ta så regn att, tidigare groda rännil dimmhöljd hav har helt vi från tidigare, ska stig dimmhöljd tiden åker flera upprätthållande erfarenheter. Träutensilierna annan bra flera tidigare vi är om vidsträckt kanske dag, plats samma miljoner tid i annat dunge strand smultron varit, äng groda sällan ännu icke bäckasiner händer nya smultron.",
-        "days": 10,
-        "hours": 80,
-        "categoryId": 5
-    },
-    {
-        "code": "9164",
-        "name": "Python för nybörjare (Videokurs)",
-        "summary": "Videokurs där du lär dig alla nödvändiga grunder för att komma igång med Python.",
-        "description": "Löksås ipsum precis dimmhöljd har bra ta har, strand ordningens dimmhöljd mjuka groda hav, ser smultron annat nya träutensilierna redan. Jäst tidigare flera ordningens plats både se ser, annan blev miljoner söka annat rännil som, gamla kunde hav rot inom år, dag plats miljoner varit icke upprätthållande. Omfångsrik sista vad ska smultron erfarenheter ordningens upprätthållande lax göras, genom dimmhöljd äng lax ta år bland omfångsrik groda, är varit hwila år brunsås björnbär och smultron, vi att vi dunge är själv kan år.",
-        "days": 0,
+        "code": "4514",
+        "name": "Python for old goats",
+        "summary": "Learn to hear and smell pythons from far",
+        "description": "Löksås ipsum dimma groda vemod se och kom, ännu där tidigare helt bra vid ordningens, hela erfarenheter del lax själv ta. Händer dock dag och ännu mjuka på vidsträckt göras söka brunsås nu smultron dag häst trevnadens, omfångsrik sjö verkligen vi bland upprätthållande sista vid äng det ordningens tiden som det. Ordningens varit för vemod tid trevnadens ordningens lax söka enligt rot erfarenheter brunsås redan åker, tid ordningens kanske göras söka samma rännil träutensilierna att det redan det.",
+        "days": 4,
         "hours": 20,
         "categoryId": 2
     },
     {
-        "code": "9375",
-        "name": "C# för nybörjare (Videokurs)",
-        "summary": "Videokurs där du lär dig grunderna i C#, när det passar dig",
-        "description": "Löksås ipsum sig nu rot stora hela att äng vad, oss varit björnbär blev mjuka sorgliga redan miljoner där, dunge bland del nya själv del tiden och. Vi helt erfarenheter nya dag vidsträckt mot, stora rännil omfångsrik söka ser trevnadens hela, genom regn björnbär vad om. Erfarenheter samma oss stig för sax smultron ta gör upprätthållande miljoner, sax om icke och blev nu vemod från.",
-        "days": 0,
+        "code": "6221",
+        "name": "Learn Java from scratch. Now with coffee breaks!",
+        "summary": "You and your fellow goats can sure learn Java with this well defined and thoroughly cobbled up course.",
+        "description": "Löksås ipsum del tidigare vemod samtidigt så helt nu precis, har icke helt sax dock ännu bra hav, jäst fram är brunsås kunde söka kunde sin. Mjuka för sin smultron och gamla gör annan, dunge hav smultron trevnadens annan räv söka, på stora nu inom plats dunge. Ska ingalunda år enligt vemod rännil år vid det, där händer år åker när sällan redan ska dimma, sorgliga inom göras rännil där hela det.",
+        "days": 20,
+        "hours": 80,
+        "categoryId": 3
+    },
+    {
+        "code": "6233",
+        "name": "Advanced Java for beginners",
+        "summary": "Which Java is better? You're wrong. Let your goat learn alla bout Java, because you probably won't get it.",
+        "description": "Löksås ipsum strand samma händer det ta strand, bäckasiner vemod lax dag helt trevnadens, inom söka inom samtidigt det ska. Annat på icke kom omfångsrik fram för hans gamla, mot samtidigt groda jäst redan där mot ser, hans ordningens ingalunda mot häst redan och. Plats vad nya tidigare precis ingalunda sin rännil plats erfarenheter bland, själv göras sig se färdväg dimmhöljd flera sig omfångsrik, bra kom omfångsrik äng faktor sällan det helt omfångsrik.",
+        "days": 5,
         "hours": 40,
-        "categoryId": 1
+        "categoryId": 3
+    },
+    {
+        "code": "2086",
+        "name": "Cooking hay in 100 flavors, 101",
+        "summary": "Hay will never taste boring agan, after you attend this course! (Students are required to bring their own hay)",
+        "description": "Löksås ipsum se bland på hwila, ser bra del söka nya som, har från där faktor. Strand och upprätthållande omfångsrik har från åker, annat dimma samma oss om nya, samtidigt där gör dunge när. Därmed händer göras dimmhöljd att nya sitt häst, det kanske dock när mjuka för, och därmed oss hans och omfångsrik. Om annan gamla är ser från jäst ska dag från tiden icke, stig trevnadens om varit ska upprätthållande rot år därmed rännil stig dag, kunde bland hwila genom plats har björnbär dimmhöljd varit kan.",
+        "days": 8,
+        "hours": 48,
+        "categoryId": 4
+    },
+    {
+        "code": "2086",
+        "name": "Making dird taste kind good (Video course)",
+        "summary": "Spice up your boring dirt with these recipes!",
+        "description": "Löksås ipsum som hav kanske verkligen träutensilierna som, vi stora se som strand kunde dimma enligt, det söka bäckasiner som sax sitt. Annan hans är kanske blivit rännil omfångsrik sin olika miljoner sjö nya, blivit söka tiden omfångsrik hans denna smultron vad smultron strand trevnadens, lax flera tre helt vad vid därmed det varit ordningens. Är det inom och icke se samtidigt vi omfångsrik, dimmhöljd i vid för tid icke gör hav dimmhöljd, trevnadens björnbär räv brunsås varit blev häst.",
+        "days": 0,
+        "hours": 22,
+        "categoryId": 4
+    },
+    {
+        "code": "6174",
+        "name": "How to trick your owner, bloodshed style.",
+        "summary": "They may be the one feeding you, but does that mean you can't have fun at their expense?",
+        "description": "Löksås ipsum från faktor jäst åker vad rot flera, dimma tre det jäst oss annat sällan kanske, hela tre göras kan där ännu precis hav, blev se gamla varit sin själv fram. Som kan vi sällan faktor varit söka från rot det, lax träutensilierna år sin redan söka redan hans ännu dock, mot själv år varit jäst annat blev dimma.",
+        "days": 8,
+        "hours": 60,
+        "categoryId": 5
+    },
+    {
+        "code": "6175",
+        "name": "How to trick your owner, second edition (Video course)",
+        "summary": "They may be the one feeding you, but does that mean you can't have fun at their expense?",
+        "description": "Löksås ipsum från faktor jäst åker vad rot flera, dimma tre det jäst oss annat sällan kanske, hela tre göras kan där ännu precis hav, blev se gamla varit sin själv fram. Som kan vi sällan faktor varit söka från rot det, lax träutensilierna år sin redan söka redan hans ännu dock, mot själv år varit jäst annat blev dimma.",
+        "days": 0,
+        "hours": 31,
+        "categoryId": 5
+    },
+    {
+        "code": "8741",
+        "name": "Teach a goat to do a UX designer's job in 7 days",
+        "summary": "Surely it can't be that hard? Yes it can! Goats are smarter than you think. (But what about designers?)",
+        "description": "Löksås ipsum jäst sitt inom blivit när hwila verkligen hans upprätthållande fram erfarenheter, som sjö dimma icke blev hwila vad björnbär att icke annat. Genom regn där ta hans samtidigt sin tid precis icke, dag söka kom tiden äng blivit dock faktor som samtidigt, annat varit dag redan på samma regn när. Nya stig tidigare hwila rännil samtidigt ska rännil kanske nya icke, därmed har att plats erfarenheter inom dunge blivit vid dimma gamla, vad ta vidsträckt blev oss kan både tid räv.",
+        "days": 15,
+        "hours": 90,
+        "categoryId": 5
+    },
+    {
+        "code": "1024",
+        "name": "Softball camp for calves",
+        "summary": "Two weeks of fun and games for your favourite mild-mannered noisemaker, so that you can finally get some rest.",
+        "description": "Löksås ipsum därmed som bland ingalunda rot hwila kanske från groda ska tidigare och, mot år inom tid hav hans om samtidigt strand när tid ser, flera vad fram hans gör vi om ingalunda om ska hans för. Vi genom del av det helt vidsträckt samtidigt, kunde tiden miljoner och ingalunda som söka, ingalunda för björnbär träutensilierna ser sorgliga.",
+        "days": 14,
+        "hours": 336,
+        "categoryId": 6
+    },
+    {
+        "code": "3241",
+        "name": "How to sell many, many business buckets",
+        "summary": "Your goat will learn to manipulate and extort its way to a luxury life.",
+        "description": "Löksås ipsum lax vi hans vemod denna ingalunda denna, ordningens dunge brunsås som brunsås färdväg år, dag blev på groda i strand annan. Äng sorgliga varit blev kan regn söka år nu ingalunda, sorgliga nu göras vi enligt nya är sax kan trevnadens, och av träutensilierna plats samtidigt annan denna tid. Gör stora dimma som denna samma rännil trevnadens, kunde dock varit göras inom trevnadens dag, vad inom helt mot oss i.",
+        "days": 35,
+        "hours": 210,
+        "categoryId": 7
+    },
+    {
+        "code": "3479",
+        "name": "The art of staring angrily",
+        "summary": "Does your goat have a cute face? Angry eyes are sure to make that weird.",
+        "description": "Löksås ipsum därmed som bland ingalunda rot hwila kanske från groda ska tidigare och, mot år inom tid hav hans om samtidigt strand när tid ser, flera vad fram hans gör vi om ingalunda om ska hans för. Vi genom del av det helt vidsträckt samtidigt, kunde tiden miljoner och ingalunda som söka, ingalunda för björnbär träutensilierna ser sorgliga.",
+        "days": 3,
+        "hours": 9,
+        "categoryId": 7
+    },
+    {
+        "code": "3544",
+        "name": "Patience for wannabe musicians",
+        "summary": "Can't play, but still want to make it big? Send your goats to this course today!",
+        "description": "Löksås ipsum precis flera kom sin tiden, rännil vid verkligen ta själv kanske som, ordningens denna träutensilierna bland så. I sig räv upprätthållande vi stora sällan annat stora, göras där har genom bra därmed vi denna olika, dock lax dimmhöljd ännu mjuka icke sig. Enligt jäst på hwila samtidigt själv oss färdväg denna mot annat, häst dag ta tre fram samtidigt äng kom ser, verkligen år som bäckasiner mot har helt kunde gör.",
+        "days": 365,
+        "hours": 365,
+        "categoryId": 7
     }
 ]

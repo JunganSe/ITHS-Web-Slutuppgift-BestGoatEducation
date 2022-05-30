@@ -1,12 +1,15 @@
 [
     {
-        "name": "Java"
+        "name": "Visual Basic"
     },
     {
         "name": "Python"
     },
     {
-        "name": "C#"
+        "name": "Java"
+    },
+    {
+        "name": "Sports"
     },
     {
         "name": "ASP.NET"
@@ -16,5 +19,14 @@
     },
     {
         "name": "UX"
+    },
+    {
+        "name": "Psychology"
+    },
+    {
+        "name": "Cake eating"
+    },
+    {
+        "name": "Being fairly nice"
     }
 ]

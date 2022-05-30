@@ -1,6 +1,6 @@
 [
     {
-        "name": "C#"
+        "name": "Visual basic"
     },
     {
         "name": "Python"
@@ -9,9 +9,15 @@
         "name": "Java"
     },
     {
-        "name": "Javascript"
+        "name": "Cooking"
     },
     {
         "name": "UX"
+    },
+    {
+        "name": "Sports"
+    },
+    {
+        "name": "Psychology"
     }
 ]

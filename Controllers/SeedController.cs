@@ -1,36 +1,37 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Models;
 
-namespace WestcoastEducationApi.Data;
+namespace WestcoastEducationApi.Controllers;
 
-public class Seed
+[ApiController]
+[Route("api/[controller]")]
+public class SeedController : ControllerBase
 {
     private readonly Context _context;
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly JsonSerializerOptions _jsonOptions;
 
-    public Seed(WebApplication app)
+    public SeedController(Context context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-        var services = app.Services.CreateScope().ServiceProvider;
-        _context = services.GetRequiredService<Context>();
-        _userManager = services.GetRequiredService<UserManager<AppUser>>();
-        _roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-
+        _context = context;
+        _userManager = userManager;
+        _roleManager = roleManager;
         _jsonOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
     }
 
 
 
-    public async Task SeedDataAsync(bool recreateDatabase)
+    // POST: api/Seed
+    [HttpPost]
+    public async Task SeedDataAsync()
     {
-        if (recreateDatabase)
-        {
-            await _context.Database.EnsureDeletedAsync();
-            await _context.Database.MigrateAsync();
-        }
+        await _context.Database.EnsureDeletedAsync();
+        await _context.Database.MigrateAsync();
 
         await SeedAddressesAsync();
         await SeedCategoriesAsync();
@@ -55,7 +56,7 @@ public class Seed
 
     private async Task SeedAddressesAsync()
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Addresses.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Addresses.json");
         var addresses = JsonSerializer.Deserialize<List<Address>>(data, _jsonOptions);
 
         await _context.Addresses.AddRangeAsync(addresses!);
@@ -63,7 +64,7 @@ public class Seed
 
     private async Task SeedCategoriesAsync()
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Categories.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Categories.json");
         var categories = JsonSerializer.Deserialize<List<Category>>(data, _jsonOptions);
 
         await _context.Categories.AddRangeAsync(categories!);
@@ -71,7 +72,7 @@ public class Seed
 
     private async Task SeedCompetencesAsync()
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Competences.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Competences.json");
         var competences = JsonSerializer.Deserialize<List<Competence>>(data, _jsonOptions);
 
         await _context.Competences.AddRangeAsync(competences!);
@@ -79,7 +80,7 @@ public class Seed
 
     private async Task SeedCoursesAsync()
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Courses.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Courses.json");
         var courses = JsonSerializer.Deserialize<List<Course>>(data, _jsonOptions);
 
         await _context.Courses.AddRangeAsync(courses!);
@@ -87,7 +88,7 @@ public class Seed
 
     private async Task SeedStudentsAsync(List<Address> addresses)
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Students.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Students.json");
         var students = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
         var random = new Random();
 
@@ -104,7 +105,7 @@ public class Seed
 
     private async Task SeedTeachersAsync(List<Address> addresses)
     {
-        string data = await File.ReadAllTextAsync("Data/Seed/Teachers.json");
+        string data = await System.IO.File.ReadAllTextAsync("./Data/Seed/Teachers.json");
         var teachers = JsonSerializer.Deserialize<List<AppUser>>(data, _jsonOptions);
         var random = new Random();
 
@@ -138,7 +139,7 @@ public class Seed
             }
 
             var sc = new Student_Course() { StudentId = studentId, CourseId = courseId };
-            sc.IsStarted = RandomBool();
+            sc.IsStarted = RandomBool(3);
             sc.IsCompleted = sc.IsStarted && RandomBool();
             sc.Grade = sc.IsCompleted ? grades[random.Next(0, 3)] : null;
             studentCourses.Add(sc);
@@ -195,9 +196,8 @@ public class Seed
 
 
 
-    private bool RandomBool()
+    private bool RandomBool(int trueChance = 1)
     {
-        var rand = new Random();
-        return rand.Next(0, 2) == 0;
+        return new Random().Next(0, 1 + trueChance) != 0;
     }
 }

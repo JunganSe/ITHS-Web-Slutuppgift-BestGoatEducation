@@ -19,5 +19,33 @@
         "postalCode": "32123",
         "city": "Slumköping",
         "country": "No man's land"
+    },
+    {
+        "street": "Hårgatan",
+        "streetNumber": "18",
+        "postalCode": "75456",
+        "city": "Hairnösand",
+        "country": "Norrland"
+    },
+    {
+        "street": "Kulgatan",
+        "streetNumber": "45a",
+        "postalCode": "24531",
+        "city": "Västköping",
+        "country": "Svärje"
+    },
+    {
+        "street": "Vresvägen",
+        "streetNumber": "2",
+        "postalCode": "65872",
+        "city": "Bitterlunda",
+        "country": "Argentina"
+    },
+    {
+        "street": "Stånken",
+        "streetNumber": "1",
+        "postalCode": "87455",
+        "city": "Skuta",
+        "country": "Morskilaini"
     }
 ]

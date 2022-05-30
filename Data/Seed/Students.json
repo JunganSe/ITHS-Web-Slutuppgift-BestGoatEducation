@@ -3,36 +3,36 @@
         "email": "anders@mail.se",
         "phoneNumber": "1234567890",
         "firstName": "Anders",
-        "lastName": "Andersson",
-        "addressId": 3
+        "lastName": "Antisocial",
+        "addressId": 1
     },
     {
         "email": "bea@mail.se",
         "phoneNumber": "2345678901",
         "firstName": "Beatrice",
         "lastName": "Bastuberg",
-        "addressId": 3
+        "addressId": 1
     },
     {
         "email": "charlie@mail.se",
         "phoneNumber": "3456789012",
         "firstName": "Charlie",
         "lastName": "Chaplin",
-        "addressId": 2
+        "addressId": 1
     },
     {
         "email": "doris@mail.se",
         "phoneNumber": "4567890123",
         "firstName": "Doris",
         "lastName": "Digital",
-        "addressId": 2
+        "addressId": 1
     },
     {
         "email": "edgar@mail.se",
         "phoneNumber": "5678901234",
         "firstName": "Edgar",
         "lastName": "Ekolod",
-        "addressId": 3
+        "addressId": 1
     },
     {
         "email": "frida@mail.se",
@@ -46,6 +46,13 @@
         "phoneNumber": "7890123456",
         "firstName": "Gustav",
         "lastName": "Gåsmäster",
+        "addressId": 1
+    },
+    {
+        "email": "hilda@mail.se",
+        "phoneNumber": "8901234567",
+        "firstName": "Hilda",
+        "lastName": "Hästmålare",
         "addressId": 1
     }
 ]
