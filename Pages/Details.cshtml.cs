@@ -33,11 +33,13 @@ public class Details : PageModel
         var postModel = new PostStudentCourseViewModel()
         {
             StudentId = HttpContext.Session.GetString("UserId"),
-            CourseId = courseId
+            CourseId = CourseModel!.Id
         };
         
         var response = await httpClient.PostAsJsonAsync(url, postModel);
-        string? userNameFull = HttpContext.Session.GetString("UserNameFull");
+        string userNameFull =
+            HttpContext.Session.GetString("UserNameFull")
+            ?? "random stranger";
         if (response.IsSuccessStatusCode)
         {
             Message = $"Registered {userNameFull} for this course.";

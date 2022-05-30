@@ -1,0 +1,18 @@
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.details-container h2 {
+}
+
+.details-container table {
+}
+
+.details-container th {
+}
+
+.details-container td {
+}
