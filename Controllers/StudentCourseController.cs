@@ -39,6 +39,7 @@ namespace WestcoastEducationApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateStudentCourseAsync(PostStudentCourseViewModel model)
         {
+            // TODO: Kontrollera att AppUser har rollen student.
             var studentCourse = _mapper.Map<Student_Course>(model);
             await _repo.CreateStudentCourseAsync(studentCourse);
             
