@@ -51,9 +51,9 @@ public class AddressController : ControllerBase
     {
         var address = _mapper.Map<Address>(model);
         await _repo.CreateAddressAsync(address);
-
+        
         return (await _repo.SaveAllAsync())
-            ? StatusCode(201) // Created
+            ? StatusCode(201, address.Id) // Created
             : StatusCode(500, "Fail: Create address"); // Internal server error
     }
 }

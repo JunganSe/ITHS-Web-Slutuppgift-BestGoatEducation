@@ -83,7 +83,7 @@ public class AppUserController : ControllerBase
         await _repo.CreateAppUserAsync(appUser);
 
         return (await _repo.SaveAllAsync())
-            ? StatusCode(201) // Created
+            ? StatusCode(201, appUser.Id) // Created
             : StatusCode(500, "Fail: Create appUser"); // Internal server error
     }
 }
