@@ -4,13 +4,14 @@ using WestcoastEducationStudentApp.ViewModels;
 
 namespace WestcoastEducationStudentApp.Pages
 {
+    [BindProperties]
     public class Courses : PageModel
     {
         private readonly IConfiguration _config;
         private readonly string _apiUrl;
         
-        [BindProperty]
         public List<CourseViewModel> CourseModels { get; set; } = new();
+        public List<CategoryViewModel> CategoryModels { get; set; } = new();
         
         public Courses(IConfiguration config)
         {
@@ -18,11 +19,17 @@ namespace WestcoastEducationStudentApp.Pages
             _apiUrl = _config.GetValue<string>("ApiUrl");
         }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string? byCategory)
         {
             var httpClient = new HttpClient();
-            string url = $"{_apiUrl}/Course";
-            CourseModels = await httpClient.GetFromJsonAsync<List<CourseViewModel>>(url) ?? new List<CourseViewModel>();
+            
+            string categoryUrl = $"{_apiUrl}/Category";
+            CategoryModels = await httpClient.GetFromJsonAsync<List<CategoryViewModel>>(categoryUrl) ?? new List<CategoryViewModel>();
+            
+            string courseUrl =  (string.IsNullOrEmpty(byCategory) || byCategory == "all")
+                ? $"{_apiUrl}/Course"
+                : $"{_apiUrl}/Course/ByCategory/{byCategory}";
+            CourseModels = await httpClient.GetFromJsonAsync<List<CourseViewModel>>(courseUrl) ?? new List<CourseViewModel>();
         }
     }
 }

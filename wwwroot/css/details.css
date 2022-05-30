@@ -12,7 +12,9 @@
 }
 
 .details-container th {
+    text-align: end;
 }
 
 .details-container td {
+    padding: 0 0 0 1rem;
 }

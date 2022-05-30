@@ -21,6 +21,20 @@
     }
 </div>
 
+<div class="category-filter-container">
+    <form method="get">
+        <label for="categories">Filter by category:</label><br>
+        <select id="categories" name="byCategory">
+            <option value="all">All</option>
+            @foreach (var category in Model.CategoryModels)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select><br>
+        <button type="submit">Filter</button>
+    </form>
+</div>
+
 <div class="gallery-container">
     @foreach (var course in Model.CourseModels)
     {
