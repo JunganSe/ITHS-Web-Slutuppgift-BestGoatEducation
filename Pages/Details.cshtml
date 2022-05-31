@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="./css/details.css">
 }
 
-<h1>@ViewData["Title"]</h1>
-
 <div>
     @if (HttpContext.Session.GetString("UserId") != null)
     {
@@ -21,6 +19,8 @@
         <p>Random stranger is not signed in!</p>
     }
 </div>
+
+<h1>@ViewData["Title"]</h1>
 
 <div class="details-container course-summary">
     <div>
