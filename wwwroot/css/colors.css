@@ -7,5 +7,11 @@
     --primary-background-color: #444;
     --primary-text-color: #ddd;
     
-    --courses-gallery-card-background-color: #333;
+    --courses-card-hover-color: #222;
+    
+    --table-background-color: #555;
+    --table-outer-border-color: #2b2;
+    --table-inner-border-color: #111;
+    --table-stripe1-color: #333;
+    --table-stripe2-color: #3a3a3a;
 }

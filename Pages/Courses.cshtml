@@ -5,6 +5,7 @@
 }
 @section styles
 {
+<link rel="stylesheet" href="./css/course-summary.css">
 <link rel="stylesheet" href="./css/courses.css">
 }
 
@@ -38,8 +39,8 @@
 <div class="gallery-container">
     @foreach (var course in Model.CourseModels)
     {
-        <a class="gallery-card" asp-page="/Details" asp-route-courseId="@course.Id">
-            <h3>@course.Name</h3>
+        <a class="gallery-card course-summary" asp-page="/Details" asp-route-courseId="@course.Id">
+            <h2>@course.Name</h2>
             <table>
                 <tr>
                     <th>Category:</th>
@@ -50,8 +51,8 @@
                     <td>@course.Summary</td>
                 </tr>
                 <tr>
-                    <th>Duration:</th>
-                    <td>@course.Hours hours, @course.Days days</td>
+                    <th class="table-bottom-left">Duration:</th>
+                    <td class="table-bottom-right">@course.Hours hours over @course.Days days</td>
                 </tr>
             </table>
         </a>
