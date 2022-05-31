@@ -3,22 +3,28 @@
 @{
     ViewData["Title"] = "Logout";
 }
+@section styles
+{
+<link rel="stylesheet" href="./css/textbox.css">
+<link rel="stylesheet" href="./css/logout.css">
+}
 
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    @if (HttpContext.Session.GetString("UserId") != null)
-    {
-        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
-    }
-    else
-    {
-        <p>Not signed in!</p>
-    }
-</div>
 
-<div>
+<div class="textbox">
+    <div class="current-user-message">
+        @if (HttpContext.Session.GetString("UserId") != null)
+        {
+            <p>Signed in as:<br><span>@HttpContext.Session.GetString("UserNameFull")</span></p>
+        }
+        else
+        {
+            <p>Not signed in!</p>
+        }
+    </div>
+
     <form method="post">
-	<button type="submit">Logout</button>
-</form>
+        <button type="submit">Logout</button>
+    </form>
 </div>

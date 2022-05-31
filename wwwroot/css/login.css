@@ -1,8 +1,8 @@
-img {
-    width: 100%;
+body {
+    background-image: url('/images/goats1.jpg');
 }
 
 a {
     text-decoration: none;
-    color: red;
+    color: var(--button-text-hover-color);
 }

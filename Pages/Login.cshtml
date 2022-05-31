@@ -5,37 +5,32 @@
 }
 @section styles
 {
-    <link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/textbox.css">
+<link rel="stylesheet" href="/css/login.css">
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    @if (HttpContext.Session.GetString("UserId") != null)
-    {
-        <p>Already signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
-        <br>
-    }
-</div>
+<div class="textbox">
+    <div class="current-user-message">
+        @if (HttpContext.Session.GetString("UserId") != null)
+        {
+            <p>Already signed in as:<br><span>@HttpContext.Session.GetString("UserNameFull")</span></p>
+        }
+    </div>
 
-<div>
     <form method="post">
-        <label for="users">Who's that goat?</label><br>
+        <label for="users">Who's that goat?</label>
         <select id="users" name="userId">
             @foreach (var user in Model.AppUsers!)
             {
                 <option value="@user.Id">@user.FirstName @user.LastName</option>
             }
-        </select><br>
-        
+        </select>
         <button type="submit">Yup that's right!</button>
     </form>
+
+    <p>
+        New Goat? Register <a asp-page="/Register">here</a>
+    </p>
 </div>
-
-<br><hr><br>
-
-<p>
-    New Goat? <a asp-page="/Register">Register here</a>
-</p>
-
-<img src="/images/goats.jpg" alt="Image of goats">

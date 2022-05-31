@@ -5,11 +5,14 @@
 }
 @section styles
 {
+<link rel="stylesheet" href="./css/textbox.css">
 <link rel="stylesheet" href="./css/course-summary.css">
 <link rel="stylesheet" href="./css/courses.css">
 }
 
-<div>
+<h1>@ViewData["Title"]</h1>
+
+<div class="current-user-message">
     @if (HttpContext.Session.GetString("UserId") != null)
     {
         <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
@@ -20,18 +23,17 @@
     }
 </div>
 
-<h1>@ViewData["Title"]</h1>
-
-<div class="category-filter-container">
+<div class="category-filter-container textbox">
     <form method="get">
-        <label for="categories">Filter by category:</label><br>
+        <h3>Filter by category:</h3>
         <select id="categories" name="byCategory">
+            <option value="" selected disabled hidden>Please select</option>
             <option value="all">All</option>
             @foreach (var category in Model.CategoryModels)
             {
                 <option value="@category.Id">@category.Name</option>
             }
-        </select><br>
+        </select>
         <button type="submit">Filter</button>
     </form>
 </div>

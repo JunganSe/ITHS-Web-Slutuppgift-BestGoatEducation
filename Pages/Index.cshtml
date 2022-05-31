@@ -10,7 +10,8 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<div>
+
+<div class="current-user-message">
     @if (HttpContext.Session.GetString("UserId") != null)
     {
         <p>Welcome, @HttpContext.Session.GetString("UserNameFull"). Baah!</p>
@@ -20,5 +21,3 @@
         <p>Welcome, random stranger. Baah!</p>
     }
 </div>
-
-<img src="/images/goat1.jpg" alt="Image of a goat">

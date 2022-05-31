@@ -1,15 +1,19 @@
-.category-filter-container form {
-    display: flex;
-    gap: 0.2rem;
+body {
+    background-image: url('/images/goats2.jpg');
 }
 
 
 
+.current-user-message {
+    text-align: center;
+    text-shadow: 1px 1px 5px black;
+}
+
 .gallery-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 1rem;
+    gap: 3rem;
+    padding: 2rem;
 }
 
 .gallery-container a {

@@ -1,0 +1,51 @@
+.textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--textbox-background-color);
+    border: 1px solid var(--textbox-border-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 2rem;
+    width: 300px;
+    margin: auto;
+}
+
+.textbox p {
+    text-align: center;
+}
+.textbox p span{
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.textbox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.textbox form select {
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+    padding: 0.3rem;
+    border: 1px solid var(--table-inner-border-color);
+    border-radius: 1rem;
+}
+
+.textbox form button{
+    margin-top: 1rem;
+}
+
+.textbox button {
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--table-outer-border-color);
+    border-radius: 1rem;
+}
+.textbox button:hover {
+    color: var(--button-text-hover-color);
+    background-color: var(--courses-card-hover-color);
+}

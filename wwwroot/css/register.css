@@ -1,8 +1,10 @@
+body {
+    background-image: url('/images/goats1.jpg');
+}
+
 .form-container {
-    max-width: 500px;
+    width: 400px;
     margin: auto;
-    border: var(--primary-text-color) solid 1px;
-    border-radius: 1rem;
 }
 
 form {
@@ -13,23 +15,6 @@ form {
     width: 100%;
 }
 
-.form-field {
-    display: flex;
-    justify-content: space-between;
-}
-
 input {
     width: 300px;
-}
-
-button {
-    padding: 0.2rem 1rem;
-    margin: auto;
-    border-radius: 1rem;
-}
-button:hover {
-    background-color: green;
-}
-button:active {
-    background-color: yellow;
 }

@@ -1,24 +1,13 @@
-.details-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
-    padding: 1rem;
-    max-width: 600px;
-    border: 1px solid var(--table-outer-border-color);
-    border-radius: 2rem;
-    background-color: var(--table-background-color);
+body {
+    background-image: url('/images/goat3.jpg');
 }
 
-button {
-    color: var(--primary-text-color);
-    background-color: var(--table-stripe1-color);
-    margin-top: 1rem;
-    padding: 1rem;
-    border: 1px solid var(--table-outer-border-color);
-    border-radius: 2rem;
+.textbox {
+    width: 600px;
 }
-button:hover {
-    color: var(--primary-text-color);
-    background-color: var(--courses-card-hover-color);
+
+.current-user-message {
+    text-align: center;
+    text-shadow: 1px 1px 5px black;
+    margin-bottom: 1rem;
 }
