@@ -5,3 +5,7 @@
 .gallery-card {
     margin-bottom: 1rem;;
 }
+
+.gallery-card a:hover {
+    color: var(--details-link-hover-color);
+}

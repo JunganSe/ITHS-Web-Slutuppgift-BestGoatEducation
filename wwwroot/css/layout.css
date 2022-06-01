@@ -12,7 +12,7 @@ body {
     font-family: sans-serif;
     color: var(--primary-text-color);
     background-color: var(--primary-background-color);
-    background-image: linear-gradient(rgba(100, 0, 0, 0.5), rgba(0, 100, 0, 0.5));
+    background-image: linear-gradient(rgba(100, 0, 0, 0.5), rgba(60, 0, 0, 0.5));
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;

@@ -53,3 +53,6 @@
 .details-links {
     font-size: 2rem;
 }
+.details-links a:hover {
+    color: var(--details-link-hover-color);
+}
