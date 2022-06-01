@@ -4,12 +4,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/layout.css">
     @RenderSection("styles", false)
-    <title>@ViewData["Title"] - Westcoast Education Admin App</title>
+    <title>@ViewData["Title"] - BestGoat Education Admin App</title>
 </head>
 
 <body>
     <header>
+        <nav class="navbar">
+            <h1>BestGoat Education <span>Admin Portal</span></h1>
+            <ul>
+                <li><a asp-page="/Index">Home</a></li>
+                <li><a asp-page="/Courses">Courses</a></li>
+                <li><a asp-page="/Students">Students</a></li>
+                <li><a asp-page="/Teachers">Teachers</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
