@@ -19,6 +19,7 @@
 .course-summary th {
     padding: 0.2rem 0.5rem;
     text-align: end;
+    vertical-align: top;
     border-right: 1px solid var(--table-inner-border-color);
     border-top: 1px solid var(--table-inner-border-color);
 }

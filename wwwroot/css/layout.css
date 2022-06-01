@@ -19,13 +19,28 @@ body {
     background-position-y: var(--navbar-height);
 }
 
-/* Navbar */
+main {
+    position: relative;
+    top: var(--navbar-height);
+}
+
+main h1 {
+    text-align: center;
+    margin: 1rem;
+    text-shadow: 1px 1px 5px black;
+}
+
+
+
 .navbar {
-    /* position: fixed; */
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--navbar-background-color);
+    background-image: linear-gradient(rgba(0, 80, 0, 0.3), rgba(0, 0, 0, 0.3));
     width: 100%;
     height: var(--navbar-height);
     z-index: 999;
@@ -51,15 +66,4 @@ body {
 .navbar a:hover {
     background-color: var(--navbar-text-color);
     color: var(--navbar-background-color);
-}
-
-main {
-    /* position: fixed; */
-    top: var(--navbar-height);
-}
-
-main h1 {
-    text-align: center;
-    margin: 1rem;
-    text-shadow: 1px 1px 5px black;
 }
