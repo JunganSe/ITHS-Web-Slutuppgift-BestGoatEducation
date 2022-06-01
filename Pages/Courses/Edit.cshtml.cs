@@ -26,7 +26,7 @@ public class Edit : PageModel
     public async Task OnGetAsync(int id)
     {
         var httpClient = new HttpClient();
-        
+
         string courseUrl = $"{_apiUrl}/Course/{id}";
         var courseModel = await httpClient.GetFromJsonAsync<CourseViewModel>(courseUrl) ?? new CourseViewModel();
         UpdateCourseModel = _mapper.Map<UpdateCourseViewModel>(courseModel);
@@ -34,17 +34,17 @@ public class Edit : PageModel
         string categoryUrl = $"{_apiUrl}/Category";
         CategoryModels = await httpClient.GetFromJsonAsync<List<CategoryViewModel>>(categoryUrl) ?? new List<CategoryViewModel>();
     }
-    
+
     public async Task OnPostAsync()
     {
         var httpClient = new HttpClient();
         string url = $"{_apiUrl}/Course";
-        
+
         var response = await httpClient.PutAsJsonAsync(url, UpdateCourseModel);
         if (!response.IsSuccessStatusCode)
         {
-            throw new Exception("Failed to update course");
+            Response.Redirect("/Courses");
         }
-        throw new Exception("Successfully updated course");
+        throw new Exception("Failed to update course");
     }
 }
