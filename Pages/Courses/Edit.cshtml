@@ -1,0 +1,55 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Edit
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <form method="post">
+        <input asp-for="UpdateCourseModel!.Id" type="hidden">
+        <div>
+            <label asp-for="UpdateCourseModel!.Name"></label>
+            <input asp-for="UpdateCourseModel!.Name">
+        </div>
+        <div>
+            <label for="categorySelect">Category</label>
+            <select asp-for="UpdateCourseModel!.CategoryId" id="categorySelect">
+                @foreach (var category in Model.CategoryModels!)
+                {
+                    if (category.Id == Model.UpdateCourseModel!.CategoryId)
+                    {
+                        <option value ="@category.Id" selected>@category.Name</option>
+                    }
+                    else
+                    {
+                        <option value ="@category.Id">@category.Name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div>
+            <label asp-for="UpdateCourseModel!.Summary"></label>
+            <textarea asp-for="UpdateCourseModel!.Summary" rows="5" cols="30"></textarea>
+        </div>
+        <div>
+            <label asp-for="UpdateCourseModel!.Description"></label>
+            <textarea asp-for="UpdateCourseModel!.Description" rows="10" cols="30"></textarea>
+        </div>
+        <div>
+            <label asp-for="UpdateCourseModel!.Days"></label>
+            <input asp-for="UpdateCourseModel!.Days">
+        </div>
+        <div>
+            <label asp-for="UpdateCourseModel!.Hours"></label>
+            <input asp-for="UpdateCourseModel!.Hours">
+        </div>
+        <div>
+            <label asp-for="UpdateCourseModel!.Code"></label>
+            <input asp-for="UpdateCourseModel!.Code">
+        </div>
+        
+        <button type="submit">Update</button>
+    </form>
+</div>
