@@ -32,6 +32,7 @@ public class AutoMapperProfiles : AutoMapper.Profile
             .ForMember(
                 dest => dest.CategoryName,
                 options => options.MapFrom(src => src.Category!.Name));
+        CreateMap<PutCourseViewModel, Course>();
         
         CreateMap<PostStudentCourseViewModel, Student_Course>();
         CreateMap<Student_Course, StudentCourseViewModel>();

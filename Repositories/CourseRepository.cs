@@ -62,6 +62,15 @@ public class CourseRepository : ICourseRepository
     {
         await _context.Courses.AddAsync(course);
     }
+    public void UpdateCourse(Course course)
+    {
+        _context.Courses.Update(course);
+    }
+    
+    public async Task DeleteCourseAsync(int id)
+    {
+        
+    }
 
 
 

@@ -77,13 +77,32 @@ public class CourseController : ControllerBase
 
     // POST: api/Course
     [HttpPost]
-    public async Task<ActionResult> CreateCourseAsync(PostCourseViewModel model)
+    public async Task<ActionResult> CreateCourseAsync(PostCourseViewModel postModel)
     {
-        var course = _mapper.Map<Course>(model);
+        var course = _mapper.Map<Course>(postModel);
         await _repo.CreateCourseAsync(course);
 
         return (await _repo.SaveAllAsync())
             ? StatusCode(201) // Created
             : StatusCode(500, "Fail: Create course"); // Internal server error
+    }
+    
+    // PUT: api/Course
+    [HttpPut]
+    public async Task<ActionResult> UpdateCourseAsync(PutCourseViewModel putModel)
+    {
+        var course = await _repo.GetCourseAsync(putModel.Id);
+        if (course == null)
+            return NotFound("Fail: Find course to update"); // 404
+        
+        // TODO: Kontrollera kategori.
+        
+        _mapper.Map<PutCourseViewModel, Course>(putModel, course);
+        
+        _repo.UpdateCourse(course);
+
+        return (await _repo.SaveAllAsync())
+            ? NoContent() // 204
+            : StatusCode(500, "Fail: Update course"); // Internal server error
     }
 }
