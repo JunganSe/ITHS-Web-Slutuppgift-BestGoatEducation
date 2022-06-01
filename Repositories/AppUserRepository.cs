@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WestcoastEducationApi.Data;
 using WestcoastEducationApi.Interfaces;
@@ -8,10 +9,14 @@ namespace WestcoastEducationApi.Repositories;
 public class AppUserRepository : IAppUserRepository
 {
     private readonly Context _context;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     
-    public AppUserRepository(Context context)
+    public AppUserRepository(Context context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
+        _userManager = userManager;
+        _roleManager = roleManager;
     }
 
 
@@ -60,9 +65,18 @@ public class AppUserRepository : IAppUserRepository
             .ToListAsync();
     }
 
-    public async Task CreateAppUserAsync(AppUser appUser)
+    public async Task<bool> CreateAppUserAsync(AppUser appUser)
     {
-        await _context.AppUsers.AddAsync(appUser);
+        var result = await _userManager.CreateAsync(appUser);
+        return result.Succeeded;
+    }
+    
+    public async Task AssignRoleAsync(AppUser appUser, string role)
+    {
+        if (await _roleManager.RoleExistsAsync(role))
+        {
+            await _userManager.AddToRoleAsync(appUser, role);
+        }
     }
 
 

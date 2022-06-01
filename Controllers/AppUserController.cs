@@ -80,9 +80,14 @@ public class AppUserController : ControllerBase
     public async Task<ActionResult> CreateAppUserAsync(PostAppUserViewModel model)
     {
         var appUser = _mapper.Map<AppUser>(model);
-        await _repo.CreateAppUserAsync(appUser);
+        appUser.UserName = appUser.Email;
+        bool createSuccess = await _repo.CreateAppUserAsync(appUser);
+        if (!string.IsNullOrEmpty(model.Role))
+        {
+            await _repo.AssignRoleAsync(appUser, model.Role);
+        }
 
-        return (await _repo.SaveAllAsync())
+        return (createSuccess)
             ? StatusCode(201, appUser.Id) // Created
             : StatusCode(500, "Fail: Create appUser"); // Internal server error
     }
