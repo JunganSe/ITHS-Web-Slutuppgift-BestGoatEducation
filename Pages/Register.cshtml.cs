@@ -4,16 +4,14 @@ using WestcoastEducationStudentApp.ViewModels;
 
 namespace WestcoastEducationStudentApp.Pages
 {
+    [BindProperties]
     public class Register : PageModel
     {
         private readonly IConfiguration _config;
         private readonly string _apiUrl;
 
-        [BindProperty]
         public PostAppUserViewModel UserModel { get; set; } = new();
-        [BindProperty]
         public PostAddressViewModel AddressModel { get; set; } = new();
-        [BindProperty]
         public string? Message { get; set; }
 
         public Register(IConfiguration config)
@@ -39,6 +37,7 @@ namespace WestcoastEducationStudentApp.Pages
             }
 
             UserModel.AddressId = int.Parse(await response.Content.ReadAsStringAsync());
+            UserModel.Role = "Student";
             string userUrl = $"{_apiUrl}/AppUser";
             response = await httpClient.PostAsJsonAsync(userUrl, UserModel);
             if (!response.IsSuccessStatusCode)
