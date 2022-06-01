@@ -12,6 +12,7 @@ body {
     font-family: sans-serif;
     color: var(--primary-text-color);
     background-color: var(--primary-background-color);
+    background-image: linear-gradient(rgba(100, 0, 0, 0.5), rgba(0, 100, 0, 0.5));
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -28,6 +29,11 @@ main h1 {
     text-align: center;
     margin: 1rem;
     text-shadow: 1px 1px 5px black;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 

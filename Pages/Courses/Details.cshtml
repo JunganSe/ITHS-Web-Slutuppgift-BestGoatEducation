@@ -1,0 +1,43 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Details
+@{
+    ViewData["Title"] = "Details";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/details.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="details">
+    <div>
+        <h2>@Model.CourseModel!.Name</h2>
+        <table>
+            <tr>
+                <th>Summary:</th>
+                <td>@Model.CourseModel.Summary</td>
+            </tr>
+            <tr>
+                <th>Category:</th>
+                <td>@Model.CourseModel.CategoryName</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>@Model.CourseModel.Description</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>@Model.CourseModel.Hours hours over @Model.CourseModel.Days days</td>
+            </tr>
+            <tr>
+                <th class="table-bottom-left">Code:</th>
+                <td class="table-bottom-right">@Model.CourseModel.Code</td>
+            </tr>
+        </table>
+    </div>
+    <div class="details-links">
+        <a asp-page="" asp-route-id="@Model.CourseModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="" asp-route-id="@Model.CourseModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+    </div>
+</div>
