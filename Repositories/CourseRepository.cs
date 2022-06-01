@@ -67,9 +67,9 @@ public class CourseRepository : ICourseRepository
         _context.Courses.Update(course);
     }
     
-    public async Task DeleteCourseAsync(int id)
+    public void DeleteCourse(Course course)
     {
-        
+        _context.Courses.Remove(course);
     }
 
 

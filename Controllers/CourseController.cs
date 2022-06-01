@@ -105,4 +105,19 @@ public class CourseController : ControllerBase
             ? NoContent() // 204
             : StatusCode(500, "Fail: Update course"); // Internal server error
     }
+    
+    // DELETE: api/Course/<id>
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteCourseAsync(int id)
+    {
+        var course = await _repo.GetCourseAsync(id);
+        if (course == null)
+            return NotFound("Fail: Find course to delete"); // 404
+
+        _repo.DeleteCourse(course);
+
+        return (await _repo.SaveAllAsync())
+                ? NoContent() // 204
+                : StatusCode(500, "Fail: Delete course"); // Internal server error.
+    }
 }
