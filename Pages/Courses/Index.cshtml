@@ -1,0 +1,37 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Index
+@{
+    ViewData["Title"] = "Courses";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/list-gallery.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="gallery-container">
+    @foreach (var course in Model.CourseModels)
+    {
+        <div class="gallery-card">
+            <h3>@course.Name</h3>
+            <table>
+                <tr>
+                    <th>Category:</th>
+                    <td>@course.CategoryName</td>
+                </tr>
+                <tr>
+                    <th>Summary:</th>
+                    <td>@course.Summary</td>
+                </tr>
+                <tr>
+                    <th>
+                        <a asp-page="" asp-route-id="@course.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                        <a asp-page="" asp-route-id="@course.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a asp-page="" asp-route-id="@course.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
