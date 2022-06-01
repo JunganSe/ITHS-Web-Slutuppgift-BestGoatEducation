@@ -37,7 +37,7 @@
         </table>
     </div>
     <div class="details-links">
-        <a asp-page="" asp-route-id="@Model.CourseModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a asp-page="" asp-route-id="@Model.CourseModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+        <a asp-page="/Courses/Edit" asp-route-id="@Model.CourseModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Courses/Delete" asp-route-id="@Model.CourseModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
     </div>
 </div>
