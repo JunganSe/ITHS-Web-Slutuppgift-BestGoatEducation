@@ -35,6 +35,7 @@ public class Delete : PageModel
         if (response.IsSuccessStatusCode)
         {
             Response.Redirect("/Courses");
+            return;
         }
         throw new Exception("Failed to delete course");
     }
