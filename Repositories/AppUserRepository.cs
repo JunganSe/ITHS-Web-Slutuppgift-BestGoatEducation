@@ -28,6 +28,16 @@ public class AppUserRepository : IAppUserRepository
             .ToListAsync();
     }
 
+    public async Task<List<AppUser>> GetAllStudentsAsync()
+    {
+        return (await _userManager.GetUsersInRoleAsync("Student") as List<AppUser>)!;
+    }
+
+    public async Task<List<AppUser>> GetAllTeachersAsync()
+    {
+        return (await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser>)!;
+    }
+
     public async Task<AppUser?> GetAppUserAsync(string id)
     {
         return await _context.AppUsers

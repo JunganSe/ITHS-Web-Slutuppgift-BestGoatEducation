@@ -30,6 +30,26 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
+    
+    // GET: api/AppUser/Students
+    [HttpGet("Students")]
+    public async Task<ActionResult<List<AppUserViewModel>>> GetAllStudentsAsync()
+    {
+        var appUsers = await _repo.GetAllStudentsAsync();
+        var models = _mapper.Map<List<AppUserViewModel>>(appUsers);
+
+        return Ok(models); // 200
+    }
+
+    // GET: api/AppUser/Teachers
+    [HttpGet("Teachers")]
+    public async Task<ActionResult<List<AppUserViewModel>>> GetAllTeachersAsync()
+    {
+        var appUsers = await _repo.GetAllTeachersAsync();
+        var models = _mapper.Map<List<AppUserViewModel>>(appUsers);
+
+        return Ok(models); // 200
+    }
 
     // GET: api/AppUser/<id>
     [HttpGet("{id}")]
