@@ -83,7 +83,7 @@ public class CourseController : ControllerBase
         await _repo.CreateCourseAsync(course);
 
         return (await _repo.SaveAllAsync())
-            ? StatusCode(201) // Created
+            ? StatusCode(201, course.Id) // Created
             : StatusCode(500, "Fail: Create course"); // Internal server error
     }
     
