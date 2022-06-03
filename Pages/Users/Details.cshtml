@@ -1,0 +1,48 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Details
+@{
+    ViewData["Title"] = "User details";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/details.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="details">
+    <div>
+        <h2>@Model.UserModel!.FirstName @Model.UserModel.LastName</h2>
+        <table>
+            <tr>
+                <th>Role:</th>
+                <td>
+                    @{
+                        string roles = "";
+                        foreach (var roleName in Model.RoleNames)
+                            roles += roleName + ", ";
+                        if (roles.Length > 2)
+                            roles = roles.Remove(roles.Length - 2);
+                    }
+                    @roles
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>@Model.UserModel.Email</td>
+            </tr>
+            <tr>
+                <th>Phone number:</th>
+                <td>@Model.UserModel.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th class="table-bottom-left">Address:</th>
+                <td class="table-bottom-right">@Model.UserModel.AddressName</td>
+            </tr>
+        </table>
+    </div>
+    <div class="details-links">
+        <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+    </div>
+</div>
