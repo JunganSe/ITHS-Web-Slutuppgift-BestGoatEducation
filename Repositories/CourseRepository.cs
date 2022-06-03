@@ -20,6 +20,7 @@ public class CourseRepository : ICourseRepository
     {
         return await _context.Courses
             .Include(c => c.Category)
+            .OrderBy(c => c.CategoryId)
             .ToListAsync();
     }
 
@@ -45,6 +46,7 @@ public class CourseRepository : ICourseRepository
                 .ThenInclude(c => c!.Category)
             .Where(cs => cs.StudentId == studentId)
             .Select(cs => cs.Course!)
+            .OrderBy(c => c.CategoryId)
             .ToListAsync();
     }
 
@@ -55,6 +57,7 @@ public class CourseRepository : ICourseRepository
                 .ThenInclude(c => c!.Category)
             .Where(cs => cs.TeacherId == teacherId)
             .Select(cs => cs.Course!)
+            .OrderBy(c => c.CategoryId)
             .ToListAsync();
     }
 
