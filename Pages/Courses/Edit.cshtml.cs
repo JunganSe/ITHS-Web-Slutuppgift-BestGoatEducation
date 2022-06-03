@@ -43,7 +43,7 @@ public class Edit : PageModel
         var response = await httpClient.PutAsJsonAsync(url, UpdateCourseModel);
         if (response.IsSuccessStatusCode)
         {
-            Response.Redirect("/Courses");
+            Response.Redirect($"/Courses/Details?id={UpdateCourseModel!.Id}");
             return;
         }
         throw new Exception("Failed to update course");
