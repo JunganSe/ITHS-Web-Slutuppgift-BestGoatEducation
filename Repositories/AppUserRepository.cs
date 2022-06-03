@@ -30,12 +30,12 @@ public class AppUserRepository : IAppUserRepository
 
     public async Task<List<AppUser>> GetAllStudentsAsync()
     {
-        return (await _userManager.GetUsersInRoleAsync("Student") as List<AppUser>)!;
+        return await _userManager.GetUsersInRoleAsync("Student") as List<AppUser> ?? new List<AppUser>();
     }
 
     public async Task<List<AppUser>> GetAllTeachersAsync()
     {
-        return (await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser>)!;
+        return await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser> ?? new List<AppUser>();
     }
 
     public async Task<AppUser?> GetAppUserAsync(string id)
