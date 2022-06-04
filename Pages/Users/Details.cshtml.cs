@@ -22,9 +22,11 @@ public class Details : PageModel
     public async Task OnGetAsync(string id)
     {
         var httpClient = new HttpClient();
-        string url = $"{_apiUrl}/AppUser/{id}";
-        UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(url) ?? new AppUserViewModel();
         
-        // TODO: Hämta roller.
+        string userUrl = $"{_apiUrl}/AppUser/{id}";
+        UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(userUrl) ?? new AppUserViewModel();
+        
+        string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
+        RoleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>();
     }
 }
