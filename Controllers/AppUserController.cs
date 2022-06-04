@@ -133,7 +133,7 @@ public class AppUserController : ControllerBase
     {
         var appUser = await _repo.GetAppUserAsync(model.Id!);
         if (appUser == null)
-            return NotFound("Fail: Find appUser to delete"); // 404
+            return NotFound("Fail: Find appUser to update"); // 404
 
         _mapper.Map<PutAppUserViewModel, AppUser>(model, appUser);
         appUser.UserName = appUser.Email;
@@ -153,5 +153,17 @@ public class AppUserController : ControllerBase
 
 
 
-    // TODO: Delete
+    // DELETE: api/AppUser
+    [HttpDelete]
+    public async Task<ActionResult> DeleteAppUserAsync(DeleteAppUserViewModel model)
+    {
+        var appUser = await _repo.GetAppUserAsync(model.Id!);
+        if (appUser == null)
+            return NotFound("Fail: Find appUser to delete"); // 404
+        
+        bool deleteSuccess = await _repo.DeleteAppUserAsync(appUser);
+        return (deleteSuccess)
+            ? NoContent() // 204
+            : StatusCode(500, "Fail: Delete appUser"); // Internal server error
+    }
 }
