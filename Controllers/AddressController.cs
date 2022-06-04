@@ -2,7 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels;
+using WestcoastEducationApi.ViewModels.Addresses;
 
 namespace WestcoastEducationApi.Controllers;
 

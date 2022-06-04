@@ -1,7 +1,8 @@
-namespace WestcoastEducationApi.ViewModels;
+namespace WestcoastEducationApi.ViewModels.Addresses;
 
-public class PostAddressViewModel
+public class AddressViewModel
 {
+    public int Id { get; set; }
     public string? Street { get; set; }
     public string? StreetNumber { get; set; }
     public string? PostalCode { get; set; }

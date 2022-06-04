@@ -1,4 +1,4 @@
-namespace WestcoastEducationApi.ViewModels;
+namespace WestcoastEducationApi.ViewModels.Courses;
 
 public class PutCourseViewModel
 {

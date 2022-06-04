@@ -1,5 +1,12 @@
 using WestcoastEducationApi.Models;
-using WestcoastEducationApi.ViewModels;
+using WestcoastEducationApi.ViewModels.Addresses;
+using WestcoastEducationApi.ViewModels.AppUsers;
+using WestcoastEducationApi.ViewModels.Categories;
+using WestcoastEducationApi.ViewModels.Competences;
+using WestcoastEducationApi.ViewModels.Courses;
+using WestcoastEducationApi.ViewModels.StudentCourses;
+using WestcoastEducationApi.ViewModels.TeacherCompetences;
+using WestcoastEducationApi.ViewModels.TeacherCourses;
 
 namespace WestcoastEducationApi.Helpers;
 

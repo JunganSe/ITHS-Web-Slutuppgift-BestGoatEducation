@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WestcoastEducationApi.Interfaces;
 using WestcoastEducationApi.Models;
 using WestcoastEducationApi.ViewModels;
+using WestcoastEducationApi.ViewModels.Competences;
 
 namespace WestcoastEducationApi.Controllers;
 
