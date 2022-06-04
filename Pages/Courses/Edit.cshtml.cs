@@ -9,16 +9,16 @@ namespace WestcoastEducationAdminApp.Pages.Courses;
 [BindProperties]
 public class Edit : PageModel
 {
-    private readonly IMapper _mapper;
     private readonly string _apiUrl;
+    private readonly IMapper _mapper;
 
     public EditCourseViewModel? CourseModel { get; set; }
     public List<CategoryViewModel>? CategoryModels { get; set; }
 
     public Edit(IConfiguration config, IMapper mapper)
     {
-        _mapper = mapper;
         _apiUrl = config.GetValue<string>("ApiUrl");
+        _mapper = mapper;
     }
 
     public async Task OnGetAsync(int id)
