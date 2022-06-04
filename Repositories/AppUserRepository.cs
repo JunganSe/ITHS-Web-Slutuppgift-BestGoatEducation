@@ -30,12 +30,22 @@ public class AppUserRepository : IAppUserRepository
 
     public async Task<List<AppUser>> GetAllStudentsAsync()
     {
-        return await _userManager.GetUsersInRoleAsync("Student") as List<AppUser> ?? new List<AppUser>();
+        var students = await _userManager.GetUsersInRoleAsync("Student") as List<AppUser> ?? new List<AppUser>();
+        var ids = students.Select(s => s.Id);
+        return await _context.AppUsers
+            .Where(s => ids.Contains(s.Id))
+            .Include(s => s.Address)
+            .ToListAsync();
     }
 
     public async Task<List<AppUser>> GetAllTeachersAsync()
     {
-        return await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser> ?? new List<AppUser>();
+        var teachers = await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser> ?? new List<AppUser>();
+        var ids = teachers.Select(s => s.Id);
+        return await _context.AppUsers
+            .Where(s => ids.Contains(s.Id))
+            .Include(s => s.Address)
+            .ToListAsync();
     }
 
     public async Task<AppUser?> GetAppUserAsync(string id)
