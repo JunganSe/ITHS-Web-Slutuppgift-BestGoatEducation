@@ -89,6 +89,11 @@ public class AppUserRepository : IAppUserRepository
         }
     }
 
+    public async Task<List<string>> GetRoleNamesByAppUserAsync(AppUser appUser)
+    {
+        return await _userManager.GetRolesAsync(appUser) as List<string> ?? new List<string>();
+    }
+
 
 
     public async Task<bool> SaveAllAsync()

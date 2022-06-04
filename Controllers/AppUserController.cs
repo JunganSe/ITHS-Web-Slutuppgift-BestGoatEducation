@@ -92,6 +92,18 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
+    
+    // GET: api/AppUser/RoleNamesByAppUser/<userId>
+    [HttpGet("RoleNamesByAppUser/{userId}")]
+    public async Task<ActionResult<List<string>>> GetRoleNamesByAppUserAsync(string userId)
+    {
+        var appUser = await _repo.GetAppUserAsync(userId);
+        if (appUser == null)
+            return NotFound($"Fail: Find appUser with id {userId}");
+        
+        var roleNames = await  _repo.GetRoleNamesByAppUserAsync(appUser);
+        return Ok(roleNames);
+    }
 
 
 

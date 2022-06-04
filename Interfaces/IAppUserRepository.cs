@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using WestcoastEducationApi.Models;
 
 namespace WestcoastEducationApi.Interfaces;
@@ -13,5 +14,6 @@ public interface IAppUserRepository
     public Task<List<AppUser>> GetTeachersByCompetenceAsync(int courseId);
     public Task<bool> CreateAppUserAsync(AppUser appUser);
     public Task AssignRoleAsync(AppUser appUser, string role);
+    public Task<List<string>> GetRoleNamesByAppUserAsync(AppUser appUser);
     public Task<bool> SaveAllAsync();
 }
