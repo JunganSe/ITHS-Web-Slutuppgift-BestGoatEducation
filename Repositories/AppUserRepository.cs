@@ -24,7 +24,7 @@ public class AppUserRepository : IAppUserRepository
     public async Task<List<AppUser>> GetAllAppUsersAsync()
     {
         return await _context.AppUsers
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .Include(a => a.Address)
             .ToListAsync();
     }
@@ -35,7 +35,7 @@ public class AppUserRepository : IAppUserRepository
         var ids = students.Select(a => a.Id);
         return await _context.AppUsers
             .Where(a => ids.Contains(a.Id))
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .Include(a => a.Address)
             .ToListAsync();
     }
@@ -46,7 +46,7 @@ public class AppUserRepository : IAppUserRepository
         var ids = teachers.Select(a => a.Id);
         return await _context.AppUsers
             .Where(a => ids.Contains(a.Id))
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .Include(a => a.Address)
             .ToListAsync();
     }
@@ -54,7 +54,7 @@ public class AppUserRepository : IAppUserRepository
     public async Task<AppUser?> GetAppUserAsync(string id)
     {
         return await _context.AppUsers
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .Include(a => a.Address)
             .FirstOrDefaultAsync(a => a.Id == id);
     }
@@ -66,7 +66,7 @@ public class AppUserRepository : IAppUserRepository
             .Include(sc => sc.Student)
                 .ThenInclude(s => s!.Address)
             .Select(sc => sc.Student!)
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .ToListAsync();
     }
 
@@ -77,7 +77,7 @@ public class AppUserRepository : IAppUserRepository
             .Include(sc => sc.Teacher)
                 .ThenInclude(a => a!.Address)
             .Select(sc => sc.Teacher!)
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .ToListAsync();
     }
 
@@ -88,7 +88,7 @@ public class AppUserRepository : IAppUserRepository
             .Include(sc => sc.Teacher)
                 .ThenInclude(a => a!.Address)
             .Select(sc => sc.Teacher!)
-            .OrderBy(a => a.LastName)
+            .OrderBy(a => a.LastName!.ToLower())
             .ToListAsync();
     }
     
