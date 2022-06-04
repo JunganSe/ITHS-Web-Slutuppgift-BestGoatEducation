@@ -6,6 +6,7 @@
     
     --primary-text-color: #ddd;
     --primary-background-color: #333;
+    --link-hover-color: crimson;
     
     --details-border-color: crimson;
     --details-background-color: rgba(50, 50, 50, 0.7);
@@ -14,5 +15,4 @@
     --details-table-inner-border-color: #111;
     --details-table-stripe1-color: #333;
     --details-table-stripe2-color: #3a3a3a;
-    --details-link-hover-color: crimson;
 }
