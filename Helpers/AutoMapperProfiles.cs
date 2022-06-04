@@ -33,6 +33,7 @@ public class AutoMapperProfiles : AutoMapper.Profile
                     src.Address.PostalCode, " ",
                     src.Address.City, ", ",
                     src.Address.Country)));
+        CreateMap<PutAppUserViewModel, AppUser>();
         
         CreateMap<PostCourseViewModel, Course>();
         CreateMap<Course, CourseViewModel>()

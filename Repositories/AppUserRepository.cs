@@ -74,19 +74,19 @@ public class AppUserRepository : IAppUserRepository
             .Select(sc => sc.Teacher!)
             .ToListAsync();
     }
-
-    public async Task<bool> CreateAppUserAsync(AppUser appUser)
-    {
-        var result = await _userManager.CreateAsync(appUser);
-        return result.Succeeded;
-    }
     
     public async Task AssignRoleAsync(AppUser appUser, string role)
     {
-        if (await _roleManager.RoleExistsAsync(role))
+        if (await _roleManager.RoleExistsAsync(role) && !(await _userManager.IsInRoleAsync(appUser, role)))
         {
             await _userManager.AddToRoleAsync(appUser, role);
         }
+    }
+
+    public async Task ClearRolesAsync(AppUser appUser)
+    {
+        var roles = await _userManager.GetRolesAsync(appUser);
+        await _userManager.RemoveFromRolesAsync(appUser, roles);
     }
 
     public async Task<List<string>> GetRoleNamesByAppUserAsync(AppUser appUser)
@@ -94,10 +94,21 @@ public class AppUserRepository : IAppUserRepository
         return await _userManager.GetRolesAsync(appUser) as List<string> ?? new List<string>();
     }
 
-
-
-    public async Task<bool> SaveAllAsync()
+    public async Task<bool> CreateAppUserAsync(AppUser appUser)
     {
-        return (await _context.SaveChangesAsync() > 0);
+        var result = await _userManager.CreateAsync(appUser);
+        return result.Succeeded;
+    }
+
+    public async Task<bool> UpdateAppUserAsync(AppUser appUser)
+    {
+        var result = await _userManager.UpdateAsync(appUser);
+        return result.Succeeded;
+    }
+
+    public async Task<bool> DeleteAppUserAsync(AppUser appUser)
+    {
+        var result = await _userManager.DeleteAsync(appUser);
+        return result.Succeeded;
     }
 }

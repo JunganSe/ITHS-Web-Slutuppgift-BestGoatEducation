@@ -31,7 +31,7 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
-    
+
     // GET: api/AppUser/Students
     [HttpGet("Students")]
     public async Task<ActionResult<List<AppUserViewModel>>> GetAllStudentsAsync()
@@ -73,7 +73,7 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
-    
+
     // GET: api/AppUser/TeachersByCourse/<id>
     [HttpGet("TeachersByCourse/{courseId}")]
     public async Task<ActionResult<List<AppUser>>> GetTeachersByCourseAsync(int courseId)
@@ -83,7 +83,7 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
-    
+
     // GET: api/AppUser/TeachersByCompetence/<id>
     [HttpGet("TeachersByCompetence/{competenceId}")]
     public async Task<ActionResult<List<AppUser>>> GetTeachersByCompetenceAsync(int competenceId)
@@ -93,7 +93,7 @@ public class AppUserController : ControllerBase
 
         return Ok(models); // 200
     }
-    
+
     // GET: api/AppUser/RoleNamesByAppUser/<userId>
     [HttpGet("RoleNamesByAppUser/{userId}")]
     public async Task<ActionResult<List<string>>> GetRoleNamesByAppUserAsync(string userId)
@@ -101,8 +101,8 @@ public class AppUserController : ControllerBase
         var appUser = await _repo.GetAppUserAsync(userId);
         if (appUser == null)
             return NotFound($"Fail: Find appUser with id {userId}");
-        
-        var roleNames = await  _repo.GetRoleNamesByAppUserAsync(appUser);
+
+        var roleNames = await _repo.GetRoleNamesByAppUserAsync(appUser);
         return Ok(roleNames);
     }
 
@@ -124,4 +124,34 @@ public class AppUserController : ControllerBase
             ? StatusCode(201, appUser.Id) // Created
             : StatusCode(500, "Fail: Create appUser"); // Internal server error
     }
+
+
+
+    // PUT: api/AppUser
+    [HttpPut]
+    public async Task<ActionResult> UpdateAppUserAsync(PutAppUserViewModel model)
+    {
+        var appUser = await _repo.GetAppUserAsync(model.Id!);
+        if (appUser == null)
+            return NotFound("Fail: Find appUser to delete"); // 404
+
+        _mapper.Map<PutAppUserViewModel, AppUser>(model, appUser);
+        appUser.UserName = appUser.Email;
+        
+        bool putSuccess = await _repo.UpdateAppUserAsync(appUser);
+        if (putSuccess)
+        {
+            await _repo.ClearRolesAsync(appUser);
+            await _repo.AssignRoleAsync(appUser, model.Role!);
+        }
+
+        return (putSuccess)
+            ? NoContent() // 204
+            : StatusCode(500, "Fail: Update appUser"); // Internal server error
+    }
+
+
+
+
+    // TODO: Delete
 }
