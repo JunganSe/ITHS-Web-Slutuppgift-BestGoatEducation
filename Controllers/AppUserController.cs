@@ -115,9 +115,9 @@ public class AppUserController : ControllerBase
         var appUser = _mapper.Map<AppUser>(model);
         appUser.UserName = appUser.Email;
         bool createSuccess = await _repo.CreateAppUserAsync(appUser);
-        if (createSuccess && !string.IsNullOrEmpty(model.Role))
+        if (createSuccess && !string.IsNullOrEmpty(model.RoleName))
         {
-            await _repo.AssignRoleAsync(appUser, model.Role);
+            await _repo.AssignRoleAsync(appUser, model.RoleName);
         }
 
         return (createSuccess)
@@ -142,7 +142,7 @@ public class AppUserController : ControllerBase
         if (putSuccess)
         {
             await _repo.ClearRolesAsync(appUser);
-            await _repo.AssignRoleAsync(appUser, model.Role!);
+            await _repo.AssignRoleAsync(appUser, model.RoleName!);
         }
 
         return (putSuccess)
