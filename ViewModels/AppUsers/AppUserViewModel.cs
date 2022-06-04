@@ -9,4 +9,5 @@ public class AppUserViewModel
     public string? LastName { get; set; }
     public string? AddressName { get; set; }
     public int AddressId { get; set; }
+    public List<string>? RoleNames { get; set; }
 }

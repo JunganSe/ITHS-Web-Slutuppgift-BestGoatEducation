@@ -10,7 +10,6 @@ public class Details : PageModel
     private readonly string _apiUrl;
 
     public AppUserViewModel? UserModel { get; set; }
-    public List<string> RoleNames { get; set; } = new();
 
     public Details(IConfiguration config)
     {
@@ -25,6 +24,6 @@ public class Details : PageModel
         UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(userUrl) ?? new AppUserViewModel();
         
         string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
-        RoleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>();
+        UserModel.RoleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>();
     }
 }
