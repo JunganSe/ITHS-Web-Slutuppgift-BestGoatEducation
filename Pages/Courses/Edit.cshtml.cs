@@ -13,7 +13,7 @@ public class Edit : PageModel
     private readonly IMapper _mapper;
     private readonly string _apiUrl;
 
-    public UpdateCourseViewModel? UpdateCourseModel { get; set; }
+    public EditCourseViewModel? CourseModel { get; set; }
     public List<CategoryViewModel>? CategoryModels { get; set; }
 
     public Edit(IConfiguration config, IMapper mapper)
@@ -29,7 +29,7 @@ public class Edit : PageModel
 
         string courseUrl = $"{_apiUrl}/Course/{id}";
         var courseModel = await httpClient.GetFromJsonAsync<CourseViewModel>(courseUrl) ?? new CourseViewModel();
-        UpdateCourseModel = _mapper.Map<UpdateCourseViewModel>(courseModel);
+        CourseModel = _mapper.Map<EditCourseViewModel>(courseModel);
 
         string categoryUrl = $"{_apiUrl}/Category";
         CategoryModels = await httpClient.GetFromJsonAsync<List<CategoryViewModel>>(categoryUrl) ?? new List<CategoryViewModel>();
@@ -40,10 +40,10 @@ public class Edit : PageModel
         var httpClient = new HttpClient();
         string url = $"{_apiUrl}/Course";
 
-        var response = await httpClient.PutAsJsonAsync(url, UpdateCourseModel);
+        var response = await httpClient.PutAsJsonAsync(url, CourseModel);
         if (response.IsSuccessStatusCode)
         {
-            Response.Redirect($"/Courses/Details?id={UpdateCourseModel!.Id}");
+            Response.Redirect($"/Courses/Details?id={CourseModel!.Id}");
             return;
         }
         throw new Exception("Failed to update course");

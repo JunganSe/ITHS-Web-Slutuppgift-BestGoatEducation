@@ -14,10 +14,10 @@
 
 <div class="form-container textbox">
     <form method="post">
-        <input asp-for="CreateCourseModel!.Name" placeholder="Name">
+        <input asp-for="CourseModel!.Name" placeholder="Name">
         <div>
             <label for="categorySelect">Category</label>
-            <select asp-for="CreateCourseModel!.CategoryId" id="categorySelect">
+            <select asp-for="CourseModel!.CategoryId" id="categorySelect">
                 <option value="" selected disabled hidden>Please select</option>
                 @foreach (var category in Model.CategoryModels!)
                 {
@@ -25,11 +25,11 @@
                 }
             </select>
         </div>
-        <textarea asp-for="CreateCourseModel!.Summary" rows="5" cols="30" placeholder="Summary"></textarea>
-        <textarea asp-for="CreateCourseModel!.Description" rows="10" cols="30" placeholder="Description"></textarea>
-        <input asp-for="CreateCourseModel!.Hours" placeholder="Hours">
-        <input asp-for="CreateCourseModel!.Days" placeholder="Days">
-        <input asp-for="CreateCourseModel!.Code" placeholder="Code">
+        <textarea asp-for="CourseModel!.Summary" rows="5" cols="30" placeholder="Summary"></textarea>
+        <textarea asp-for="CourseModel!.Description" rows="10" cols="30" placeholder="Description"></textarea>
+        <input asp-for="CourseModel!.Hours" placeholder="Hours">
+        <input asp-for="CourseModel!.Days" placeholder="Days">
+        <input asp-for="CourseModel!.Code" placeholder="Code">
 
         <button type="submit">Create</button>
     </form>

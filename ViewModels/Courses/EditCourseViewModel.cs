@@ -1,6 +1,6 @@
 namespace WestcoastEducationAdminApp.ViewModels.Courses;
 
-public class UpdateCourseViewModel
+public class EditCourseViewModel
 {
     public int Id { get; set; }
     public string? Code { get; set; }

@@ -6,6 +6,6 @@ public class AutoMapperProfiles : AutoMapper.Profile
 {
     public AutoMapperProfiles()
     {
-        CreateMap<CourseViewModel, UpdateCourseViewModel>();
+        CreateMap<CourseViewModel, EditCourseViewModel>();
     }
 }

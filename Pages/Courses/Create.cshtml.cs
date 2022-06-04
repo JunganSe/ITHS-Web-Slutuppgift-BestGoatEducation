@@ -14,7 +14,7 @@ public class Create : PageModel
     private readonly IMapper _mapper;
     private readonly string _apiUrl;
 
-    public CreateCourseViewModel? CreateCourseModel { get; set; }
+    public CreateCourseViewModel? CourseModel { get; set; }
     public List<CategoryViewModel>? CategoryModels { get; set; }
 
     public Create(IConfiguration config, IMapper mapper)
@@ -37,7 +37,7 @@ public class Create : PageModel
         var httpClient = new HttpClient();
         string url = $"{_apiUrl}/Course";
 
-        var response = await httpClient.PostAsJsonAsync(url, CreateCourseModel);
+        var response = await httpClient.PostAsJsonAsync(url, CourseModel);
         if (response.IsSuccessStatusCode)
         {
             var courseId = int.Parse(await response.Content.ReadAsStringAsync());
