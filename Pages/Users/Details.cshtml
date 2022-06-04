@@ -19,7 +19,7 @@
                 <td>
                     @{
                         string roles = "";
-                        foreach (var roleName in Model.UserModel.RoleNames)
+                        foreach (var roleName in Model.UserModel.RoleNames!)
                             roles += roleName + ", ";
                         if (roles.Length > 2)
                             roles = roles.Remove(roles.Length - 2);
