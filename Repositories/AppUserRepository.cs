@@ -24,6 +24,7 @@ public class AppUserRepository : IAppUserRepository
     public async Task<List<AppUser>> GetAllAppUsersAsync()
     {
         return await _context.AppUsers
+            .OrderBy(a => a.LastName)
             .Include(a => a.Address)
             .ToListAsync();
     }
@@ -31,26 +32,29 @@ public class AppUserRepository : IAppUserRepository
     public async Task<List<AppUser>> GetAllStudentsAsync()
     {
         var students = await _userManager.GetUsersInRoleAsync("Student") as List<AppUser> ?? new List<AppUser>();
-        var ids = students.Select(s => s.Id);
+        var ids = students.Select(a => a.Id);
         return await _context.AppUsers
-            .Where(s => ids.Contains(s.Id))
-            .Include(s => s.Address)
+            .Where(a => ids.Contains(a.Id))
+            .OrderBy(a => a.LastName)
+            .Include(a => a.Address)
             .ToListAsync();
     }
 
     public async Task<List<AppUser>> GetAllTeachersAsync()
     {
         var teachers = await _userManager.GetUsersInRoleAsync("Teacher") as List<AppUser> ?? new List<AppUser>();
-        var ids = teachers.Select(s => s.Id);
+        var ids = teachers.Select(a => a.Id);
         return await _context.AppUsers
-            .Where(s => ids.Contains(s.Id))
-            .Include(s => s.Address)
+            .Where(a => ids.Contains(a.Id))
+            .OrderBy(a => a.LastName)
+            .Include(a => a.Address)
             .ToListAsync();
     }
 
     public async Task<AppUser?> GetAppUserAsync(string id)
     {
         return await _context.AppUsers
+            .OrderBy(a => a.LastName)
             .Include(a => a.Address)
             .FirstOrDefaultAsync(a => a.Id == id);
     }
@@ -58,30 +62,33 @@ public class AppUserRepository : IAppUserRepository
     public async Task<List<AppUser>> GetStudentsByCourseAsync(int courseId)
     {
         return await _context.Student_Courses
+            .Where(sc => sc.CourseId == courseId)
             .Include(sc => sc.Student)
                 .ThenInclude(s => s!.Address)
-            .Where(sc => sc.CourseId == courseId)
             .Select(sc => sc.Student!)
+            .OrderBy(a => a.LastName)
             .ToListAsync();
     }
 
     public async Task<List<AppUser>> GetTeachersByCourseAsync(int courseId)
     {
         return await _context.Teacher_Courses
+            .Where(sc => sc.CourseId == courseId)
             .Include(sc => sc.Teacher)
                 .ThenInclude(a => a!.Address)
-            .Where(sc => sc.CourseId == courseId)
             .Select(sc => sc.Teacher!)
+            .OrderBy(a => a.LastName)
             .ToListAsync();
     }
 
     public async Task<List<AppUser>> GetTeachersByCompetenceAsync(int competenceId)
     {
         return await _context.Teacher_Competences
+            .Where(sc => sc.CompetenceId == competenceId)
             .Include(sc => sc.Teacher)
                 .ThenInclude(a => a!.Address)
-            .Where(sc => sc.CompetenceId == competenceId)
             .Select(sc => sc.Teacher!)
+            .OrderBy(a => a.LastName)
             .ToListAsync();
     }
     
