@@ -7,15 +7,13 @@ namespace WestcoastEducationAdminApp.Pages.Courses;
 [BindProperties]
 public class Details : PageModel
 {
-    private readonly IConfiguration _config;
     private readonly string _apiUrl;
 
     public CourseViewModel? CourseModel { get; set; }
 
     public Details(IConfiguration config)
     {
-        _config = config;
-        _apiUrl = _config.GetValue<string>("ApiUrl");
+        _apiUrl = config.GetValue<string>("ApiUrl");
     }
 
     public async Task OnGetAsync(int id)

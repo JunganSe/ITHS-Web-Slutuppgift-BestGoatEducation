@@ -8,7 +8,6 @@ namespace WestcoastEducationAdminApp.Pages.Users;
 [BindProperties]
 public class Create : PageModel
 {
-    private readonly IConfiguration _config;
     private readonly string _apiUrl;
 
     public CreateAppUserViewModel UserModel { get; set; } = new();
@@ -17,8 +16,7 @@ public class Create : PageModel
     
     public Create(IConfiguration config)
     {
-        _config = config;
-        _apiUrl = _config.GetValue<string>("ApiUrl");
+        _apiUrl = config.GetValue<string>("ApiUrl");
     }
 
     public void OnGet()

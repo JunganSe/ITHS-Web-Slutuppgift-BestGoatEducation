@@ -10,18 +10,14 @@ namespace WestcoastEducationAdminApp.Pages.Courses;
 [BindProperties]
 public class Create : PageModel
 {
-    private readonly IConfiguration _config;
-    private readonly IMapper _mapper;
     private readonly string _apiUrl;
 
     public CreateCourseViewModel? CourseModel { get; set; }
     public List<CategoryViewModel>? CategoryModels { get; set; }
 
-    public Create(IConfiguration config, IMapper mapper)
+    public Create(IConfiguration config)
     {
-        _config = config;
-        _mapper = mapper;
-        _apiUrl = _config.GetValue<string>("ApiUrl");
+        _apiUrl = config.GetValue<string>("ApiUrl");
     }
 
     public async Task OnGetAsync()
