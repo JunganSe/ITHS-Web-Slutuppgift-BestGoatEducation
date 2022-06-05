@@ -94,7 +94,7 @@ public class AppUserController : ControllerBase
         return Ok(models); // 200
     }
 
-    // GET: api/AppUser/RoleNamesByAppUser/<userId>
+    // GET: api/AppUser/RoleNameByAppUser/<userId>
     [HttpGet("RoleNameByAppUser/{userId}")]
     public async Task<ActionResult<string>> GetRoleNameByAppUserAsync(string userId)
     {
