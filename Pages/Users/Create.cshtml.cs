@@ -12,7 +12,6 @@ public class Create : PageModel
 
     public CreateAppUserViewModel UserModel { get; set; } = new();
     public CreateAddressViewModel AddressModel { get; set; } = new();
-    public string? Message { get; set; }
     
     public Create(IConfiguration config)
     {
@@ -30,7 +29,7 @@ public class Create : PageModel
         var response = await httpClient.PostAsJsonAsync(addressUrl, AddressModel);
         if (!response.IsSuccessStatusCode)
         {
-            Message = "Failed to create address";
+            ViewData["Message"] = "Failed to create address";
             return;
         }
 
@@ -39,7 +38,7 @@ public class Create : PageModel
         response = await httpClient.PostAsJsonAsync(userUrl, UserModel);
         if (!response.IsSuccessStatusCode)
         {
-            Message = "Failed to create user";
+            ViewData["Message"] = "Failed to create user";
             return;
         }
 
