@@ -37,7 +37,7 @@ namespace WestcoastEducationStudentApp.Pages
             }
 
             UserModel.AddressId = int.Parse(await response.Content.ReadAsStringAsync());
-            UserModel.Role = "Student";
+            UserModel.RoleName = "Student";
             string userUrl = $"{_apiUrl}/AppUser";
             response = await httpClient.PostAsJsonAsync(userUrl, UserModel);
             if (!response.IsSuccessStatusCode)
