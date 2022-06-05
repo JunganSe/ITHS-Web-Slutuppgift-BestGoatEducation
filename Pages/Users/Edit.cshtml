@@ -1,0 +1,50 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Edit
+@{
+    ViewData["Title"] = "Edit user";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/textbox.css">
+<link rel="stylesheet" href="/css/create-form.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="form-container textbox">
+    <form method="post">
+        <input asp-for="UserModel!.Id" type="hidden">
+        <p>Personal details</p>
+        <input asp-for="UserModel!.FirstName" placeholder="First name">
+        <input asp-for="UserModel!.LastName" placeholder="Last name">
+        <input asp-for="UserModel!.Email" placeholder="Email">
+        <input asp-for="UserModel!.PhoneNumber" placeholder="Phone number">
+        <input asp-for="UserModel!.RoleName" disabled>
+        <br>
+        <label asp-for="UserModel!.AddressId">Address</label>
+        <select asp-for="UserModel!.AddressId">
+            <option value="0">New address</option>
+            @foreach (var address in Model.AddressModels!)
+            {
+                if (address.Id == Model.UserModel!.AddressId)
+                {
+                    <option value ="@address.Id" selected>@address.ToString() (current)</option>
+                }
+                else
+                {
+                    <option value ="@address.Id">@address.ToString()</option>
+                }
+            }
+        </select>
+        <br>
+        <p>Address, if new</p>
+        <input asp-for="CreateAddressModel.Street" placeholder="Street">
+        <input asp-for="CreateAddressModel.StreetNumber" placeholder="Street number">
+        <input asp-for="CreateAddressModel.PostalCode" placeholder="Postal code">
+        <input asp-for="CreateAddressModel.City" placeholder="City">
+        <input asp-for="CreateAddressModel.Country" placeholder="Country">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<p>@ViewData["Message"]</p>
