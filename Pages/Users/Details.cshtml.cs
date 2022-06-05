@@ -24,6 +24,7 @@ public class Details : PageModel
         UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(userUrl) ?? new AppUserViewModel();
         
         string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
-        UserModel.RoleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>();
+        var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>() { "" };
+        UserModel.RoleName = roleNames[0];
     }
 }
