@@ -95,15 +95,15 @@ public class AppUserController : ControllerBase
     }
 
     // GET: api/AppUser/RoleNamesByAppUser/<userId>
-    [HttpGet("RoleNamesByAppUser/{userId}")]
-    public async Task<ActionResult<List<string>>> GetRoleNamesByAppUserAsync(string userId)
+    [HttpGet("RoleNameByAppUser/{userId}")]
+    public async Task<ActionResult<string>> GetRoleNameByAppUserAsync(string userId)
     {
         var appUser = await _repo.GetAppUserAsync(userId);
         if (appUser == null)
             return NotFound($"Fail: Find appUser with id {userId}");
 
-        var roleNames = await _repo.GetRoleNamesByAppUserAsync(appUser);
-        return Ok(roleNames);
+        var roleName = await _repo.GetRoleNameByAppUserAsync(appUser);
+        return Ok(roleName);
     }
 
 
@@ -139,7 +139,7 @@ public class AppUserController : ControllerBase
         appUser.UserName = appUser.Email;
         
         bool putSuccess = await _repo.UpdateAppUserAsync(appUser);
-        if (putSuccess)
+        if (putSuccess && !string.IsNullOrEmpty(model.RoleName))
         {
             await _repo.ClearRolesAsync(appUser);
             await _repo.AssignRoleAsync(appUser, model.RoleName!);

@@ -106,9 +106,10 @@ public class AppUserRepository : IAppUserRepository
         await _userManager.RemoveFromRolesAsync(appUser, roles);
     }
 
-    public async Task<List<string>> GetRoleNamesByAppUserAsync(AppUser appUser)
+    public async Task<string> GetRoleNameByAppUserAsync(AppUser appUser)
     {
-        return await _userManager.GetRolesAsync(appUser) as List<string> ?? new List<string>();
+        var roleNames = await _userManager.GetRolesAsync(appUser) as List<string> ?? new List<string>() {""};
+        return roleNames[0];
     }
 
     public async Task<bool> CreateAppUserAsync(AppUser appUser)
