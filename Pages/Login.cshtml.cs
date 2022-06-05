@@ -20,7 +20,7 @@ namespace WestcoastEducationStudentApp.Pages
 
         public async Task OnGetAsync()
         {
-            string url = $"{_apiUrl}/AppUser";
+            string url = $"{_apiUrl}/AppUser/Students";
             var httpClient = new HttpClient();
             AppUsers = await httpClient.GetFromJsonAsync<List<AppUserViewModel>>(url) ?? new List<AppUserViewModel>();
         }
