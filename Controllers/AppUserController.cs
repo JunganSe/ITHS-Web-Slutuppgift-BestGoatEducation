@@ -94,16 +94,16 @@ public class AppUserController : ControllerBase
         return Ok(models); // 200
     }
 
-    // GET: api/AppUser/RoleNameByAppUser/<userId>
-    [HttpGet("RoleNameByAppUser/{userId}")]
+    // GET: api/AppUser/RoleNamesByAppUser/<userId>
+    [HttpGet("RoleNamesByAppUser/{userId}")]
     public async Task<ActionResult<string>> GetRoleNameByAppUserAsync(string userId)
     {
         var appUser = await _repo.GetAppUserAsync(userId);
         if (appUser == null)
             return NotFound($"Fail: Find appUser with id {userId}");
 
-        var roleName = await _repo.GetRoleNameByAppUserAsync(appUser);
-        return Ok(roleName);
+        var roleNames = await _repo.GetRoleNamesByAppUserAsync(appUser);
+        return Ok(roleNames);
     }
 
 
@@ -146,7 +146,7 @@ public class AppUserController : ControllerBase
         }
 
         return (putSuccess)
-            ? NoContent() // 204
+            ? Ok(appUser.Id) // 200
             : StatusCode(500, "Fail: Update appUser"); // Internal server error
     }
 
