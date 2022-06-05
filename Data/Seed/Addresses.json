@@ -1,12 +1,5 @@
 [
     {
-        "street": "Testvägen",
-        "streetNumber": "1",
-        "postalCode": "12345",
-        "city": "Testköping",
-        "country": "Testland"
-    },
-    {
         "street": "Getallén",
         "streetNumber": "42",
         "postalCode": "90001",
@@ -21,24 +14,17 @@
         "country": "No man's land"
     },
     {
-        "street": "Hårgatan",
-        "streetNumber": "18",
+        "street": "Strohromsgränd",
+        "streetNumber": "80",
         "postalCode": "75456",
         "city": "Hairnösand",
         "country": "Norrland"
     },
     {
-        "street": "Kulgatan",
-        "streetNumber": "45a",
-        "postalCode": "24531",
-        "city": "Västköping",
-        "country": "Svärje"
-    },
-    {
-        "street": "Vresvägen",
+        "street": "Bittervägen",
         "streetNumber": "2",
         "postalCode": "65872",
-        "city": "Bitterlunda",
+        "city": "Vrestorp",
         "country": "Argentina"
     },
     {
@@ -46,6 +32,13 @@
         "streetNumber": "1",
         "postalCode": "87455",
         "city": "Skuta",
-        "country": "Morskilaini"
+        "country": "Lensland"
+    },
+    {
+        "street": "Kulgatan",
+        "streetNumber": "45a",
+        "postalCode": "24531",
+        "city": "Västköping",
+        "country": "Svärje"
     }
 ]
