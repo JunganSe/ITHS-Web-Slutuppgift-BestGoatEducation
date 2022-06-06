@@ -2,6 +2,8 @@
 @model WestcoastEducationAdminApp.Pages.Users.Details
 @{
     ViewData["Title"] = "User details";
+    bool isStudent = Model.UserModel!.RoleName == "Student";
+    bool isTeacher = Model.UserModel.RoleName == "Teacher";
 }
 @section styles
 {
@@ -32,8 +34,49 @@
             </tr>
         </table>
     </div>
+
+    <div class="user-course-summary">
+        @if (isStudent || isTeacher)
+        {
+            <h2>Courses</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course name</th>
+                        <th>Category</th>
+                        @if (isStudent)
+                        {
+                            <th>Grade</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model.CourseModels!)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-page="/Courses/Details" asp-route-id="@course.Id">@course.Name</a>
+                            </td>
+                            <td>
+                                @course.CategoryName
+                            </td>
+                            @if (isStudent)
+                            {
+                                <td>
+                                    @Model.CourseGrades[course.Id]
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
     <div class="details-links">
-        <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+        <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i
+                class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" title="Delete"><i
+                class="fa-solid fa-trash-can"></i></a>
     </div>
 </div>
