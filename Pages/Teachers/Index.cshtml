@@ -5,48 +5,56 @@
 }
 @section styles
 {
-<link rel="stylesheet" href="/css/list-gallery.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/gallery.css">
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    <a asp-page="/Users/Create">Create new</a>
-</div>
-
-<div class="gallery-filter">
-    <h3>Filter by competence</h3>
-    <form method="get">
-        <select name="byCompetence">
-            <option value="" selected disabled hidden>Please select</option>
-            <option value="all">All</option>
-            @foreach (var competence in Model.CompetenceModels!)
-            {
-                <option value="@competence.Id">@competence.Name</option>
-            }
-        </select>
-        <button type="submit">Filter</button>
-    </form>
-</div>
-
-<div class="gallery-container">
-    @foreach (var teacher in Model.TeacherModels!)
+<div class="box">
+    <a class="box-item box-button" asp-page="/Users/Create">Create new</a>
+    
+    <div class="box-item">
+        <h3>Filter by competence</h3>
+        <form class="gallery-filter" method="get">
+            <select name="byCompetence">
+                <option value="" selected disabled hidden>Please select</option>
+                <option value="all" >All</option>
+                @foreach (var competence in Model.CompetenceModels!)
+                {
+                    <option value="@competence.Id">@competence.Name</option>
+                }
+            </select>
+            <button class="box-button" type="submit">Filter</button>
+        </form>
+    </div>
+    
+    @if (Model.TeacherModels!.Any())
     {
-        <div class="gallery-card">
-            <h3>@teacher.FirstName @teacher.LastName</h3>
-            <table>
-                <tr>
-                    <th>Email:</th>
-                    <td>@teacher.Email</td>
-                </tr>
-                <tr>
-                    <th>
-                        <a asp-page="/Users/Details" asp-route-id="@teacher.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
-                        <a asp-page="/Users/Edit" asp-route-id="@teacher.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a asp-page="/Users/Delete" asp-route-id="@teacher.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-                    </th>
-                </tr>
-            </table>
+        <div class="box-item gallery-list">
+            @foreach (var teacher in Model.TeacherModels!)
+            {
+                <div class="gallery-item">
+                    <h3><a asp-page="/Users/Details" asp-route-id="@teacher.Id" title="Details">@teacher.FirstName @teacher.LastName</a></h3>
+                    <table>
+                        <tr>
+                            <th>Email:</th>
+                            <td>@teacher.Email</td>
+                        </tr>
+                        <tr>
+                            <td class="link-icons" colspan="2">
+                                <a asp-page="/Users/Details" asp-route-id="@teacher.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-page="/Users/Edit" asp-route-id="@teacher.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-page="/Users/Delete" asp-route-id="@teacher.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
         </div>
+    }
+    else
+    {
+        <div class="box-item">No teacher with this competence.</div>
     }
 </div>

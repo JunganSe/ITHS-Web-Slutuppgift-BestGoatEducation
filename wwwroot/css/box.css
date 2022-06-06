@@ -1,0 +1,40 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    margin: auto;
+    padding: 1rem;
+    gap: 1rem;
+    border: 1px solid var(--box-accent-color);
+    border-radius: 2rem;
+    color: var(--box-text-color);
+    background-color: var(--box-background-color);
+}
+
+.box-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--box-item-background-color);
+    border: 1px solid var(--box-accent-color);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.box h2, .box h3 {
+    text-shadow: 1px 1px 5px black;
+    text-align: center;
+}
+
+.box-button {
+    color: var(--primary-text-color);
+    background-color: var(--box-button-background-color);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--box-accent-color);
+    border-radius: 1rem;
+}
+.box-button:hover {
+    color: var(--box-accent-color);
+    background-color: var(--box-button-hover-background-color);
+}

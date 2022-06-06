@@ -5,36 +5,48 @@
 }
 @section styles
 {
-<link rel="stylesheet" href="/css/list-gallery.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/gallery.css">
+<style>
+    .gallery-list{grid-template-columns: repeat(2, 1fr)}
+</style>
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<a asp-page="/Courses/Create">Create new</a>
-<br><br>
+<div class="box">
+    <a class="box-item box-button" asp-page="/Courses/Create">Create new</a>
 
-<div class="gallery-container">
-    @foreach (var course in Model.CourseModels)
+    @if (Model.CourseModels!.Any())
     {
-        <div class="gallery-card">
-            <h3>@course.Name</h3>
-            <table>
-                <tr>
-                    <th>Category:</th>
-                    <td>@course.CategoryName</td>
-                </tr>
-                <tr>
-                    <th>Summary:</th>
-                    <td>@course.Summary</td>
-                </tr>
-                <tr>
-                    <th>
-                        <a asp-page="/Courses/Details" asp-route-id="@course.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
-                        <a asp-page="/Courses/Edit" asp-route-id="@course.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a asp-page="/Courses/Delete" asp-route-id="@course.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-                    </th>
-                </tr>
-            </table>
+        <div class="box-item gallery-list">
+            @foreach (var course in Model.CourseModels)
+            {
+                <div class="gallery-item">
+                    <h3><a asp-page="/Courses/Details" asp-route-id="@course.Id" title="Details">@course.Name</a></h3>
+                    <table>
+                        <tr>
+                            <th>Category:</th>
+                            <td>@course.CategoryName</td>
+                        </tr>
+                        <tr>
+                            <th>Summary:</th>
+                            <td>@course.Summary</td>
+                        </tr>
+                        <tr>
+                            <td class="link-icons" colspan="2">
+                                <a asp-page="/Courses/Details" asp-route-id="@course.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-page="/Courses/Edit" asp-route-id="@course.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-page="/Courses/Delete" asp-route-id="@course.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
         </div>
+    }
+    else
+    {
+        <div class="box-item">No courses.</div>
     }
 </div>

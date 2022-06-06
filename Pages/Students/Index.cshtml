@@ -5,32 +5,41 @@
 }
 @section styles
 {
-<link rel="stylesheet" href="/css/list-gallery.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/gallery.css">
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<a asp-page="/Users/Create">Create new</a>
-<br><br>
-
-<div class="gallery-container">
-    @foreach (var student in Model.StudentModels)
+<div class="box">
+    <a class="box-item box-button" asp-page="/Users/Create">Create new</a>
+    
+    @if (Model.StudentModels!.Any())
     {
-        <div class="gallery-card">
-            <h3>@student.FirstName @student.LastName</h3>
-            <table>
-                <tr>
-                    <th>Email:</th>
-                    <td>@student.Email</td>
-                </tr>
-                <tr>
-                    <th>
-                        <a asp-page="/Users/Details" asp-route-id="@student.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
-                        <a asp-page="/Users/Edit" asp-route-id="@student.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a asp-page="/Users/Delete" asp-route-id="@student.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
-                    </th>
-                </tr>
-            </table>
+        <div class="box-item gallery-list">
+            @foreach (var student in Model.StudentModels)
+            {
+                <div class="gallery-item">
+                    <h3><a asp-page="/Users/Details" asp-route-id="@student.Id" title="Details">@student.FirstName @student.LastName</a></h3>
+                    <table>
+                        <tr>
+                            <th>Email:</th>
+                            <td>@student.Email</td>
+                        </tr>
+                        <tr>
+                            <td class="link-icons" colspan="2">
+                                <a asp-page="/Users/Details" asp-route-id="@student.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-page="/Users/Edit" asp-route-id="@student.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-page="/Users/Delete" asp-route-id="@student.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
         </div>
+    }
+    else
+    {
+        <div class="box-item">No students.</div>
     }
 </div>

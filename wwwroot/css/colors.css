@@ -19,4 +19,19 @@
     --table-inner-border-color: #111;
     --table-stripe1-color: #333;
     --table-stripe2-color: #3a3a3a;
+    
+    
+    
+    --box-text-color: #ddd;
+    --box-accent-color: crimson;
+    --box-background-color: rgba(50, 50, 50, 0.7);
+    --box-item-background-color: #333;
+    --box-button-background-color: #3a3a3a;
+    --box-button-hover-background-color: #222;
+    
+    --gallery-filter-background-color: #3a3a3a;
+    --gallery-filter-border-color: crimson;
+    --gallery-item-background-color: #3a3a3a;
+    --gallery-item-border-color: #000;
+    --gallery-item-table-border-color: #181818;
 }

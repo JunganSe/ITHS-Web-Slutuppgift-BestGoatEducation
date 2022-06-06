@@ -27,7 +27,7 @@ public class Index : PageModel
 		CompetenceModels = await httpClient.GetFromJsonAsync<List<CompetenceViewModel>>(competenceUrl)
 			?? new List<CompetenceViewModel>();
 		
-		string teacherUrl = (string.IsNullOrEmpty(byCompetence))
+		string teacherUrl = (string.IsNullOrEmpty(byCompetence) || byCompetence == "all")
 			? $"{_apiUrl}/AppUser/Teachers"
 			: $"{_apiUrl}/AppUser/TeachersByCompetence/{byCompetence}";
 		TeacherModels = await httpClient.GetFromJsonAsync<List<AppUserViewModel>>(teacherUrl)
