@@ -6,6 +6,6 @@ public class PutStudentCourseViewModel
     public int CourseId { get; set; }
 
     public bool IsStarted { get; set; }
-    public bool IsCompeleted { get; set; }
+    public bool IsCompleted { get; set; }
     public string? Grade { get; set; }
 }

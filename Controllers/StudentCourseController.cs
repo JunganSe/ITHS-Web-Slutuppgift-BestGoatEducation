@@ -72,7 +72,7 @@ namespace WestcoastEducationApi.Controllers
 
 			// TODO: Automappa dessa utan att StudentId och CourseId följer med.
 			studentCourse.IsStarted = model.IsStarted;
-			studentCourse.IsCompleted = model.IsCompeleted;
+			studentCourse.IsCompleted = model.IsCompleted;
 			studentCourse.Grade = model.Grade;
 			_repo.UpdateStudentCourse(studentCourse);
 			
