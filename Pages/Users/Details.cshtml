@@ -51,27 +51,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var course in Model.CourseModels!)
+                    @if (Model.CourseModels!.Any())
+                    {
+                        foreach (var course in Model.CourseModels!)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-page="/Courses/Details" asp-route-id="@course.Id">@course.Name</a>
+                                </td>
+                                <td>
+                                    @course.CategoryName
+                                </td>
+                                @if (isStudent)
+                                {
+                                    <td>
+                                        @Model.CourseGrades[course.Id]
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td>
-                                <a asp-page="/Courses/Details" asp-route-id="@course.Id">@course.Name</a>
-                            </td>
-                            <td>
-                                @course.CategoryName
-                            </td>
-                            @if (isStudent)
-                            {
-                                <td>
-                                    @Model.CourseGrades[course.Id]
-                                </td>
-                            }
+                            <td>No courses yet.</td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
     </div>
+
+    @if (isTeacher)
+    {
+        <div class="user-competence-summary">
+            <h2>Competences</h2>
+        </div>
+    }
 
     <div class="details-links">
         <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i
