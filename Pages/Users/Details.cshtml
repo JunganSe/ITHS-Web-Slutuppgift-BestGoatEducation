@@ -13,7 +13,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="details">
-    <div>
+    <div class="user-details">
         <h2>@Model.UserModel!.FirstName @Model.UserModel.LastName</h2>
         <table>
             <tr>
@@ -35,9 +35,9 @@
         </table>
     </div>
 
-    <div class="user-course-summary">
-        @if (isStudent || isTeacher)
-        {
+    @if (isStudent || isTeacher)
+    {
+        <div class="user-course-summary">
             <h2>Courses</h2>
             <table>
                 <thead>
@@ -79,13 +79,30 @@
                     }
                 </tbody>
             </table>
-        }
-    </div>
+        </div>
+    }
 
     @if (isTeacher)
     {
         <div class="user-competence-summary">
             <h2>Competences</h2>
+            <table>
+                @if (Model.CompetenceModels!.Any())
+                {
+                    @foreach (var competence in Model.CompetenceModels!)
+                    {
+                        <tr>
+                            <td>@competence.Name</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>This teacher seems to be useless.</td>
+                    </tr>
+                }
+            </table>
         </div>
     }
 
