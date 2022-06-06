@@ -137,7 +137,7 @@ public class AppUserController : ControllerBase
 
         _mapper.Map<PutAppUserViewModel, AppUser>(model, appUser);
         appUser.UserName = appUser.Email;
-        
+
         bool putSuccess = await _repo.UpdateAppUserAsync(appUser);
         if (putSuccess && !string.IsNullOrEmpty(model.RoleName))
         {
@@ -152,15 +152,14 @@ public class AppUserController : ControllerBase
 
 
 
-
     // DELETE: api/AppUser
-    [HttpDelete]
-    public async Task<ActionResult> DeleteAppUserAsync(DeleteAppUserViewModel model)
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteAppUserAsync(string id)
     {
-        var appUser = await _repo.GetAppUserAsync(model.Id!);
+        var appUser = await _repo.GetAppUserAsync(id);
         if (appUser == null)
             return NotFound("Fail: Find appUser to delete"); // 404
-        
+
         bool deleteSuccess = await _repo.DeleteAppUserAsync(appUser);
         return (deleteSuccess)
             ? NoContent() // 204
