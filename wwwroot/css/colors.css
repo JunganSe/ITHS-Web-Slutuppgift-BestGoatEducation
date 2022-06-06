@@ -34,4 +34,9 @@
     --gallery-item-background-color: #3a3a3a;
     --gallery-item-border-color: #000;
     --gallery-item-table-border-color: #181818;
+    
+    --details-table-text-color: #ddd;
+    --details-table-text-emphasis-color: #eee;
+    --details-table-stripe-1-color: #4a3030;
+    --details-table-stripe-2-color: #483838;
 }
