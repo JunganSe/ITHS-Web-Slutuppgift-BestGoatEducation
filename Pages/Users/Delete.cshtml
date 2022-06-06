@@ -1,0 +1,17 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Delete
+@{
+    ViewData["Title"] = "Delete user";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <p>Delete this user?</p>
+    <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
+</div>
+
+<form method="post">
+    <input asp-for="UserModel!.Id" type="hidden">
+    <button type="submit">Yes, delete</button>
+</form>
