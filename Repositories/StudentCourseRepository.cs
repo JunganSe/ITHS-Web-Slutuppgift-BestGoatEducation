@@ -7,46 +7,53 @@ namespace WestcoastEducationApi.Repositories;
 
 public class StudentCourseRepository : IStudentCourseRepository
 {
-    private readonly Context _context;
+	private readonly Context _context;
 
-    public StudentCourseRepository(Context context)
-    {
-        _context = context;
-    }
-
-
-
-    public async Task<Student_Course?> GetStudentCourseAsync(string studentId, int courseId)
-    {
-        return await _context.Student_Courses
-            .FirstOrDefaultAsync(sc => sc.StudentId == studentId && sc.CourseId == courseId);
-    }
+	public StudentCourseRepository(Context context)
+	{
+		_context = context;
+	}
 
 
 
-    public async Task CreateStudentCourseAsync(Student_Course studentCourse)
-    {
-        await _context.Student_Courses.AddAsync(studentCourse);
-    }
+	public async Task<List<Student_Course>> GetStudentCoursesAsync(string studentId)
+	{
+		return await _context.Student_Courses
+			.Where(sc => sc.StudentId == studentId)
+			.ToListAsync();
+	}
+	
+	public async Task<Student_Course?> GetStudentCourseAsync(string studentId, int courseId)
+	{
+		return await _context.Student_Courses
+			.FirstOrDefaultAsync(sc => sc.StudentId == studentId && sc.CourseId == courseId);
+	}
 
 
 
-    public void UpdateStudentCourse(Student_Course studentCourse)
-    {
-        _context.Student_Courses.Update(studentCourse);
-    }
+	public async Task CreateStudentCourseAsync(Student_Course studentCourse)
+	{
+		await _context.Student_Courses.AddAsync(studentCourse);
+	}
 
 
 
-    public void DeleteStudentCourse(Student_Course studentCourse)
-    {
-        _context.Student_Courses.Remove(studentCourse);
-    }
+	public void UpdateStudentCourse(Student_Course studentCourse)
+	{
+		_context.Student_Courses.Update(studentCourse);
+	}
 
 
 
-    public async Task<bool> SaveAllAsync()
-    {
-        return (await _context.SaveChangesAsync() > 0);
-    }
+	public void DeleteStudentCourse(Student_Course studentCourse)
+	{
+		_context.Student_Courses.Remove(studentCourse);
+	}
+
+
+
+	public async Task<bool> SaveAllAsync()
+	{
+		return (await _context.SaveChangesAsync() > 0);
+	}
 }
