@@ -15,6 +15,7 @@
 .box-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
     background-color: var(--box-item-background-color);
     border: 1px solid var(--box-accent-color);

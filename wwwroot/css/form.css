@@ -43,7 +43,3 @@
     border: 1px solid var(--form-item-border-color);
     border-radius: 1rem;
 }
-
-.form .align-center {
-    align-items: center;
-}
