@@ -3,15 +3,21 @@
 @{
     ViewData["Title"] = "Delete user";
 }
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+}
 
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    <p>Delete this user?</p>
-    <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
+<div class="box">
+    <div class="box-item">
+        <p>Delete this user?</p>
+        <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
+    
+    <form method="post">
+        <input asp-for="UserModel!.Id" type="hidden">
+        <button class="box-button" type="submit">Yes, delete</button>
+    </form>
+    </div>
 </div>
-
-<form method="post">
-    <input asp-for="UserModel!.Id" type="hidden">
-    <button type="submit">Yes, delete</button>
-</form>
