@@ -5,32 +5,38 @@
 }
 @section styles
 {
-<link rel="stylesheet" href="/css/textbox.css">
-<link rel="stylesheet" href="/css/create-course.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/form.css">
+<style>
+    .box {
+        width: 600px
+    }
+</style>
 }
 
 <h1>@ViewData["Title"]</h1>
 
 
-<div class="form-container textbox">
-    <form method="post">
-        <input asp-for="CourseModel!.Name" placeholder="Name">
-        <div>
-            <label for="categorySelect">Category</label>
-            <select asp-for="CourseModel!.CategoryId" id="categorySelect">
-                <option value="" selected disabled hidden>Please select</option>
-                @foreach (var category in Model.CategoryModels!)
-                {
-                    <option value="@category.Id">@category.Name</option>
-                }
-            </select>
+<div class="box">
+    <form class="form" method="post">
+        <div class="box-item form-part">
+            <input asp-for="CourseModel!.Name" placeholder="Name">
+            <div>
+                <select asp-for="CourseModel!.CategoryId" id="categorySelect">
+                    <option value="" selected disabled hidden>Select category</option>
+                    @foreach (var category in Model.CategoryModels!)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+            </div>
+            <textarea asp-for="CourseModel!.Summary" rows="5" cols="30" placeholder="Summary"></textarea>
+            <textarea asp-for="CourseModel!.Description" rows="10" cols="30" placeholder="Description"></textarea>
+            <input asp-for="CourseModel!.Hours" placeholder="Hours">
+            <input asp-for="CourseModel!.Days" placeholder="Days">
+            <input asp-for="CourseModel!.Code" placeholder="Code">
         </div>
-        <textarea asp-for="CourseModel!.Summary" rows="5" cols="30" placeholder="Summary"></textarea>
-        <textarea asp-for="CourseModel!.Description" rows="10" cols="30" placeholder="Description"></textarea>
-        <input asp-for="CourseModel!.Hours" placeholder="Hours">
-        <input asp-for="CourseModel!.Days" placeholder="Days">
-        <input asp-for="CourseModel!.Code" placeholder="Code">
-
-        <button type="submit">Create</button>
+        
+        <button class="box-button" type="submit">Create</button>
     </form>
 </div>
