@@ -46,11 +46,8 @@ main h1 {
     z-index: 999;
 }
 .navbar h1 {
-    color: var(--navbar-text-color-h1-b);
+    color: var(--navbar-text-color-h1);
     margin: 0 1rem;
-}
-.navbar h1 span{
-    color: var(--navbar-text-color-h1-a);
 }
 .navbar ul {
     display: flex;

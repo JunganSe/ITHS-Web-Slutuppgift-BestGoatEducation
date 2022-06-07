@@ -1,6 +1,5 @@
 :root {
-    --navbar-text-color-h1-a: rgb(161, 6, 154);
-    --navbar-text-color-h1-b: rgb(38, 172, 38);
+    --navbar-text-color-h1: rgb(38, 172, 38);
     --navbar-text-color: #2b2;
     --navbar-background-color: #222;
     
@@ -11,6 +10,7 @@
     --textbox-background-color: rgba(50, 50, 50, 0.7);
     
     --courses-card-hover-color: #222;
+    --courses-card-background-color: rgba(85, 85, 85, 0.8);
     --button-text-hover-color: rgb(44, 222, 44);
     
     --table-background-color: #555;
