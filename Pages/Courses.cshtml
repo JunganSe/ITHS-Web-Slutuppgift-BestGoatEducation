@@ -2,6 +2,7 @@
 @model WestcoastEducationStudentApp.Pages.Courses
 @{
     ViewData["Title"] = "Courses";
+    string chosenCategoryId = Request.Query["byCategory"];
 }
 @section styles
 {
@@ -31,7 +32,14 @@
             <option value="all">All</option>
             @foreach (var category in Model.CategoryModels)
             {
-                <option value="@category.Id">@category.Name</option>
+                if (category.Id.ToString() == chosenCategoryId)
+                {
+                    <option value="@category.Id" selected>@category.Name</option>
+                }
+                else
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
             }
         </select>
         <button type="submit">Filter</button>
