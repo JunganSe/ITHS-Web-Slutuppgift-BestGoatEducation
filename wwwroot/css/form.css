@@ -9,7 +9,13 @@
 .form-part {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.form-component {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: baseline;
 }
 
 .form input, 
@@ -36,4 +42,8 @@
     padding: 0.3rem;
     border: 1px solid var(--form-item-border-color);
     border-radius: 1rem;
+}
+
+.form .align-center {
+    align-items: center;
 }
