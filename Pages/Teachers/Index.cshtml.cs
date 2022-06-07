@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WestcoastEducationAdminApp.ViewModels.AppUsers;
 using WestcoastEducationAdminApp.ViewModels.Competences;
-using WestcoastEducationAdminApp.ViewModels.Courses;
 
 namespace WestcoastEducationAdminApp.Pages.Teachers;
 

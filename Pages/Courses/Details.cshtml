@@ -7,11 +7,6 @@
 {
 <link rel="stylesheet" href="/css/box.css">
 <link rel="stylesheet" href="/css/details.css">
-<style>
-    .box {
-        width: 600px
-    }
-</style>
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -22,10 +17,10 @@
     </div>
 
     <div class="box-item details">
-        <table>
+        <table class="table-round-edges">
             <tr>
-                <th class="edge-tl">Summary:</th>
-                <td class="edge-tr">@Model.CourseModel.Summary</td>
+                <th>Summary:</th>
+                <td>@Model.CourseModel.Summary</td>
             </tr>
             <tr>
                 <th>Category:</th>
@@ -40,16 +35,14 @@
                 <td>@Model.CourseModel.Hours hours over @Model.CourseModel.Days days</td>
             </tr>
             <tr>
-                <th class="edge-bl">Code:</th>
-                <td class="edge-br">@Model.CourseModel.Code</td>
+                <th>Code:</th>
+                <td>@Model.CourseModel.Code</td>
             </tr>
         </table>
     </div>
 
     <div class="box-item link-icons">
-        <a asp-page="/Courses/Edit" asp-route-id="@Model.CourseModel.Id" title="Edit"><i
-                class="fa-solid fa-pen-to-square"></i></a>
-        <a asp-page="/Courses/Delete" asp-route-id="@Model.CourseModel.Id" title="Delete"><i
-                class="fa-solid fa-trash-can"></i></a>
+        <a asp-page="/Courses/Edit" asp-route-id="@Model.CourseModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Courses/Delete" asp-route-id="@Model.CourseModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
     </div>
 </div>

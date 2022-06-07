@@ -27,10 +27,12 @@ public class Details : PageModel
 		var httpClient = new HttpClient();
 
 		string userUrl = $"{_apiUrl}/AppUser/{id}";
-		UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(userUrl) ?? new AppUserViewModel();
+		UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(userUrl) 
+			?? new AppUserViewModel();
 
 		string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
-		var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) ?? new List<string>() { "" };
+		var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) 
+			?? new List<string>() { "" };
 		UserModel.RoleName = roleNames[0];
 
 		if (UserModel.RoleName == "Student")
