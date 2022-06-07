@@ -2,6 +2,7 @@
 @model WestcoastEducationAdminApp.Pages.Teachers.Index
 @{
     ViewData["Title"] = "Teachers";
+    string chosenCompetenceId = Request.Query["byCompetence"];
 }
 @section styles
 {
@@ -25,7 +26,14 @@
                 <option value="all" >All</option>
                 @foreach (var competence in Model.CompetenceModels!)
                 {
-                    <option value="@competence.Id">@competence.Name</option>
+                    if (competence.Id.ToString() == chosenCompetenceId)
+                    {
+                        <option value="@competence.Id" selected>@competence.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@competence.Id">@competence.Name</option>
+                    }
                 }
             </select>
             <button class="box-button" type="submit">Filter</button>
