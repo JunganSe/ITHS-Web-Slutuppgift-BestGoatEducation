@@ -1,13 +1,12 @@
 @page
 @model WestcoastEducationAdminApp.Pages.Users.Details
 @{
-    ViewData["Title"] = "User details";
-    bool isStudent = Model.UserModel!.RoleName == "Student";
-    bool isTeacher = Model.UserModel.RoleName == "Teacher";
-    
+    string? roleName = Model.UserModel!.RoleName;
+    bool isStudent = roleName == "Student";
+    bool isTeacher = roleName == "Teacher";
     ViewData["Title"] = (string.IsNullOrEmpty(Model.UserModel.RoleName))
         ? "User details"
-        : $"{Model.UserModel.RoleName} details";
+        : $"{roleName} details";
 }
 @section styles
 {
