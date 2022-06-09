@@ -21,7 +21,13 @@ public class Delete : PageModel
 		var httpClient = new HttpClient();
 		string url = $"{_apiUrl}/AppUser/{id}";
 		UserModel = await httpClient.GetFromJsonAsync<AppUserViewModel>(url) 
-			?? new AppUserViewModel();
+			?? new AppUserViewModel();string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
+			
+		var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl)
+			?? new List<string>();
+		UserModel.RoleName = (roleNames.Any())
+			? roleNames[0]
+			: null;
 	}
 	
 	public async Task OnPostAsync()
@@ -32,9 +38,20 @@ public class Delete : PageModel
 		var response = await httpClient.DeleteAsync(url);
 		if (response.IsSuccessStatusCode)
 		{
-			Response.Redirect("/Index");
+			switch (UserModel.RoleName)
+			{
+				case "Student":
+					Response.Redirect("/Students");
+					break;
+				case "Teacher":
+					Response.Redirect("/Teachers");
+					break;
+				default:
+					Response.Redirect("/Index");
+					break;
+			}
 			return;
 		}
-        throw new Exception("Failed to delete user");
+		throw new Exception("Failed to delete user");
 	}
 }

@@ -1,7 +1,7 @@
 @page
 @model WestcoastEducationAdminApp.Pages.Users.Delete
 @{
-    string? roleName = Request.Query["role"];
+    string? roleName = Model.UserModel!.RoleName;
     ViewData["Title"] = (!string.IsNullOrEmpty(roleName))
         ? $"Delete {roleName}"
         : "Delete user";
@@ -26,7 +26,8 @@
         <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
     
     <form method="post">
-        <input asp-for="UserModel!.Id" type="hidden">
+        <input asp-for="UserModel!.Id" hidden>
+        <input asp-for="UserModel!.RoleName" hidden>
         <button class="box-button" type="submit">Yes, delete</button>
     </form>
     </div>
