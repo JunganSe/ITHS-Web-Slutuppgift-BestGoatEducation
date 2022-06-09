@@ -33,7 +33,7 @@
                             <td class="link-icons" colspan="2">
                                 <a asp-page="/Users/Details" asp-route-id="@student.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
                                 <a asp-page="/Users/Edit" asp-route-id="@student.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a asp-page="/Users/Delete" asp-route-id="@student.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                                <a asp-page="/Users/Delete" asp-route-id="@student.Id" asp-route-role="Student" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
                     </table>

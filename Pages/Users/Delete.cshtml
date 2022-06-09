@@ -1,7 +1,10 @@
 @page
 @model WestcoastEducationAdminApp.Pages.Users.Delete
 @{
-    ViewData["Title"] = "Delete user";
+    string? roleName = Request.Query["role"];
+    ViewData["Title"] = (!string.IsNullOrEmpty(roleName))
+        ? $"Delete {roleName}"
+        : "Delete user";
 }
 @section styles
 {
@@ -12,7 +15,14 @@
 
 <div class="box">
     <div class="box-item">
-        <p>Delete this user?</p>
+        @if (!string.IsNullOrEmpty(roleName))
+        {
+            <p>Delete this @roleName.ToLower()?</p>
+        }
+        else
+        {
+            <p>Delete this user?</p>
+        }
         <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
     
     <form method="post">

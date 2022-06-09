@@ -107,6 +107,6 @@
 
     <div class="box-item link-icons">
         <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" asp-route-role="@Model.UserModel.RoleName" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
     </div>
 </div>
