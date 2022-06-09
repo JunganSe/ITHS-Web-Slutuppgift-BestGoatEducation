@@ -1,7 +1,9 @@
 @page
 @model WestcoastEducationAdminApp.Pages.Users.Edit
 @{
-    ViewData["Title"] = "Edit user";
+    ViewData["Title"] = (!string.IsNullOrEmpty(Model.UserModel!.RoleName))
+        ? $"Edit {Model.UserModel.RoleName}"
+        : "Edit user";
 }
 @section styles
 {
