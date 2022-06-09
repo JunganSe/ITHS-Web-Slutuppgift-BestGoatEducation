@@ -4,6 +4,10 @@
     ViewData["Title"] = "User details";
     bool isStudent = Model.UserModel!.RoleName == "Student";
     bool isTeacher = Model.UserModel.RoleName == "Teacher";
+    
+    ViewData["Title"] = (string.IsNullOrEmpty(Model.UserModel.RoleName))
+        ? "User details"
+        : $"{Model.UserModel.RoleName} details";
 }
 @section styles
 {

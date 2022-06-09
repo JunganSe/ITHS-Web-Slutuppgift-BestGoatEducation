@@ -15,7 +15,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="box">
-    <a class="box-item box-button" asp-page="/Users/Create">Create new</a>
+    <a class="box-item box-button" asp-page="/Users/Create" asp-route-role="Student">Create new</a>
     
     @if (Model.StudentModels!.Any())
     {

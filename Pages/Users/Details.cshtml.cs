@@ -33,7 +33,9 @@ public class Details : PageModel
 		string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
 		var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) 
 			?? new List<string>() { "" };
-		UserModel.RoleName = roleNames[0];
+		UserModel.RoleName = (roleNames.Any())
+			? roleNames[0]
+			: "n/a";
 
 		if (UserModel.RoleName == "Student")
 		{
