@@ -1,0 +1,38 @@
+.course-summary h2 {
+    text-align: center;
+    padding: 0.5rem;
+    background-color: var(--table-stripe1-color);
+    border-radius: 1rem 1rem 0 0;
+}
+
+.course-summary table {
+    border-collapse: collapse;
+}
+
+.course-summary tr:nth-child(even) {
+    background-color: var(--table-stripe1-color);
+}
+.course-summary tr:nth-child(odd) {
+    background-color: var(--table-stripe2-color);
+}
+
+.course-summary th {
+    padding: 0.2rem 0.5rem;
+    text-align: end;
+    vertical-align: top;
+    border-right: 1px solid var(--table-inner-border-color);
+    border-top: 1px solid var(--table-inner-border-color);
+}
+
+.course-summary td {
+    padding: 0.2rem 0.5rem;
+    border-top: 1px solid var(--table-inner-border-color);
+}
+
+.course-summary .table-bottom-left {
+    border-radius: 0 0 0 1rem;
+}
+
+.course-summary .table-bottom-right {
+    border-radius: 0 0 1rem 0;
+}

@@ -1,0 +1,8 @@
+body {
+    background-image: url('/images/goats1.jpg');
+}
+
+a {
+    text-decoration: none;
+    color: var(--button-text-hover-color);
+}

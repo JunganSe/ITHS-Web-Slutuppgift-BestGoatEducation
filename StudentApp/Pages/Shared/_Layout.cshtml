@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://icon-library.com/images/goat-icon/goat-icon-3.jpg">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    @RenderSection("styles", false)
+    <title>@ViewData["Title"] - BestGoat Education Student App</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1><span>Best</span>Goat Education</h1>
+
+            <ul>
+                <li><a asp-page="/Index">Home</a></li>
+                <li><a asp-page="/Courses">Courses</a></li>
+                <li><a asp-page="/Login">Login / Register</a></li>
+                <li><a asp-page="/Logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

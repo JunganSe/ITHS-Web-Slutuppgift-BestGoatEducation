@@ -1,0 +1,70 @@
+@page
+@model WestcoastEducationStudentApp.Pages.Courses
+@{
+    ViewData["Title"] = "Courses";
+    string chosenCategoryId = Request.Query["byCategory"];
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/textbox.css">
+<link rel="stylesheet" href="/css/course-summary.css">
+<link rel="stylesheet" href="/css/courses.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="current-user-message">
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
+    }
+    else
+    {
+        <p>Random stranger is not signed in!</p>
+    }
+</div>
+
+<div class="category-filter-container textbox">
+    <form method="get">
+        <h3>Filter by category:</h3>
+        <select id="categories" name="byCategory">
+            <option value="" selected disabled hidden>Please select</option>
+            <option value="all">All</option>
+            @foreach (var category in Model.CategoryModels)
+            {
+                if (category.Id.ToString() == chosenCategoryId)
+                {
+                    <option value="@category.Id" selected>@category.Name</option>
+                }
+                else
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            }
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+</div>
+
+<div class="gallery-container">
+    @foreach (var course in Model.CourseModels)
+    {
+        <a class="gallery-card course-summary" asp-page="/Details" asp-route-courseId="@course.Id">
+            <h2>@course.Name</h2>
+            <table>
+                <tr>
+                    <th>Category:</th>
+                    <td>@course.CategoryName</td>
+                </tr>
+                <tr>
+                    <th>Summary:</th>
+                    <td>@course.Summary</td>
+                </tr>
+                <tr>
+                    <th class="table-bottom-left">Duration:</th>
+                    <td class="table-bottom-right">@course.Hours hours over @course.Days days</td>
+                </tr>
+            </table>
+        </a>
+    }
+</div>

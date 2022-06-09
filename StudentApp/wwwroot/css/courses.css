@@ -1,0 +1,39 @@
+body {
+    background-image: url('/images/goats2.jpg');
+}
+
+
+
+.current-user-message {
+    text-align: center;
+    text-shadow: 1px 1px 5px black;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    padding: 2rem;
+    margin: auto;
+    max-width: 1200px;
+    align-items: flex-start;
+}
+
+.gallery-container a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+
+.gallery-card {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 1rem;
+    background-color: var(--courses-card-background-color);
+    
+    border: 1px solid var(--table-outer-border-color);
+    border-radius: 2rem;
+}
+.gallery-card:hover {
+    background-color: var(--courses-card-hover-color);
+}

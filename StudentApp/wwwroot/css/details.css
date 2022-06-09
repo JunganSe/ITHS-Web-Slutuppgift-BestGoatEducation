@@ -1,0 +1,13 @@
+body {
+    background-image: url('/images/goat3.jpg');
+}
+
+.textbox {
+    width: 600px;
+}
+
+.current-user-message {
+    text-align: center;
+    text-shadow: 1px 1px 5px black;
+    margin-bottom: 1rem;
+}

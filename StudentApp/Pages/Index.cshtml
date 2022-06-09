@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+@section styles
+{
+    <link rel="stylesheet" href="/css/index.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="current-user-message">
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Welcome, @HttpContext.Session.GetString("UserNameFull"). Baah!</p>
+    }
+    else
+    {
+        <p>Welcome, random stranger. Baah!</p>
+    }
+</div>

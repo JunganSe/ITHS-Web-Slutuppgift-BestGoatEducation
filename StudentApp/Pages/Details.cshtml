@@ -1,0 +1,70 @@
+@page
+@model WestcoastEducationStudentApp.Pages.Details
+@{
+    ViewData["Title"] = "Details";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/textbox.css">
+<link rel="stylesheet" href="/css/course-summary.css">
+<link rel="stylesheet" href="/css/details.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="current-user-message">
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <p>Signed in as: @HttpContext.Session.GetString("UserNameFull")</p>
+    }
+    else
+    {
+        <p>Random stranger is not signed in!</p>
+    }
+</div>
+
+<div class="textbox course-summary">
+    <div>
+        <h2>@Model.CourseModel!.Name</h2>
+        <table>
+            <tr>
+                <th>Summary:</th>
+                <td>@Model.CourseModel.Summary</td>
+            </tr>
+            <tr>
+                <th>Category:</th>
+                <td>@Model.CourseModel.CategoryName</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>@Model.CourseModel.Description</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>@Model.CourseModel.Hours hours over @Model.CourseModel.Days days</td>
+            </tr>
+            <tr>
+                <th class="table-bottom-left">Code:</th>
+                <td class="table-bottom-right">@Model.CourseModel.Code</td>
+            </tr>
+        </table>
+    </div>
+
+    <form method="post">
+        @* Skickas med för att formuläret inte ska tömmas. *@
+        <input type="hidden" asp-for="CourseModel!.Id">
+        <input type="hidden" asp-for="CourseModel!.Code">
+        <input type="hidden" asp-for="CourseModel!.Name">
+        <input type="hidden" asp-for="CourseModel!.Summary">
+        <input type="hidden" asp-for="CourseModel!.Description">
+        <input type="hidden" asp-for="CourseModel!.Days">
+        <input type="hidden" asp-for="CourseModel!.Hours">
+        <input type="hidden" asp-for="CourseModel!.CategoryName">
+        <button type="submit">Sign up</button>
+    </form>
+</div>
+
+
+
+<br>
+<p>@ViewData["Message"]</p>
