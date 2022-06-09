@@ -22,6 +22,7 @@
     <form method="post">
         <label for="users">Who's that goat?</label>
         <select id="users" name="userId">
+            <option value="" selected disabled hidden>Please select</option>
             @foreach (var user in Model.AppUsers!)
             {
                 <option value="@user.Id">@user.FirstName @user.LastName</option>
