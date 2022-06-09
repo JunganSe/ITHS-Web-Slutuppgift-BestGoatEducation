@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using WestcoastEducationApi.Models;
 
 namespace WestcoastEducationApi.Interfaces;
