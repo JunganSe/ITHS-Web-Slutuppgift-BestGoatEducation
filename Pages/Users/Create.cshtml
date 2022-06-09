@@ -13,7 +13,7 @@
 
 <div class="box">
     <form class="form" method="post">
-        <div class="box-item form-part">
+        <div class="box-item">
             <p>Personal details</p>
             <input asp-for="UserModel.FirstName" placeholder="First name">
             <input asp-for="UserModel.LastName" placeholder="Last name">
@@ -25,16 +25,28 @@
                 <option value="Teacher">Teacher</option>
             </select>
         </div>
-        
-        <div class="box-item form-part">
-            <p>Address</p>
-            <input asp-for="AddressModel.Street" placeholder="Street">
-            <input asp-for="AddressModel.StreetNumber" placeholder="Street number">
-            <input asp-for="AddressModel.PostalCode" placeholder="Postal code">
-            <input asp-for="AddressModel.City" placeholder="City">
-            <input asp-for="AddressModel.Country" placeholder="Country">
+
+        <div class="box-item">
+            <label asp-for="UserModel!.AddressId">Address</label>
+            <select asp-for="UserModel!.AddressId">
+                <option value="0" selected>New address</option>
+                @foreach (var address in Model.AddressModels!)
+                {
+                    <option value="@address.Id">@address.ToString()</option>
+                }
+            </select>
+            <br>
+
+            <p>Address, if new</p>
+            <input asp-for="CreateAddressModel.Street" placeholder="Street">
+            <input asp-for="CreateAddressModel.StreetNumber" placeholder="Street number">
+            <input asp-for="CreateAddressModel.PostalCode" placeholder="Postal code">
+            <input asp-for="CreateAddressModel.City" placeholder="City">
+            <input asp-for="CreateAddressModel.Country" placeholder="Country">
+            
+            @* // TODO: Gör så adresslistan inte töms när man misslyckas med att skapa adress. *@
         </div>
-        
+
         <button class="box-button" type="submit">Submit</button>
     </form>
 </div>
