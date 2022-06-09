@@ -24,6 +24,7 @@
     vertical-align: top;
 }
 
+/* Fungerar inte rätt om tabellen är mindre än 2x2 */
 .details .table-round-edges tr:first-child th:first-child,
 .details .table-round-edges tr:first-child td:first-child {
     border-radius: 0.5rem 0 0 0;
