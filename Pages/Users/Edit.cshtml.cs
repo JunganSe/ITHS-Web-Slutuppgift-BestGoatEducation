@@ -31,10 +31,12 @@ public class Edit : PageModel
 			?? new AppUserViewModel();
 		UserModel = _mapper.Map<EditAppUserViewModel>(userModel);
 
-		string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
-		var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl) 
-			?? new List<string>() {""};
-		UserModel.RoleName = roleNames[0];
+        string rolesUrl = $"{_apiUrl}/AppUser/RoleNamesByAppUser/{id}";
+        var roleNames = await httpClient.GetFromJsonAsync<List<string>>(rolesUrl)
+            ?? new List<string>();
+        UserModel.RoleName = (roleNames.Any())
+            ? roleNames[0]
+            : "n/a";
 
 		string addressUrl = $"{_apiUrl}/Address";
 		AddressModels = await httpClient.GetFromJsonAsync<List<AddressViewModel>>(addressUrl) 
