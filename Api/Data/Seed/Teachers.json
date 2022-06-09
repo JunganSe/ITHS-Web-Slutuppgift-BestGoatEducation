@@ -1,0 +1,30 @@
+[
+    {
+        "email": "ankan@mail.se",
+        "phoneNumber": "1234567890",
+        "firstName": "Ankan",
+        "lastName": "Ankberg",
+        "addressId": 1
+    },
+    {
+        "email": "baevern@mail.se",
+        "phoneNumber": "2345678901",
+        "firstName": "Bävern",
+        "lastName": "Bäverlund",
+        "addressId": 1
+    },
+    {
+        "email": "faageln@mail.se",
+        "phoneNumber": "3456789012",
+        "firstName": "Fågeln",
+        "lastName": "Vogeljazz",
+        "addressId": 1
+    },
+    {
+        "email": "haesten@mail.se",
+        "phoneNumber": "4567890123",
+        "firstName": "Hästen",
+        "lastName": "Hästwinge",
+        "addressId": 1
+    }
+]

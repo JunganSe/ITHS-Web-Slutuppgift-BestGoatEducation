@@ -1,0 +1,58 @@
+[
+    {
+        "email": "anders@mail.se",
+        "phoneNumber": "1234567890",
+        "firstName": "Anders",
+        "lastName": "Antisocial",
+        "addressId": 1
+    },
+    {
+        "email": "bea@mail.se",
+        "phoneNumber": "2345678901",
+        "firstName": "Beatrice",
+        "lastName": "Bastuberg",
+        "addressId": 1
+    },
+    {
+        "email": "calle@mail.se",
+        "phoneNumber": "3456789012",
+        "firstName": "Calle",
+        "lastName": "Cola",
+        "addressId": 1
+    },
+    {
+        "email": "doris@mail.se",
+        "phoneNumber": "4567890123",
+        "firstName": "Doris",
+        "lastName": "Digital",
+        "addressId": 1
+    },
+    {
+        "email": "edgar@mail.se",
+        "phoneNumber": "5678901234",
+        "firstName": "Edgar",
+        "lastName": "Ekolod",
+        "addressId": 1
+    },
+    {
+        "email": "frida@mail.se",
+        "phoneNumber": "6789012345",
+        "firstName": "Frida",
+        "lastName": "Fikahjälte",
+        "addressId": 1
+    },
+    {
+        "email": "gurra@mail.se",
+        "phoneNumber": "7890123456",
+        "firstName": "Gustav",
+        "lastName": "Gåsmäster",
+        "addressId": 1
+    },
+    {
+        "email": "hilda@mail.se",
+        "phoneNumber": "8901234567",
+        "firstName": "Hilda",
+        "lastName": "Hästmålare",
+        "addressId": 1
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "street": "Getallén",
+        "streetNumber": "42",
+        "postalCode": "90001",
+        "city": "Getlunda",
+        "country": "Goatland"
+    },
+    {
+        "street": "Plebgränd",
+        "streetNumber": "13",
+        "postalCode": "32123",
+        "city": "Slumköping",
+        "country": "No man's land"
+    },
+    {
+        "street": "Strohromsgränd",
+        "streetNumber": "80",
+        "postalCode": "75456",
+        "city": "Hairnösand",
+        "country": "Norrland"
+    },
+    {
+        "street": "Bittervägen",
+        "streetNumber": "2",
+        "postalCode": "65872",
+        "city": "Vrestorp",
+        "country": "Argentina"
+    },
+    {
+        "street": "Stånken",
+        "streetNumber": "1",
+        "postalCode": "87455",
+        "city": "Skuta",
+        "country": "Lensland"
+    },
+    {
+        "street": "Kulgatan",
+        "streetNumber": "45a",
+        "postalCode": "24531",
+        "city": "Västköping",
+        "country": "Svärje"
+    }
+]

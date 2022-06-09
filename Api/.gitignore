@@ -1,0 +1,5 @@
+/bin
+/obj
+.vs
+*.sqlite-shm
+*.sqlite-wal
