@@ -11,7 +11,6 @@ public class Details : PageModel
     private readonly string _apiUrl;
 
     public CourseViewModel? CourseModel { get; set; }
-    public string? Message { get; set; } // TODO: Använd ViewData istället.
 
     public Details(IConfiguration config)
     {
@@ -33,7 +32,7 @@ public class Details : PageModel
         var postModel = new PostStudentCourseViewModel()
         {
             StudentId = HttpContext.Session.GetString("UserId"),
-            CourseId = CourseModel!.Id
+            CourseId = courseId
         };
         
         var response = await httpClient.PostAsJsonAsync(url, postModel);
@@ -41,11 +40,11 @@ public class Details : PageModel
             ?? "random stranger";
         if (response.IsSuccessStatusCode)
         {
-            Message = $"Registered {userNameFull} for this course.";
+            ViewData["Message"] = $"Registered {userNameFull} for this course.";
         }
         else
         {
-            Message = $"Failed to register {userNameFull} for this course.";
+            ViewData["Message"] = $"Failed to register {userNameFull} for this course.";
         }
     }
 }

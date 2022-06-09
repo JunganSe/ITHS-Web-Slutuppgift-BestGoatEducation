@@ -50,8 +50,8 @@
         </table>
     </div>
 
-    @* // NOTE: Behövs alla dessa? *@
     <form method="post">
+        @* Skickas med för att formuläret inte ska tömmas. *@
         <input type="hidden" asp-for="CourseModel!.Id">
         <input type="hidden" asp-for="CourseModel!.Code">
         <input type="hidden" asp-for="CourseModel!.Name">
@@ -67,4 +67,4 @@
 
 
 <br>
-@Model.Message
+<p>@ViewData["Message"]</p>

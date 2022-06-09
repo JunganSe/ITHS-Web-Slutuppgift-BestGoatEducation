@@ -12,7 +12,6 @@ namespace WestcoastEducationStudentApp.Pages
 
         public PostAppUserViewModel UserModel { get; set; } = new();
         public PostAddressViewModel AddressModel { get; set; } = new();
-        public string? Message { get; set; } // TODO: Använd ViewData istället.
 
         public Register(IConfiguration config)
         {
@@ -32,7 +31,7 @@ namespace WestcoastEducationStudentApp.Pages
 
             if (!response.IsSuccessStatusCode)
             {
-                Message = "Failed to create address";
+                ViewData["Message"] = "Failed to create address";
                 return;
             }
 
@@ -42,7 +41,7 @@ namespace WestcoastEducationStudentApp.Pages
             response = await httpClient.PostAsJsonAsync(userUrl, UserModel);
             if (!response.IsSuccessStatusCode)
             {
-                Message = "Failed to create user";
+                ViewData["Message"] = "Failed to create user";
                 return;
             }
 
