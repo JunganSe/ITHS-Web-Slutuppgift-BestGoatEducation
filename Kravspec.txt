@@ -1,0 +1,96 @@
+Kravspecifikation
+-----------------
+
+
+
+
+______
+Steg 1. (G)
+
+Skapa ett REST API för hantera alla frågor som skall köras mot databasen, använd Sqlite!
+
+Via REST Api:et vill kunden lägga till nya kurser i systemet och för varje kurs behövs följande information
+
+Kursnummer (Idag använder kunden 4 siffror för detta t ex 1179)
+Kurs title
+Längd (t ex 3 dagar, 40 timmar video)
+Kategori( t ex JavaScript, .NET, Java, Python)
+Beskrivning (är en kortare övergripande beskrivning om kursen och varför man ska gå den)
+Detaljer (här finns information om vilka moduler/delar kursen går igenom)
+Kunden vill att det går att lista kurser efter kategorier och vid listning vill kunden kunna presentera följande information
+
+Kursnummer (Idag använder kunden 4 siffror för detta t ex 1179)
+Kurs title
+Längd (t ex 3 dagar, 40 timmar video)
+Kunden vill även att det skall gå att söka ut mer information angående kursen. Så att detaljer och kategori kan presenteras.
+
+
+Kunden behöver även ha möjlighet att kunna registrera nya kunder(studenter) i databasen.
+Här behövs det information om kunden som:
+Förnamn
+Efternamn
+E-post
+Telefon
+Adress
+Det behövs även någon hantering av vilka kurser som en kund har påbörjat/köpt eller deltagit på.
+
+Kunden behöver även kunna registrera sina lärare i systemet med information såsom
+Förnamn
+Efternamn
+E-post
+Telefon
+Adress
+En lista av kompetensområden
+
+VG Krav för Steg 1.
+För att få VG på Steg 1 behöver ni använda er av Repository Pattern samt utnyttja AutoMapper. Ni behöver inte använda AutoMapper överallt utan där det passar och inte kräver special lösningar för AutoMapper
+
+
+
+
+______
+Steg 2. (G)
+
+Skapa en klient applikation med valfri teknik, ASP.NET MVC, ASP.NET Razor Pages, JavaScript eller React som skall fungera som kund/elev gränssnitt.
+Applikationen ska kunna lista kurser efter kategorier. Användaren ska utifrån kategori kunna se vilka kurser som finns i vald kategori.
+
+Det skall gå att välja en kurs och se övriga detaljer om kursen, så som t ex detaljerad beskrivning, hur lång den är osv...
+
+Användare skall kunna registrera sig via gränssnittet.
+
+
+
+
+______
+Steg 3. (G)
+
+Sista delen i applikationen ska vara en applikation för företagets administratörer och utbildningsledare så att de kan hantera och administrera kurser, elever och lärare.
+
+Typ av applikation är valfritt precis som i Steg 2. Vad som måste kunna göras är att
+
+KURSER
+Lista
+Lägga till
+Ändra
+Ta bort(VG)
+
+ELEVER/STUDENTER
+Lista
+Lägga till
+Ändra
+Ta bort(VG)
+
+LÄRARE
+Lista
+Lägga till
+Ändra
+Ta bort
+
+Söka efter kompetensområde(VG)
+
+
+
+
+____________________
+Allmänna krav för VG
+Alla uppgifter som är markerade med VG måste vara uppfyllda för att få VG på uppgiften

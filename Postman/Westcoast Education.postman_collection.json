@@ -1,0 +1,878 @@
+{
+	"info": {
+		"_postman_id": "7b9f1b31-4b6c-4d7f-903e-2de18daa6eca",
+		"name": "Westcoast Education",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18481314"
+	},
+	"item": [
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Get all addresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Address",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Address/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Address",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"street\": \"Test street\",\r\n  \"streetNumber\": \"1a\",\r\n  \"postalCode\": \"12345\",\r\n  \"city\": \"Test town\",\r\n  \"country\": \"Test land\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/Address",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Address"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Category",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Category/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Test category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/Category",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Competence",
+			"item": [
+				{
+					"name": "Get all competences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Competence",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Competence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get competence",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Competence/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Competence",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get competences by teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Competence/ByTeacher/42b8818b-171a-4386-b82c-0d1b82085fdf",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Competence",
+								"ByTeacher",
+								"42b8818b-171a-4386-b82c-0d1b82085fdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create competence",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Test competence\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/Competence",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Competence"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Get all courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get courses by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course/ByCategory/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course",
+								"ByCategory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get courses by student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course/ByStudent/1bf835d6-d123-4c7f-89b9-f51ac89bc86a",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course",
+								"ByStudent",
+								"1bf835d6-d123-4c7f-89b9-f51ac89bc86a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get courses by teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course/ByTeacher/42b8818b-171a-4386-b82c-0d1b82085fdf",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course",
+								"ByTeacher",
+								"42b8818b-171a-4386-b82c-0d1b82085fdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"1234\",\r\n  \"name\": \"Test course\",\r\n  \"summary\": \"Test summary\",\r\n  \"description\": \"Test description\",\r\n  \"days\": 1,\r\n  \"hours\": 1,\r\n  \"categoryId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/Course",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"code\": \"1234\",\r\n  \"name\": \"Test course\",\r\n  \"summary\": \"Test summary\",\r\n  \"description\": \"Test description\",\r\n  \"days\": 1,\r\n  \"hours\": 1,\r\n  \"categoryId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/Course",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Course/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AppUser",
+			"item": [
+				{
+					"name": "Get all appusers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/Students",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"Students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/Teachers",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"Teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get appuser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/b86b5e20-c776-4913-957a-143a65d4e933",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"b86b5e20-c776-4913-957a-143a65d4e933"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get students by course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/StudentsByCourse/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"StudentsByCourse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get teachers by course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/TeachersByCourse/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"TeachersByCourse",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get teachers by competence",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/TeachersByCompetence/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"TeachersByCompetence",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get role names by appuser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/RoleNamesByAppUser/8a116941-30e3-4aee-afe6-11e06608ee4c",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"RoleNamesByAppUser",
+								"8a116941-30e3-4aee-afe6-11e06608ee4c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create appuser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Testarn\",\r\n  \"lastName\": \"Testarnsson\",\r\n  \"email\": \"test@mail\",\r\n  \"phoneNumber\": \"1234567890\",\r\n  \"addressId\": 1,\r\n  \"roleName\": \"Student\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/AppUser",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update appuser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"b86b5e20-c776-4913-957a-143a65d4e933\",\r\n  \"lastName\": \"Testarn\",\r\n  \"firstName\": \"Testarnsson\",\r\n  \"email\": \"test@mail\",\r\n  \"phoneNumber\": \"1234567890\",\r\n  \"addressId\": 2,\r\n  \"roleName\": \"Teacher\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/AppUser",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete appuser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/AppUser/1bf835d6-d123-4c7f-89b9-f51ac89bc86a",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"AppUser",
+								"1bf835d6-d123-4c7f-89b9-f51ac89bc86a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student_Course",
+			"item": [
+				{
+					"name": "Get studentcourses by student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/StudentCourse/c51d8443-26b7-4aec-bca8-b30700ea83e8",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"StudentCourse",
+								"c51d8443-26b7-4aec-bca8-b30700ea83e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get studentcourse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/StudentCourse/2073e262-07d3-4b11-90ac-709b00443f9d/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"StudentCourse",
+								"2073e262-07d3-4b11-90ac-709b00443f9d",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create studentcourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": \"2073e262-07d3-4b11-90ac-709b00443f9d\",\r\n  \"courseId\": 2,\r\n  \"isStarted\": true,\r\n  \"isCompeleted\": true,\r\n  \"grade\": \"IG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/StudentCourse",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"StudentCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update studentcourse",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": \"2073e262-07d3-4b11-90ac-709b00443f9d\",\r\n  \"courseId\": 2,\r\n  \"isStarted\": true,\r\n  \"isCompeleted\": true,\r\n  \"grade\": \"G\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/StudentCourse",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"StudentCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete studentcourse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"studentId\": \"2073e262-07d3-4b11-90ac-709b00443f9d\",\r\n  \"courseId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/StudentCourse",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"StudentCourse"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher_Course",
+			"item": [
+				{
+					"name": "Create teacher_course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherId\": \"e5a299fa-6725-495b-829e-ebd6fdb6c0b5\",\r\n  \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/TeacherCourse",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"TeacherCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher_course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherId\": \"e5a299fa-6725-495b-829e-ebd6fdb6c0b5\",\r\n  \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/TeacherCourse",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"TeacherCourse"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher_Competence",
+			"item": [
+				{
+					"name": "Create teacher_competence",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherId\": \"e5a299fa-6725-495b-829e-ebd6fdb6c0b5\",\r\n  \"competenceId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/TeacherCompetence",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"TeacherCompetence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher_competence",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teacherId\": \"e5a299fa-6725-495b-829e-ebd6fdb6c0b5\",\r\n  \"competenceId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/TeacherCompetence",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"TeacherCompetence"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seed",
+			"item": [
+				{
+					"name": "Seed (recreate db)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/Seed",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"Seed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "https://localhost:7009/api"
+		}
+	]
+}

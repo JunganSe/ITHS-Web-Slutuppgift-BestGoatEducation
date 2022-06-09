@@ -1,0 +1,108 @@
+___
+API
+
+
+GET:
+X	Address, all
+X	Address, one (frivillig)
+X	Category, all
+X	Category, one (frivillig)
+X	Competence, all
+X	Competence, one (frivillig)
+X	Course, all
+X	Course, one
+X	AppUser, all
+X	AppUser, one
+X	Students, all
+X	Teachers, all
+X	Student_Course, one (frivillig)
+
+GET:			Baserat på:
+X	Kurser			Kategori
+X	Kurser			Student
+X	Studenter 		Kurs
+X	Kurser			Lärare
+X	Lärare			Kurs
+X	Lärare			Kompetens
+X	Kompetenser		Lärare
+X	StudentCourses	Student
+
+POST:
+X	Address
+X	Category (frivillig)
+X	Competence (frivillig)
+X	Course
+X	AppUser
+X	Student_Course
+X	Teacher_Course (frivillig)
+X	Teacher_Competence (frivillig)
+
+PUT:
+	Address (frivillig)
+	Category (frivillig)
+	Competence (frivillig)
+X	Course
+X	AppUser
+X	Student_Course
+
+DELETE:
+	Address (frivillig)
+	Category (frivillig)
+	Competence (frivillig)
+X	Course
+X	AppUser
+X	Student_Course
+X	Teacher_Course
+X	Teacher_Competence
+
+
+
+
+__________
+Studentapp
+
+Logga in:
+X	Välj användare ur lista
+X	Länk till registrera användare
+
+Registrera:
+X	Skapa användare med adress
+
+X	Logga ut
+
+Kurser:
+X	Se alla kurser
+X	Filtrera på kategori
+X	Länk till kursdetaljer
+
+Detaljer:
+X	Knapp för att registrera sig
+
+
+
+________
+Adminapp
+
+Kurser:
+X	Lista alla
+X	Detaljer
+X	Skapa
+X	Ändra
+X	Radera
+
+Studenter:
+X	Lista alla
+X	Detaljer
+X	Skapa
+X	Ändra
+X	Radera
+
+Lärare:
+X	Lista alla
+X	Detaljer
+X	Skapa
+X	Ändra
+X	Radera
+X	Filtrera efter kompetens (dropdown)
+	Filtrera efter kompetens (fritext) (frivillig)
+	
