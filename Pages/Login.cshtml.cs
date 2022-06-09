@@ -42,7 +42,7 @@ namespace WestcoastEducationStudentApp.Pages
 			string userNameFull = $"{userModel.FirstName} {userModel.LastName}";
 			HttpContext.Session.SetString("UserNameFull", userNameFull);
 			HttpContext.Session.SetString("UserId", userId);
-			Response.Redirect("./Index");
+			Response.Redirect("/Index");
 		}
 	}
 }
