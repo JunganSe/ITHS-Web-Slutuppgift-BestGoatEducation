@@ -1,0 +1,71 @@
+.details {
+    padding: 1rem;
+    color: var(--details-table-text-color);
+}
+
+.details table {
+    border-collapse: collapse;
+    margin:auto
+}
+
+.details tr:not(:first-child) {
+    border-top: 1px solid var(--gallery-item-table-border-color);
+}
+
+.details tr:nth-child(odd) {
+    background-color: var(--details-table-stripe-1-color);
+}
+.details tr:nth-child(even) {
+    background-color: var(--details-table-stripe-2-color);
+}
+
+.details th, .details td {
+    padding: 0.2rem 0.5rem;
+    vertical-align: top;
+}
+
+/* Fungerar inte rätt om tabellen är mindre än 2x2 */
+.details .table-round-edges tr:first-child th:first-child,
+.details .table-round-edges tr:first-child td:first-child {
+    border-radius: 0.5rem 0 0 0;
+}
+.details .table-round-edges tr:first-child th:last-child,
+.details .table-round-edges tr:first-child td:last-child {
+    border-radius: 0 0.5rem 0 0;
+}
+.details .table-round-edges tr:last-child th:first-child,
+.details .table-round-edges tr:last-child td:first-child {
+    border-radius: 0 0 0 0.5rem;
+}
+.details .table-round-edges tr:last-child th:last-child,
+.details .table-round-edges tr:last-child td:last-child {
+    border-radius: 0 0 0.5rem 0;
+}
+
+.details th {
+    text-align: end;
+    color: var(--details-table-text-emphasis-color);
+}
+
+.details td {
+    text-align: start;
+}
+
+
+
+.align-left th,
+.align-left td {
+    text-align: left;
+}
+
+.align-center th,
+.align-center td {
+    text-align: center;
+}
+
+.link-icons {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 2rem;
+}

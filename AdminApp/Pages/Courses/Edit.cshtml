@@ -1,0 +1,62 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Edit
+@{
+    ViewData["Title"] = "Edit course";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/form.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <form class="form" method="post">
+        <div class="box-item form-part">
+            <input asp-for="CourseModel!.Id" type="hidden">
+            <div class="form-component">
+                <label asp-for="CourseModel!.Name"></label>
+                <input asp-for="CourseModel!.Name">
+            </div>
+            <div class="form-component">
+                <label for="categorySelect">Category</label>
+                <select asp-for="CourseModel!.CategoryId" id="categorySelect">
+                    @foreach (var category in Model.CategoryModels!)
+                    {
+                        if (category.Id == Model.CourseModel!.CategoryId)
+                        {
+                            <option value ="@category.Id" selected>@category.Name</option>
+                        }
+                        else
+                        {
+                            <option value ="@category.Id">@category.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-component">
+                <label asp-for="CourseModel!.Summary"></label>
+                <textarea asp-for="CourseModel!.Summary" rows="3" cols="30"></textarea>
+            </div>
+            <div class="form-component">
+                <label asp-for="CourseModel!.Description"></label>
+                <textarea asp-for="CourseModel!.Description" rows="15" cols="30"></textarea>
+            </div>
+            <div class="form-component">
+                <label asp-for="CourseModel!.Hours"></label>
+                <input asp-for="CourseModel!.Hours">
+            </div>
+            <div class="form-component">
+                <label asp-for="CourseModel!.Days"></label>
+                <input asp-for="CourseModel!.Days">
+            </div>
+            <div class="form-component">
+                <label asp-for="CourseModel!.Code"></label>
+                <input asp-for="CourseModel!.Code">
+            </div>
+        </div>
+        
+        <button class="box-button" type="submit">Update</button>
+    </form>
+</div>

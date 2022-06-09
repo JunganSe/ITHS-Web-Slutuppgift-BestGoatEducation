@@ -1,0 +1,34 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Delete
+@{
+    string? roleName = Model.UserModel!.RoleName;
+    ViewData["Title"] = (!string.IsNullOrEmpty(roleName))
+        ? $"Delete {roleName}"
+        : "Delete user";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <div class="box-item">
+        @if (!string.IsNullOrEmpty(roleName))
+        {
+            <p>Delete this @roleName.ToLower()?</p>
+        }
+        else
+        {
+            <p>Delete this user?</p>
+        }
+        <h3>@Model.UserModel!.FirstName @Model.UserModel.LastName</h3>
+    
+    <form method="post">
+        <input asp-for="UserModel!.Id" hidden>
+        <input asp-for="UserModel!.RoleName" hidden>
+        <button class="box-button" type="submit">Yes, delete</button>
+    </form>
+    </div>
+</div>

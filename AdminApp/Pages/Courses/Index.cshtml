@@ -1,0 +1,54 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Index
+@{
+    ViewData["Title"] = "Courses";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/gallery.css">
+<style>
+    .gallery-list { grid-template-columns: repeat(2, 1fr); }
+    .box { width: 800px; }
+    .box-item { align-items: flex-start; }
+</style>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <a class="box-item box-button" asp-page="/Courses/Create">Create new</a>
+
+    @if (Model.CourseModels!.Any())
+    {
+        <div class="box-item gallery-list">
+            @foreach (var course in Model.CourseModels)
+            {
+                <div class="gallery-item">
+                    <h3><a asp-page="/Courses/Details" asp-route-id="@course.Id" title="Details">@course.Name</a></h3>
+                    <table>
+                        <tr>
+                            <th>Category:</th>
+                            <td>@course.CategoryName</td>
+                        </tr>
+                        <tr>
+                            <th>Summary:</th>
+                            <td>@course.Summary</td>
+                        </tr>
+                        <tr>
+                            <td class="link-icons" colspan="2">
+                                <a asp-page="/Courses/Details" asp-route-id="@course.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-page="/Courses/Edit" asp-route-id="@course.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-page="/Courses/Delete" asp-route-id="@course.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="box-item">No courses.</div>
+    }
+</div>

@@ -1,0 +1,48 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Details
+@{
+    ViewData["Title"] = "Course details";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/details.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <div class="box-item">
+        <h2>@Model.CourseModel!.Name</h2>
+    </div>
+
+    <div class="box-item details">
+        <table class="table-round-edges">
+            <tr>
+                <th>Summary:</th>
+                <td>@Model.CourseModel.Summary</td>
+            </tr>
+            <tr>
+                <th>Category:</th>
+                <td>@Model.CourseModel.CategoryName</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>@Model.CourseModel.Description</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>@Model.CourseModel.Hours hours over @Model.CourseModel.Days days</td>
+            </tr>
+            <tr>
+                <th>Code:</th>
+                <td>@Model.CourseModel.Code</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="box-item link-icons">
+        <a asp-page="/Courses/Edit" asp-route-id="@Model.CourseModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Courses/Delete" asp-route-id="@Model.CourseModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+    </div>
+</div>

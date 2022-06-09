@@ -1,0 +1,71 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Teachers.Index
+@{
+    ViewData["Title"] = "Teachers";
+    string chosenCompetenceId = Request.Query["byCompetence"];
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/gallery.css">
+<style>
+    .box { width: 800px; }
+</style>
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <a class="box-item box-button" asp-page="/Users/Create" asp-route-role="Teacher">Create new</a>
+    
+    <div class="box-item">
+        <h3>Filter by competence</h3>
+        <form class="gallery-filter" method="get">
+            <select name="byCompetence">
+                <option value="" selected disabled hidden>Please select</option>
+                <option value="all" >All</option>
+                @foreach (var competence in Model.CompetenceModels!)
+                {
+                    if (competence.Id.ToString() == chosenCompetenceId)
+                    {
+                        <option value="@competence.Id" selected>@competence.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@competence.Id">@competence.Name</option>
+                    }
+                }
+            </select>
+            <button class="box-button" type="submit">Filter</button>
+        </form>
+    </div>
+    
+    @if (Model.TeacherModels!.Any())
+    {
+        <div class="box-item gallery-list">
+            @foreach (var teacher in Model.TeacherModels!)
+            {
+                <div class="gallery-item">
+                    <h3><a asp-page="/Users/Details" asp-route-id="@teacher.Id" title="Details">@teacher.FirstName @teacher.LastName</a></h3>
+                    <table>
+                        <tr>
+                            <th>Email:</th>
+                            <td>@teacher.Email</td>
+                        </tr>
+                        <tr>
+                            <td class="link-icons" colspan="2">
+                                <a asp-page="/Users/Details" asp-route-id="@teacher.Id" title="Details"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-page="/Users/Edit" asp-route-id="@teacher.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-page="/Users/Delete" asp-route-id="@teacher.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="box-item">No teacher with this competence.</div>
+    }
+</div>

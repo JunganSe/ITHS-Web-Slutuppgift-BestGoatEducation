@@ -1,0 +1,23 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Courses.Delete
+@{
+    ViewData["Title"] = "Delete course";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <div class="box-item">
+        <p>Delete this course?</p>
+        <h3>@Model.CourseModel!.Name</h3>
+        
+        <form method="post">
+            <input asp-for="CourseModel!.Id" type="hidden">
+            <button class="box-button" type="submit">Yes, delete</button>
+        </form>
+    </div>
+</div>

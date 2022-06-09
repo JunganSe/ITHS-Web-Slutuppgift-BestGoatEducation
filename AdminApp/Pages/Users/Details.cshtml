@@ -1,0 +1,112 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Details
+@{
+    string? roleName = Model.UserModel!.RoleName;
+    bool isStudent = roleName == "Student";
+    bool isTeacher = roleName == "Teacher";
+    ViewData["Title"] = (string.IsNullOrEmpty(Model.UserModel.RoleName))
+        ? "User details"
+        : $"{roleName} details";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/details.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <div class="box-item">
+        <h2>@Model.UserModel!.FirstName @Model.UserModel.LastName</h2>
+    </div>
+    
+    <div class="box-item details">
+        <table class="table-round-edges">
+            <tr>
+                <th>Role:</th>
+                <td>@Model.UserModel.RoleName</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>@Model.UserModel.Email</td>
+            </tr>
+            <tr>
+                <th>Phone number:</th>
+                <td>@Model.UserModel.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>@Model.UserModel.AddressName</td>
+            </tr>
+        </table>
+    </div>
+
+    @if (isStudent || isTeacher)
+    {
+        <div class="box-item details">
+            <h2>Courses</h2>
+            <table class="table-round-edges align-left">
+                <tr>
+                    <th>Course name</th>
+                    <th>Category</th>
+                    @if (isStudent)
+                    {
+                        <th>Grade</th>
+                    }
+                </tr>
+                @if (Model.CourseModels!.Any())
+                {
+                    foreach (var course in Model.CourseModels!)
+                    {
+                        <tr>
+                            <td class="edge-bl">
+                                <a asp-page="/Courses/Details" asp-route-id="@course.Id">@course.Name</a>
+                            </td>
+                            <td>@course.CategoryName</td>
+                            @if (isStudent)
+                            {
+                                <td>@Model.CourseGrades[course.Id]</td>
+                            }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">No courses yet.</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    @if (isTeacher)
+    {
+        <div class="box-item details">
+            <h2>Competences</h2>
+            @if (Model.CompetenceModels!.Any())
+            {
+                <table class="table-round-edges align-center">
+                    @foreach (var competence in Model.CompetenceModels!)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@competence.Name</td>
+                            <td></td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>This teacher seems to be useless.</p>
+            }
+        </div>
+    }
+
+    <div class="box-item link-icons">
+        <a asp-page="/Users/Edit" asp-route-id="@Model.UserModel.Id" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a asp-page="/Users/Delete" asp-route-id="@Model.UserModel.Id" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+    </div>
+</div>

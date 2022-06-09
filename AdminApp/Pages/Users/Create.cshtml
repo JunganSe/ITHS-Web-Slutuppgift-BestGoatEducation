@@ -1,0 +1,54 @@
+@page
+@model WestcoastEducationAdminApp.Pages.Users.Create
+@{
+    string roleName = Request.Query["role"];
+    ViewData["Title"] = (string.IsNullOrEmpty(roleName))
+        ? "Create user"
+        : $"Create {roleName}";
+}
+@section styles
+{
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/form.css">
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="box">
+    <form class="form" method="post">
+        <div class="box-item">
+            <p>Personal details</p>
+            <input asp-for="UserModel.FirstName" placeholder="First name">
+            <input asp-for="UserModel.LastName" placeholder="Last name">
+            <input asp-for="UserModel.Email" placeholder="Email">
+            <input asp-for="UserModel.PhoneNumber" placeholder="Phone number">
+            <input asp-for="UserModel.RoleName" value="@roleName" hidden>
+        </div>
+
+        <div class="box-item">
+            <label asp-for="UserModel!.AddressId">Address</label>
+            <select asp-for="UserModel!.AddressId">
+                <option value="0" selected>New address</option>
+                @foreach (var address in Model.AddressModels!)
+                {
+                    <option value="@address.Id">@address.ToString()</option>
+                }
+            </select>
+            <br>
+
+            <p>Address, if new</p>
+            <input asp-for="CreateAddressModel.Street" placeholder="Street">
+            <input asp-for="CreateAddressModel.StreetNumber" placeholder="Street number">
+            <input asp-for="CreateAddressModel.PostalCode" placeholder="Postal code">
+            <input asp-for="CreateAddressModel.City" placeholder="City">
+            <input asp-for="CreateAddressModel.Country" placeholder="Country">
+            
+            @* // TODO: Gör så adresslistan inte töms när man misslyckas med att skapa adress eller användare. *@
+        </div>
+
+        <button class="box-button" type="submit">Submit</button>
+    </form>
+</div>
+
+<br>
+<p>@ViewData["Message"]</p>
