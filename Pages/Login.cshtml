@@ -12,12 +12,12 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="textbox">
-    <div class="current-user-message">
-        @if (HttpContext.Session.GetString("UserId") != null)
-        {
+    @if (HttpContext.Session.GetString("UserId") != null)
+    {
+        <div class="current-user-message">
             <p>Already signed in as:<br><span>@HttpContext.Session.GetString("UserNameFull")</span></p>
-        }
-    </div>
+        </div>
+    }
 
     <form method="post">
         <label for="users">Who's that goat?</label>

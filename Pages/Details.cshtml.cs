@@ -11,7 +11,7 @@ public class Details : PageModel
     private readonly string _apiUrl;
 
     public CourseViewModel? CourseModel { get; set; }
-    public string? Message { get; set; }
+    public string? Message { get; set; } // TODO: Använd ViewData istället.
 
     public Details(IConfiguration config)
     {
@@ -37,8 +37,7 @@ public class Details : PageModel
         };
         
         var response = await httpClient.PostAsJsonAsync(url, postModel);
-        string userNameFull =
-            HttpContext.Session.GetString("UserNameFull")
+        string userNameFull = HttpContext.Session.GetString("UserNameFull")
             ?? "random stranger";
         if (response.IsSuccessStatusCode)
         {

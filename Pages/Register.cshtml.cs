@@ -12,7 +12,7 @@ namespace WestcoastEducationStudentApp.Pages
 
         public PostAppUserViewModel UserModel { get; set; } = new();
         public PostAddressViewModel AddressModel { get; set; } = new();
-        public string? Message { get; set; }
+        public string? Message { get; set; } // TODO: Använd ViewData istället.
 
         public Register(IConfiguration config)
         {
@@ -47,7 +47,7 @@ namespace WestcoastEducationStudentApp.Pages
             }
 
             Response.Redirect("/Login");
-
+            return;
         }
     }
 }
